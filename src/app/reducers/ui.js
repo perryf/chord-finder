@@ -1,8 +1,12 @@
-const initialState = {}
+import { FAVOR_SHARPS } from '../../data'
+
+const initialState = {
+	favorSharps: true
+}
 
 export const ui = (state = initialState, action) => {
 	switch (action.type) {
-		case 1:
+		case FAVOR_SHARPS:
 			return state
 		case 2:
 			return state

@@ -13,7 +13,7 @@ const exampleNoteArray = [
 	}
 ]
 
-const notes = [
+export const notes = [
 	{
 		id: 'c4',
 		value: 0,
