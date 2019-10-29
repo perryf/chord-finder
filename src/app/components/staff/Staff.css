@@ -1,0 +1,124 @@
+.staffBox {
+	display: flex;
+	justify-content: center;
+}
+
+.staff {
+	width: 360px;
+	background: #e5e5e5;
+	margin: 20px auto;
+	display: flex;
+	flex-direction: column;
+	border: 4px double black;
+	position: relative;
+	cursor: pointer;
+}
+
+.staffRow {
+	height: 16px;
+	width: 100%;
+}
+
+.staffRow:hover {
+	background: lightblue;
+}
+
+.staffSpace {
+	background: white;
+	height: 16px;
+	width: 100%;
+}
+
+.staffLineBox {
+	background: white;
+	flex-direction: column;
+}
+
+.staffLine {
+	height: 2px;
+	width: 100%;
+	background: black;
+}
+
+.staffLineC {
+	height: 2px;
+	width: 30px;
+	background: black;
+}
+
+.inVisible {
+	visibility: hidden;
+}
+
+.clefBox {
+	position: absolute;
+	left: -10px;
+	top: -12px;
+	height: 100%;
+}
+
+.clef {
+	height: 105%;
+	width: 80px;
+}
+
+.noteHead {
+	position: relative;
+	background: black;
+	border-radius: 50%;
+	width: 24px;
+	height: 22px;
+	outline: none;
+}
+
+.accidental {
+	position: absolute;
+	left: -18px;
+	top: -4px;
+	font-size: 22px;
+	font-weight: bold;
+}
+
+.noteList {
+	margin: 20px 4px;
+	min-width: 22px;
+	padding: 8px;
+	font-size: 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	flex-wrap: wrap-reverse;
+	height: 120px;
+}
+
+.controls {
+	margin: 20px auto;
+	min-width: 120px;
+	padding: 8px;
+	background: lightgrey;
+	border: 2px grey solid;
+	border-radius: 2px;
+	font-size: 12px;
+}
+
+.radioBox {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin: 12px auto;
+}
+
+.radioInputBox {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.clearStaffButton {
+	font-weight: bold;
+	border: 1px solid #aaaaaa;
+	padding: 4px;
+	border-radius: 4px;
+	background: linear-gradient(#dddddd, #7799bb);
+	cursor: pointer;
+}

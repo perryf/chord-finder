@@ -6,7 +6,7 @@ export const notes = (state = noteData, action) => {
 	const { type, payload } = action
 	switch (type) {
 		case SELECT_NOTE:
-			return toggleNoteById(payload, state, 'id')
+			return toggleNoteById(payload, state, 'value')
 		default:
 			return state
 	}

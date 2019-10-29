@@ -1,0 +1,25 @@
+.homeBox {
+	min-height: 100vh;
+	height: 100%;
+	/* padding: 20px; */
+	width: 980px;
+	margin: 0 auto;
+	background: #fcf4fc;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.inputs {
+	height: 100%;
+	width: 50%;
+	margin: 0 auto;
+}
+
+.chordBox {
+	width: 50%;
+	align-self: center;
+	margin-bottom: 20px;
+	min-height: 600px;
+}
