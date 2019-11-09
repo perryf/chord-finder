@@ -1,4 +1,4 @@
-import { SELECT_NOTE } from '../../data'
+import { SELECT_NOTE } from 'data'
 
 export const selectNote = id => {
 	return {

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { selectNote } from '../../actions'
+import { selectNote } from 'app/redux/actions'
 import './Staff.css'
 
 class Staff extends Component {
@@ -15,24 +15,20 @@ class Staff extends Component {
 		// this.props.selectNote('g4')
 	}
 
-	selectNoteIntercept = value => {
-		const { staffNotes, selectNote } = this.props
+	// selectNoteIntercept = value => {
+	// 	const { staffNotes, selectNote } = this.props
+	// 	const selectedNotes = staffNotes.filter(n => n.selected)
 
-		const selectedNotes = staffNotes.filter(n => n.selected)
-		console.log(selectedNotes)
+	// 	selectNote(value)
 
-		selectNote(value)
+	// 	const found = selectedNotes.find(
+	// 		n => n.value === value && n.selected && n.isNatural
+	// 	)
 
-		const found = selectedNotes.find(
-			n => n.value === value && n.selected && n.isNatural
-		)
-
-		if (found) {
-			console.log(found)
-
-			selectNote(found.value + 1)
-		}
-	}
+	// 	if (found) {
+	// 		selectNote(found.value + 1)
+	// 	}
+	// }
 
 	render() {
 		const { staffNotes, selectNote } = this.props
@@ -53,7 +49,7 @@ class Staff extends Component {
 									className="flexRow flexCenter staffLineBox staffRow"
 									key={note.id}
 									id={note.id}
-									onClick={() => this.selectNoteIntercept(note.value)}
+									// onClick={() => this.selectNoteIntercept(note.value)}
 								>
 									<div
 										id={note.id}
@@ -80,7 +76,7 @@ class Staff extends Component {
 									className="flexRow flexCenter staffSpace staffRow"
 									key={note.id}
 									id={note.id}
-									onClick={() => this.selectNoteIntercept(note.value)}
+									// onClick={() => this.selectNoteIntercept(note.value)}
 								>
 									<div
 										id={note.id}

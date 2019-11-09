@@ -1,3 +1,4 @@
+// TODO ----- OLD VERSION OF NOTES
 // * "Master object" (hypothetical)
 const exampleNoteArray = [
 	{
@@ -13,6 +14,7 @@ const exampleNoteArray = [
 	}
 ]
 
+// TODO ----- OLD VERSION OF NOTES
 export const notes = [
 	{
 		id: 'c4',
@@ -247,18 +249,18 @@ export const notes = [
 	}
 ]
 
-// * "Master object" (hypothetical)
-const exampleNotsMaster = {
+// * Example of object used in notesMaster
+const exampleNotesMaster = {
 	id: 'c4', // * String - Unique identifier - [cS4, d5, gS5, etc]
 	value: 0, // * Number - Unique number corresponding to note (C is 0, do not subtract 12 for octaves) - i.e. [0, 5, 9, 14, etc]
 	absoluteValue: 0, // * Number - Corresponds to note (C is 0, subtract 12 if over 1 octave) - i.e [0...11]
-	name: 'c', // * String - Lower case natural version of notes = [c, f, a, etc]
+	name: 'c', // * String (Single character) - Lower case natural version of notes = [c, f, a, etc]
 	label: 'C', // * String - Represent name, if accidental use Sharp version
 	altLabel: '', // ? String - If accidental, use Flat version, else empty string ?? [EDIT] Is this still needed ??
 	type: 'natural', // * String - Accidental type of notes - [natural, sharp, flat]
 	isNatural: false, // ?  Boolean - Natural or accidental - Do we still need this?
-	selected: false, // * Boolean - Selected by user
-	staffType: '' // * String - Type of staff row to create (empty string for none) - ['', 'line', 'space'] - Only use line/space on NATURAL notes
+	staffType: '', // * String - Type of staff row to create (empty string for none) - ['', 'line', 'space'] - Only use line/space on NATURAL notes
+	selected: false // * Boolean - Selected by user
 }
 
 // * Master location for data - only notes data that changes, everything else trickles down from here.
@@ -523,7 +525,7 @@ export const notesMaster = [
 		staffType: ''
 	},
 
-	// ******** OCTAVE *********
+	// ***** OCTAVE *****
 
 	{
 		id: 'cB5',
@@ -710,7 +712,7 @@ export const notesMaster = [
 		staffType: ''
 	}
 ]
-// notesMaster
+// above obj is notesMaster
 
 const staffArrToObj = arr => ({
 	flat: arr[0],
@@ -720,45 +722,75 @@ const staffArrToObj = arr => ({
 
 // * Expresses notesMaster as an object of notes
 const notesObj = {
-	c: staffArrToObj(notesMaster.slice(0, 3)),
-	d: staffArrToObj(notesMaster.slice(3, 6)),
-	e: staffArrToObj(notesMaster.slice(6, 9)),
-	f: staffArrToObj(notesMaster.slice(9, 12)),
-	g: staffArrToObj(notesMaster.slice(12, 15)),
-	a: staffArrToObj(notesMaster.slice(15, 18)),
-	b: staffArrToObj(notesMaster.slice(18, 21)),
-	c1: staffArrToObj(notesMaster.slice(21, 24)),
-	d1: staffArrToObj(notesMaster.slice(24, 27)),
-	e1: staffArrToObj(notesMaster.slice(27, 30)),
-	f1: staffArrToObj(notesMaster.slice(30, 33)),
-	g1: staffArrToObj(notesMaster.slice(33, 36))
+	c4: staffArrToObj(notesMaster.slice(0, 3)),
+	d4: staffArrToObj(notesMaster.slice(3, 6)),
+	e4: staffArrToObj(notesMaster.slice(6, 9)),
+	f4: staffArrToObj(notesMaster.slice(9, 12)),
+	g4: staffArrToObj(notesMaster.slice(12, 15)),
+	a4: staffArrToObj(notesMaster.slice(15, 18)),
+	b4: staffArrToObj(notesMaster.slice(18, 21)),
+	c5: staffArrToObj(notesMaster.slice(21, 24)),
+	d5: staffArrToObj(notesMaster.slice(24, 27)),
+	e5: staffArrToObj(notesMaster.slice(27, 30)),
+	f5: staffArrToObj(notesMaster.slice(30, 33)),
+	g5: staffArrToObj(notesMaster.slice(33, 36))
 }
 
-const { c, d, e, f, g, a, b, c1, d1, e1, f1, g1 } = notesObj
+const { c4, d4, e4, f4, g4, a4, b4, c5, d5, e5, f5, g5 } = notesObj // * Deconstructs notesObj to more easily access in keysMaster
+
+// * Info used to construct visual of staff
+export const staffInfo = {
+	c4: { staffType: 'line', bLeft: false, bRight: true },
+	d4: { staffType: 'row', bLeft: true, bRight: true },
+	e4: { staffType: 'line', bLeft: true, bRight: false },
+	f4: { staffType: 'row', bLeft: false, bRight: true },
+	g4: { staffType: 'line', bLeft: true, bRight: true },
+	a4: { staffType: 'row', bLeft: true, bRight: true },
+	b4: { staffType: 'line', bLeft: true, bRight: false },
+	c5: { staffType: 'space', bLeft: false, bRight: true },
+	d5: { staffType: 'line', bLeft: true, bRight: true },
+	e5: { staffType: 'space', bLeft: true, bRight: false },
+	f5: { staffType: 'line', bLeft: false, bRight: true },
+	g5: { staffType: 'space', bLeft: true, bRight: true }
+}
 
 // * Do not change directly, changes as a result of notesMaster change
-const keysMaster = {
-	c: { notes: [c.natural], value: 0 }, // ? should b.sharp be here?
-	cS: { notes: [c.natural, d.flat], value: 1 },
-	d: { notes: [d.natural], value: 2 },
-	dS: { notes: [d.sharp, e.flat], value: 3 },
-	e: { notes: [e.natural, f.flat], value: 4 },
-	f: { notes: [f.natural, e.sharp], value: 5 },
-	fS: { notes: [f.sharp, g.flat], value: 6 },
-	g: { notes: [g.natural], value: 7 },
-	gS: { notes: [g.sharp, a.flat], value: 8 },
-	a: { notes: [g.natural], value: 9 },
-	aS: { notes: [a.sharp, b.flat], value: 10 },
-	b: { notes: [b.natural, c1.flat], value: 11 },
-	c1: { notes: [c1.natural, b.sharp], value: 12 },
-	cS1: { notes: [c1.sharp, d1.flat], value: 13 },
-	d1: { notes: [d1.natural], value: 14 },
-	dS1: { notes: [d1.sharp, e1.flat], value: 15 },
-	e1: { notes: [e1.natural, f1.flat], value: 16 },
-	f1: { notes: [e1.natural, e1.sharp], value: 17 },
-	fS1: { notes: [f1.sharp, g1.sharp], value: 18 },
-	g1: { notes: [g1.natural], value: 19 },
-	gS1: { notes: [g1.sharp], value: 20 } // ? should a.flat be here?
-}
+export const staffMaster = [
+	{ id: 'c4', notes: c4, staffInfo: staffInfo.c4 },
+	{ id: 'd4', notes: d4, staffInfo: staffInfo.d4 },
+	{ id: 'e4', notes: e4, staffInfo: staffInfo.e4 },
+	{ id: 'f4', notes: f4, staffInfo: staffInfo.f4 },
+	{ id: 'g4', notes: g4, staffInfo: staffInfo.g4 },
+	{ id: 'a4', notes: a4, staffInfo: staffInfo.a4 },
+	{ id: 'b4', notes: b4, staffInfo: staffInfo.b4 },
+	{ id: 'c5', notes: c5, staffInfo: staffInfo.c5 },
+	{ id: 'd5', notes: d5, staffInfo: staffInfo.d5 },
+	{ id: 'e5', notes: e5, staffInfo: staffInfo.e5 },
+	{ id: 'f5', notes: f5, staffInfo: staffInfo.f5 },
+	{ id: 'g5', notes: g5, staffInfo: staffInfo.g5 }
+]
 
-console.log(keysMaster)
+// * Do not change directly, changes as a result of notesMaster change
+export const keysMaster = [
+	{ id: 'c4', notes: [c4.natural], value: 0, blackKey: false }, // ? should b.sharp be included in c.notes?
+	{ id: 'cS4', notes: [c4.natural, d4.flat], value: 1, blackKey: true },
+	{ id: 'd4', notes: [d4.natural], value: 2, blackKey: false },
+	{ id: 'dS4', notes: [d4.sharp, e4.flat], value: 3, blackKey: true },
+	{ id: 'e4', notes: [e4.natural, f4.flat], value: 4, blackKey: false },
+	{ id: 'f4', notes: [f4.natural, e4.sharp], value: 5, blackKey: false },
+	{ id: 'fS4', notes: [f4.sharp, g4.flat], value: 6, blackKey: true },
+	{ id: 'g4', notes: [g4.natural], value: 7, blackKey: false },
+	{ id: 'gS4', notes: [g4.sharp, a4.flat], value: 8, blackKey: true },
+	{ id: 'a4', notes: [g4.natural], value: 9, blackKey: false },
+	{ id: 'aS4', notes: [a4.sharp, b4.flat], value: 10, blackKey: true },
+	{ id: 'b4', notes: [b4.natural, c5.flat], value: 11, blackKey: false },
+	{ id: 'c5', notes: [c5.natural, b4.sharp], value: 12, blackKey: false },
+	{ id: 'cS5', notes: [c5.sharp, d5.flat], value: 13, blackKey: true },
+	{ id: 'd5', notes: [d5.natural], value: 14, blackKey: false },
+	{ id: 'dS5', notes: [d5.sharp, e5.flat], value: 15, blackKey: true },
+	{ id: 'e5', notes: [e5.natural, f5.flat], value: 16, blackKey: false },
+	{ id: 'f5', notes: [e5.natural, e5.sharp], value: 17, blackKey: false },
+	{ id: 'fS5', notes: [f5.sharp, g5.sharp], value: 18, blackKey: true },
+	{ id: 'g5', notes: [g5.natural], value: 19, blackKey: false },
+	{ id: 'gS5', notes: [g5.sharp], value: 20, blackKey: false } // ? should a.flat be included in gS1.notes?
+]

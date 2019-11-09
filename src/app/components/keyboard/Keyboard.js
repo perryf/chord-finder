@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { selectNote } from '../../actions'
+import { selectNote } from 'app/redux/actions'
 
 class Keyboard extends Component {
 	static propTypes = {
