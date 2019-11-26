@@ -249,8 +249,8 @@ export const notes = [
 	}
 ]
 
-// * Example of object used in notesMaster
-const exampleNotesMaster = {
+// * Example of object used in notesData
+const exampleNotesData = {
 	id: 'c4', // * String - Unique identifier - [cS4, d5, gS5, etc]
 	value: 0, // * Number - Unique number corresponding to note (C is 0, do not subtract 12 for octaves) - i.e. [0, 5, 9, 14, etc]
 	absoluteValue: 0, // * Number - Corresponds to note (C is 0, subtract 12 if over 1 octave) - i.e [0...11]
@@ -264,7 +264,7 @@ const exampleNotesMaster = {
 }
 
 // * Master location for data - only notes data that changes, everything else trickles down from here.
-export const notesMaster = [
+export const notesData = [
 	{
 		// ? May not include this one - would have to add extra note on keyboard?
 		id: 'cB4',
@@ -712,7 +712,7 @@ export const notesMaster = [
 		staffType: ''
 	}
 ]
-// above obj is notesMaster
+// above obj is notesData
 
 const staffArrToObj = arr => ({
 	flat: arr[0],
@@ -720,25 +720,26 @@ const staffArrToObj = arr => ({
 	sharp: arr[2]
 })
 
-// * Expresses notesMaster as an object of notes
-const notesObj = {
-	c4: staffArrToObj(notesMaster.slice(0, 3)),
-	d4: staffArrToObj(notesMaster.slice(3, 6)),
-	e4: staffArrToObj(notesMaster.slice(6, 9)),
-	f4: staffArrToObj(notesMaster.slice(9, 12)),
-	g4: staffArrToObj(notesMaster.slice(12, 15)),
-	a4: staffArrToObj(notesMaster.slice(15, 18)),
-	b4: staffArrToObj(notesMaster.slice(18, 21)),
-	c5: staffArrToObj(notesMaster.slice(21, 24)),
-	d5: staffArrToObj(notesMaster.slice(24, 27)),
-	e5: staffArrToObj(notesMaster.slice(27, 30)),
-	f5: staffArrToObj(notesMaster.slice(30, 33)),
-	g5: staffArrToObj(notesMaster.slice(33, 36))
+// * Notes data directly used in Redux
+// * Expresses notesData as an object of notes
+export const notesMaster = {
+	c4: staffArrToObj(notesData.slice(0, 3)),
+	d4: staffArrToObj(notesData.slice(3, 6)),
+	e4: staffArrToObj(notesData.slice(6, 9)),
+	f4: staffArrToObj(notesData.slice(9, 12)),
+	g4: staffArrToObj(notesData.slice(12, 15)),
+	a4: staffArrToObj(notesData.slice(15, 18)),
+	b4: staffArrToObj(notesData.slice(18, 21)),
+	c5: staffArrToObj(notesData.slice(21, 24)),
+	d5: staffArrToObj(notesData.slice(24, 27)),
+	e5: staffArrToObj(notesData.slice(27, 30)),
+	f5: staffArrToObj(notesData.slice(30, 33)),
+	g5: staffArrToObj(notesData.slice(33, 36))
 }
 
-const { c4, d4, e4, f4, g4, a4, b4, c5, d5, e5, f5, g5 } = notesObj // * Deconstructs notesObj to more easily access in keysMaster
+const { c4, d4, e4, f4, g4, a4, b4, c5, d5, e5, f5, g5 } = notesMaster // * Deconstructs notesObj to more easily access in keysMaster
 
-// * Info used to construct visual of staff
+// * Static info used to construct visual of staff
 export const staffInfo = {
 	c4: { staffType: 'line', bLeft: false, bRight: true },
 	d4: { staffType: 'row', bLeft: true, bRight: true },
@@ -755,7 +756,7 @@ export const staffInfo = {
 }
 
 // * Do not change directly, changes as a result of notesMaster change
-export const staffMaster = [
+const staffMaster = [
 	{ id: 'c4', notes: c4, staffInfo: staffInfo.c4 },
 	{ id: 'd4', notes: d4, staffInfo: staffInfo.d4 },
 	{ id: 'e4', notes: e4, staffInfo: staffInfo.e4 },
@@ -771,7 +772,7 @@ export const staffMaster = [
 ]
 
 // * Do not change directly, changes as a result of notesMaster change
-export const keysMaster = [
+const keysMaster = [
 	{ id: 'c4', notes: [c4.natural], value: 0, blackKey: false }, // ? should b.sharp be included in c.notes?
 	{ id: 'cS4', notes: [c4.natural, d4.flat], value: 1, blackKey: true },
 	{ id: 'd4', notes: [d4.natural], value: 2, blackKey: false },

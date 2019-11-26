@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import './Controls.css'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { shapeToStaff } from 'helperFunctions/transformers';
+import './Controls.css';
 
 class Controls extends Component {
 	render() {
-		const { notes } = this.props
+		const { notesMaster } = this.props;
 		return (
 			<div>
-				<h2>Controls</h2>
 				<div className="controls">
 					<button className="clearStaffButton" onClick={this.handleClearAll}>
 						Clear Staff
@@ -37,31 +37,30 @@ class Controls extends Component {
 						</div>
 					</div>
 
-					<div className="noteList">
-						{notes.map(note => (
-							<span key={note.id}>
-								{note.label}
-								{note.accidentalTag || ''}
-							</span>
-						))}
-					</div>
+					{false && (
+						<div className="noteList">
+							{notesMaster.map(note => (
+								<span key={note.id}>
+									{note.label}
+									{note.accidentalTag || ''}
+								</span>
+							))}
+						</div>
+					)}
 				</div>
 			</div>
-		)
+		);
 	}
 }
 
 const mapStateToProps = state => {
 	return {
-		notes: state.notes.reverse()
-	}
-}
+		notesMaster: shapeToStaff(state).reverse()
+	};
+};
 
 const mapDispatchToProps = state => {
-	return {}
-}
+	return {};
+};
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(Controls)
+export default connect(mapStateToProps, mapDispatchToProps)(Controls);

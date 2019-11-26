@@ -17,6 +17,7 @@
 .staffRow {
 	height: 16px;
 	width: 100%;
+	background: white;
 }
 
 .staffRow:hover {
@@ -24,13 +25,9 @@
 }
 
 .staffSpace {
-	background: white;
-	height: 16px;
-	width: 100%;
 }
 
 .staffLineBox {
-	background: white;
 	flex-direction: column;
 }
 

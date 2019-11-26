@@ -1,29 +1,26 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { selectNote } from 'app/redux/actions'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { selectNote } from 'app/redux/actions';
 
 class Keyboard extends Component {
 	static propTypes = {
 		// prop: PropTypes
-	}
+	};
 
 	render() {
-		return <div>Keyboard</div>
+		return <div>Keyboard</div>;
 	}
 }
 
 const mapStateToProps = state => {
 	return {
-		notes: state.notes
-	}
-}
+		// notes: state.notes
+	};
+};
 
 const mapDispatchToProps = dispatch => ({
 	selectNote: id => dispatch(selectNote(id))
-})
+});
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(Keyboard)
+export default connect(mapStateToProps, mapDispatchToProps)(Keyboard);

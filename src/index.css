@@ -21,7 +21,8 @@ code {
 	flex-direction: column;
 }
 
-.flexCenter {
+.flexRowCenter {
+	display: flex;
 	justify-content: center;
 	align-items: center;
 }
