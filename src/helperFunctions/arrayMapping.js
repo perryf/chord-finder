@@ -20,7 +20,7 @@ export const toggleById = (value, array, key) => {
 	];
 };
 
-export const toggleNoteById = (notesState = {}, noteObj) => {
+export const toggleNoteById = (notesState = {}, noteObj, favorSharps) => {
 	let prevSelected = false; // * turns true when going from natural to accidental
 	let selected = true; // * whether or not updated note should be selected/shown
 	let prevType = ''; // * what the note was when it was clicked
@@ -33,7 +33,7 @@ export const toggleNoteById = (notesState = {}, noteObj) => {
 			prevSelected = true;
 
 			if (prevType === 'natural') {
-				newType = 'sharp';
+				newType = favorSharps ? 'sharp' : 'flat';
 			}
 			if (prevType === 'sharp' || prevType === 'flat') {
 				newType = '';

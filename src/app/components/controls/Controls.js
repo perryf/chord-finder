@@ -2,11 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { shapeToStaff } from 'helperFunctions/transformers';
+import { favorSharps, favorFlats } from 'app/redux/actions/ui';
 import './Controls.css';
 
 class Controls extends Component {
 	render() {
-		const { notesMaster } = this.props;
+		const {
+			notesMaster,
+			favorSharps,
+			handleFavorSharps,
+			handleFavorFlats
+		} = this.props;
+
 		return (
 			<div>
 				<div className="controls">
@@ -19,8 +26,8 @@ class Controls extends Component {
 								type="radio"
 								name="sharpsFlat"
 								value="sharps"
-								// checked={!!favorSharps}
-								onChange={() => {}}
+								checked={favorSharps}
+								onChange={handleFavorSharps}
 							/>
 							<span>Sharps</span>
 						</div>
@@ -30,8 +37,8 @@ class Controls extends Component {
 								type="radio"
 								name="sharpsFlat"
 								value="flats"
-								// checked={!favorSharps}
-								onChange={() => {}}
+								checked={!favorSharps}
+								onChange={handleFavorFlats}
 							/>
 							<span>Flats</span>
 						</div>
@@ -53,14 +60,25 @@ class Controls extends Component {
 	}
 }
 
+Controls.propTypes = {
+	notesMaster: PropTypes.array.isRequired,
+	favorSharps: PropTypes.bool.isRequired,
+	handleFavorSharps: PropTypes.func.isRequired,
+	handleFavorFlats: PropTypes.func.isRequired
+};
+
 const mapStateToProps = state => {
 	return {
-		notesMaster: shapeToStaff(state).reverse()
+		notesMaster: shapeToStaff(state).reverse(),
+		favorSharps: state.ui.favorSharps
 	};
 };
 
-const mapDispatchToProps = state => {
-	return {};
+const mapDispatchToProps = dispatch => {
+	return {
+		handleFavorSharps: () => dispatch(favorSharps()),
+		handleFavorFlats: () => dispatch(favorFlats())
+	};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Controls);

@@ -1,8 +1,8 @@
-import { SELECT_NOTE } from 'data'
+import { SELECT_NOTE } from 'data';
 
-export const selectNote = id => {
+export const selectNote = (noteObj, favorSharps) => {
 	return {
 		type: SELECT_NOTE,
-		payload: id
-	}
-}
+		payload: { noteObj, favorSharps }
+	};
+};

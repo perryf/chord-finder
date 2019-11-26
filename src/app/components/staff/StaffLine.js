@@ -26,7 +26,7 @@ const StaffLine = props => {
 					<div id={note.id} tabIndex={-1} className="noteHead">
 						<span tabIndex={-1} className="accidental">
 							{isSharp && '#'}
-							{isFlat && 'b'}
+							{isFlat && <em>b</em>}
 						</span>
 					</div>
 				)}

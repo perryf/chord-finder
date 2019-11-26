@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { selectNote } from 'app/redux/actions';
@@ -9,35 +9,18 @@ import './Staff.css';
 
 class Staff extends Component {
 	static propTypes = {
-		// prop: PropTypes
+		favorSharps: PropTypes.bool.isRequired,
+		selectNote: PropTypes.func.isRequired,
+		notesMaster: PropTypes.array.isRequired
 	};
 
-	componentWillMount() {
-		// this.props.selectNote('c4')
-		// this.props.selectNote('c5')
-		// this.props.selectNote('g4')
-	}
-
 	selectNoteIntercept = noteObj => {
-		// const { staffNotes, selectNote } = this.props
-		// const selectedNotes = staffNotes.filter(n => n.selected)
-
-		// selectNote(value)
-
-		// const found = selectedNotes.find(
-		// 	n => n.value === value && n.selected && n.isNatural
-		// )
-
-		// if (found) {
-		// 	selectNote(found.value + 1)
-		// }
-		// console.log(noteObj, noteObj.notes.natural.value)
-		this.props.selectNote(noteObj);
+		const { favorSharps } = this.props;
+		this.props.selectNote(noteObj, favorSharps);
 	};
 
 	render() {
-		const { selectNote, notesMaster } = this.props;
-		// console.log(notesMaster)
+		const { notesMaster } = this.props;
 		return (
 			<div className="staffBox">
 				<div className="staff">
@@ -69,14 +52,15 @@ class Staff extends Component {
 
 const mapStateToProps = state => {
 	return {
-		notesMaster: shapeToStaff(state).reverse()
-		// notes: state.notes.reverse(),
-		// staffNotes: state.notes.filter(a => a.isNatural),
+		notesMaster: shapeToStaff(state).reverse(),
+		favorSharps: state.ui.favorSharps
 	};
 };
 
 const mapDispatchToProps = dispatch => ({
-	selectNote: id => dispatch(selectNote(id))
+	selectNote: (noteObj, favorSharps) => {
+		return dispatch(selectNote(noteObj, favorSharps));
+	}
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Staff);
