@@ -1,0 +1,102 @@
+:root {
+	--bg-height: 180px;
+	--bg-width: 300px; /* Increase back to 400px when done with octave visual perfection */
+	--low-high-ratio: calc(5 / 7);
+}
+
+.keyboardWhole {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.keyboardBox {
+	height: var(--bg-height, 180px);
+	display: flex;
+	/* flex-direction: column; */
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;
+	/* width: var(--bg-width, 300px); */
+	position: relative;
+	background: #d0b0a0; /*  Woodish color */
+}
+
+.keyboardBoxHigh {
+	height: var(--bg-height, 180px);
+	display: flex;
+	flex-direction: column;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+	width: calc(var(--bg-width, 300px) * var(--low-high-ratio));
+	position: relative;
+	background: #d0b0a0; /*  Woodish color */
+}
+
+.blackKeyBox {
+	position: relative;
+}
+
+.blackKeys {
+	/* position: absolute; */
+	width: 89%;
+	/* height: 90px; */
+	display: flex;
+	justify-content: space-between;
+	z-index: 2;
+	margin: 0 0 0 28px;
+}
+
+.whiteKeys {
+	width: 100%;
+	height: var(--bg-height);
+	display: flex;
+	justify-content: space-between;
+	z-index: 1;
+}
+
+.whiteKey {
+	background: white;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	width: calc(var(--bg-width) / 6);
+	height: 100%;
+}
+
+.blackKey {
+	position: absolute;
+	height: 90px;
+
+	/* display: flex; */
+	/* justify-content: space-around; */
+	background: black;
+	width: calc(var(--bg-width) / 12);
+	/* height: 100%; */
+	border-radius: 0 0 4px 4px;
+	margin: 0 0 0 -12px;
+}
+
+.cSharpHigh {
+	/* margin: 0 0 0 -10px; */
+}
+
+.eHidden {
+	width: 8px !important;
+	margin-left: 3px;
+}
+
+.gHidden {
+	width: 14px !important;
+	margin-left: 3px;
+}
+
+.hideNote {
+	visibility: hidden;
+	width: 0;
+}
+
+.keySelected {
+	background: lightskyblue !important;
+}

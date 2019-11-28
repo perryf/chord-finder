@@ -791,7 +791,7 @@ const keysMaster = [
 	{ id: 'dS5', notes: [d5.sharp, e5.flat], value: 15, blackKey: true },
 	{ id: 'e5', notes: [e5.natural, f5.flat], value: 16, blackKey: false },
 	{ id: 'f5', notes: [e5.natural, e5.sharp], value: 17, blackKey: false },
-	{ id: 'fS5', notes: [f5.sharp, g5.sharp], value: 18, blackKey: true },
+	{ id: 'fS5', notes: [f5.sharp, g5.flat], value: 18, blackKey: true },
 	{ id: 'g5', notes: [g5.natural], value: 19, blackKey: false },
-	{ id: 'gS5', notes: [g5.sharp], value: 20, blackKey: false } // ? should a.flat be included in gS1.notes?
+	{ id: 'gS5', notes: [g5.sharp], value: 20, blackKey: true } // ? should a.flat be included in gS1.notes?
 ]
