@@ -6,7 +6,7 @@
 .staff {
 	width: 360px;
 	background: #e5e5e5;
-	margin: 20px auto;
+	margin-top: 20px;
 	display: flex;
 	flex-direction: column;
 	border: 4px double black;
@@ -78,14 +78,12 @@
 
 .noteList {
 	margin: 20px 4px;
-	min-width: 22px;
 	padding: 8px;
 	font-size: 14px;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
+	justify-content: flex-end;
 	flex-wrap: wrap-reverse;
-	height: 120px;
 }
 
 .controls {

@@ -1,3 +1,2 @@
-export * from './chordData'
-export * from './noteData'
-export * from './types'
+export * from './chordData';
+export * from './noteData';

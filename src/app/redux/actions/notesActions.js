@@ -1,4 +1,4 @@
-import { SELECT_NOTE } from 'data';
+import { SELECT_NOTE } from 'app/redux/types';
 
 export const selectNote = (noteObj, favorSharps) => {
 	return {

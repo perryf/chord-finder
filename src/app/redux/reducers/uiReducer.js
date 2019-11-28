@@ -1,4 +1,4 @@
-import { FAVOR_SHARPS, FAVOR_FLATS } from 'data';
+import { FAVOR_SHARPS, FAVOR_FLATS } from 'app/redux/types';
 
 const initialState = {
 	favorSharps: true

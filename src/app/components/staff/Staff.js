@@ -21,8 +21,29 @@ class Staff extends Component {
 
 	render() {
 		const { notesMaster } = this.props;
+
+		const noteList = notesMaster.reduce((acc, noteObj, index, self) => {
+			const notes = [
+				noteObj.notes.flat,
+				noteObj.notes.sharp,
+				noteObj.notes.natural
+			];
+
+			const selectedNotes = notes.filter(n => n.selected);
+
+			return acc.concat(selectedNotes);
+		}, []);
+
 		return (
 			<div className="staffBox">
+				<div className="noteList">
+					{noteList.map(note => (
+						<span key={note.id}>
+							{note.label}
+							{note.accidentalTag || ''}
+						</span>
+					))}
+				</div>
 				<div className="staff">
 					<div className="clefBox">
 						<img src="/images/G-clef.svg" className="clef" alt="g-clef" />

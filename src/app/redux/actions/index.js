@@ -1,2 +1,2 @@
-export * from './notes'
-export * from './ui'
+export * from './notesActions';
+export * from './uiActions';

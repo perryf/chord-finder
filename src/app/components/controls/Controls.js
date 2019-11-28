@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { shapeToStaff } from 'helperFunctions/transformers';
-import { favorSharps, favorFlats } from 'app/redux/actions/ui';
+import {
+	favorSharps,
+	favorFlats,
+	handleClearNotes
+} from 'app/redux/actions/uiActions';
 import './Controls.css';
 
 class Controls extends Component {
 	render() {
 		const {
-			notesMaster,
 			favorSharps,
 			handleFavorSharps,
-			handleFavorFlats
+			handleFavorFlats,
+			handleClearNotes
 		} = this.props;
 
 		return (
 			<div>
 				<div className="controls">
-					<button className="clearStaffButton" onClick={this.handleClearAll}>
+					<button className="clearStaffButton" onClick={handleClearNotes}>
 						Clear Staff
 					</button>
 					<div className="radioBox">
@@ -43,17 +46,6 @@ class Controls extends Component {
 							<span>Flats</span>
 						</div>
 					</div>
-
-					{false && (
-						<div className="noteList">
-							{notesMaster.map(note => (
-								<span key={note.id}>
-									{note.label}
-									{note.accidentalTag || ''}
-								</span>
-							))}
-						</div>
-					)}
 				</div>
 			</div>
 		);
@@ -61,7 +53,6 @@ class Controls extends Component {
 }
 
 Controls.propTypes = {
-	notesMaster: PropTypes.array.isRequired,
 	favorSharps: PropTypes.bool.isRequired,
 	handleFavorSharps: PropTypes.func.isRequired,
 	handleFavorFlats: PropTypes.func.isRequired
@@ -69,7 +60,6 @@ Controls.propTypes = {
 
 const mapStateToProps = state => {
 	return {
-		notesMaster: shapeToStaff(state).reverse(),
 		favorSharps: state.ui.favorSharps
 	};
 };
@@ -77,7 +67,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 	return {
 		handleFavorSharps: () => dispatch(favorSharps()),
-		handleFavorFlats: () => dispatch(favorFlats())
+		handleFavorFlats: () => dispatch(favorFlats()),
+		handleClearNotes: () => dispatch(handleClearNotes())
 	};
 };
 

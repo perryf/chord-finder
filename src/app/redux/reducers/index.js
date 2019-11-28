@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { notesMaster } from './notes';
-import { ui } from './ui';
+import { notesMaster } from './notesReducer';
+import { ui } from './uiReducer';
 
 export const reducer = combineReducers({ notesMaster, ui });
