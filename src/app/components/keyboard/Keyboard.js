@@ -14,24 +14,33 @@ class Keyboard extends Component {
 
 	selectNoteIntercept = noteObj => {
 		const { selectNote, deselectNote, favorSharps } = this.props
+		let id = ''
+		let selected = ''
 
+		// * Handles Sharps
 		if (noteObj.id.includes('B') || noteObj.id.includes('S')) {
 			const update = noteObj.notes.find(n => {
 				return favorSharps ? n.type === 'sharp' : n.type === 'flat'
 			})
 
-			if (update.selected) {
-				deselectNote(update.id)
-			} else {
-				selectNote(update.id)
+			selected = update.selected
+			id = update.id
+
+			// * accidental swap (handles cases where accidental note was previously selected and then selected again with different value for favorSharps)
+			const bizarro = noteObj.notes.find(n => {
+				return favorSharps ? n.type === 'flat' : n.type === 'sharp'
+			})
+			if (bizarro) {
+				deselectNote(bizarro.id)
 			}
+
+			// * Handles Flats
 		} else {
-			if (noteObj.notes[0].selected) {
-				deselectNote(noteObj.id)
-			} else {
-				selectNote(noteObj.id)
-			}
+			selected = noteObj.notes[0].selected
+			id = noteObj.id
 		}
+
+		selected ? deselectNote(id) : selectNote(id)
 	}
 
 	render() {
