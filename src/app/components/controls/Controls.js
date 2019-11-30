@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import {
 	favorSharps,
 	favorFlats,
 	handleClearNotes
-} from 'app/redux/actions/uiActions';
-import './Controls.css';
+} from 'app/redux/actions/uiActions'
+import './Controls.css'
 
 class Controls extends Component {
 	render() {
@@ -15,10 +15,10 @@ class Controls extends Component {
 			handleFavorSharps,
 			handleFavorFlats,
 			handleClearNotes
-		} = this.props;
+		} = this.props
 
 		return (
-			<div>
+			<div className="controlsBox">
 				<div className="controls">
 					<button className="clearStaffButton" onClick={handleClearNotes}>
 						Clear Staff
@@ -48,7 +48,7 @@ class Controls extends Component {
 					</div>
 				</div>
 			</div>
-		);
+		)
 	}
 }
 
@@ -56,20 +56,20 @@ Controls.propTypes = {
 	favorSharps: PropTypes.bool.isRequired,
 	handleFavorSharps: PropTypes.func.isRequired,
 	handleFavorFlats: PropTypes.func.isRequired
-};
+}
 
 const mapStateToProps = state => {
 	return {
 		favorSharps: state.ui.favorSharps
-	};
-};
+	}
+}
 
 const mapDispatchToProps = dispatch => {
 	return {
 		handleFavorSharps: () => dispatch(favorSharps()),
 		handleFavorFlats: () => dispatch(favorFlats()),
 		handleClearNotes: () => dispatch(handleClearNotes())
-	};
-};
+	}
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Controls);
+export default connect(mapStateToProps, mapDispatchToProps)(Controls)

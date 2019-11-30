@@ -86,34 +86,7 @@
 	flex-wrap: wrap-reverse;
 }
 
-.controls {
-	margin: 20px auto;
-	min-width: 120px;
-	padding: 8px;
-	background: lightgrey;
-	border: 2px grey solid;
-	border-radius: 2px;
-	font-size: 12px;
-}
-
-.radioBox {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	margin: 12px auto;
-}
-
-.radioInputBox {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-}
-
-.clearStaffButton {
-	font-weight: bold;
-	border: 1px solid #aaaaaa;
-	padding: 4px;
-	border-radius: 4px;
-	background: linear-gradient(#dddddd, #7799bb);
-	cursor: pointer;
+.fillerNote {
+	height: 8px;
+	background: white;
 }

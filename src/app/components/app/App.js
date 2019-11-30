@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Staff from '../staff/Staff'
 import Keyboard from '../keyboard/Keyboard'
 import Controls from '../controls/Controls'
-import { notesMaster } from 'data'
+import ChordListing from '../chordListing/ChordListing'
 
 class App extends Component {
 	render() {
@@ -13,6 +13,7 @@ class App extends Component {
 					<Controls />
 					<Staff />
 					<Keyboard />
+					<ChordListing />
 				</div>
 			</div>
 		)

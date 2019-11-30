@@ -7,8 +7,8 @@ import './Keyboard.css'
 
 class Keyboard extends Component {
 	static propTypes = {
-		favorSharps: PropTypes.bool.isRequired,
 		notesMaster: PropTypes.array.isRequired,
+		favorSharps: PropTypes.bool.isRequired,
 		selectNote: PropTypes.func.isRequired
 	}
 

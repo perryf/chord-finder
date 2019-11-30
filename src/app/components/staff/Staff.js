@@ -88,7 +88,7 @@ class Staff extends Component {
 							/>
 						)
 					})}
-					<div className="staffRow" />
+					<div className="fillerNote" />
 				</div>
 			</div>
 		)

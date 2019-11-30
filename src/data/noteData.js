@@ -516,11 +516,10 @@ export const notesMaster = {
 	d5: staffArrToObj(notesData.slice(24, 27)),
 	e5: staffArrToObj(notesData.slice(27, 30)),
 	f5: staffArrToObj(notesData.slice(30, 33)),
-	g5: staffArrToObj(notesData.slice(33, 36)),
-	a5: staffArrToObj(notesData.slice(36, 39))
+	g5: staffArrToObj(notesData.slice(33, 36))
 }
 
-const { c4, d4, e4, f4, g4, a4, b4, c5, d5, e5, f5, g5, a5 } = notesMaster // * Deconstructs notesObj to more easily access in keysMaster
+const { c4, d4, e4, f4, g4, a4, b4, c5, d5, e5, f5, g5 } = notesMaster // * Deconstructs notesObj to more easily access in keysMaster
 
 // * Static info used to construct visual of staff
 export const staffInfo = {
@@ -536,7 +535,6 @@ export const staffInfo = {
 	e5: { staffType: 'space', bLeft: true, bRight: false },
 	f5: { staffType: 'line', bLeft: false, bRight: true },
 	g5: { staffType: 'space', bLeft: true, bRight: true }
-	// a5: { staffType: 'space', bLeft: true, bRight: true }
 }
 
 // * Do not change directly, changes as a result of notesMaster change
@@ -553,12 +551,11 @@ const staffMaster = [
 	{ id: 'e5', notes: e5, staffInfo: staffInfo.e5 },
 	{ id: 'f5', notes: f5, staffInfo: staffInfo.f5 },
 	{ id: 'g5', notes: g5, staffInfo: staffInfo.g5 }
-	// { id: 'a5', notes: a5, staffInfo: staffInfo.a5 }
 ]
 
 // * Do not change directly, changes as a result of notesMaster change
 const keysMaster = [
-	{ id: 'c4', notes: [c4.natural], value: 0, blackKey: false }, // ? should b.sharp be included in c.notes?
+	{ id: 'c4', notes: [c4.natural], value: 0, blackKey: false },
 	{ id: 'cS4', notes: [c4.sharp, d4.flat], value: 1, blackKey: true },
 	{ id: 'd4', notes: [d4.natural], value: 2, blackKey: false },
 	{ id: 'dS4', notes: [d4.sharp, e4.flat], value: 3, blackKey: true },
@@ -578,5 +575,5 @@ const keysMaster = [
 	{ id: 'f5', notes: [f5.natural, e5.sharp], value: 17, blackKey: false },
 	{ id: 'fS5', notes: [f5.sharp, g5.flat], value: 18, blackKey: true },
 	{ id: 'g5', notes: [g5.natural], value: 19, blackKey: false },
-	{ id: 'gS5', notes: [g5.sharp, a5.flat], value: 20, blackKey: true } // ? should a.flat be included in gS1.notes?
+	{ id: 'gS5', notes: [g5.sharp], value: 20, blackKey: true }
 ]

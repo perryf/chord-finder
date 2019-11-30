@@ -14,11 +14,9 @@
 .keyboardBox {
 	height: var(--bg-height, 180px);
 	display: flex;
-	/* flex-direction: column; */
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
 	border-left: 1px solid black;
-	/* width: var(--bg-width, 300px); */
 	position: relative;
 	background: #d0b0a0; /*  Woodish color */
 }
@@ -68,28 +66,14 @@
 .blackKey {
 	position: absolute;
 	height: 90px;
-
-	/* display: flex; */
-	/* justify-content: space-around; */
 	background: black;
 	width: calc(var(--bg-width) / 12);
-	/* height: 100%; */
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;
+	box-sizing: border-box;
 	border-radius: 0 0 4px 4px;
 	margin: 0 0 0 -12px;
-}
-
-.cSharpHigh {
-	/* margin: 0 0 0 -10px; */
-}
-
-.eHidden {
-	width: 8px !important;
-	margin-left: 3px;
-}
-
-.gHidden {
-	width: 14px !important;
-	margin-left: 3px;
 }
 
 .hideNote {
