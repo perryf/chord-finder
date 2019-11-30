@@ -1,15 +1,17 @@
-import { notesMaster as notesMasterData } from 'data';
-import { SELECT_NOTE, CLEAR_NOTES } from 'app/redux/types';
-import { toggleNoteById } from 'helperFunctions/arrayMapping';
+import { notesMaster as notesMasterData } from 'data'
+import { SELECT_NOTE, DESELECT_NOTE, CLEAR_NOTES } from 'app/redux/types'
+import { toggleNoteById } from 'helperFunctions/arrayMapping'
 
 export const notesMaster = (state = notesMasterData, action = {}) => {
-	const { type, payload } = action;
+	const { type, payload } = action
 	switch (type) {
 		case SELECT_NOTE:
-			return toggleNoteById(state, payload.noteObj, payload.favorSharps);
+			return toggleNoteById(state, payload.noteId, true)
+		case DESELECT_NOTE:
+			return toggleNoteById(state, payload.noteId, false)
 		case CLEAR_NOTES:
-			return notesMasterData;
+			return notesMasterData
 		default:
-			return state;
+			return state
 	}
-};
+}

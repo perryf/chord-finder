@@ -1,8 +1,15 @@
-import { SELECT_NOTE } from 'app/redux/types';
+import { SELECT_NOTE, DESELECT_NOTE } from 'app/redux/types'
 
-export const selectNote = (noteObj, favorSharps) => {
+export const selectNote = noteId => {
 	return {
 		type: SELECT_NOTE,
-		payload: { noteObj, favorSharps }
-	};
-};
+		payload: { noteId }
+	}
+}
+
+export const deselectNote = noteId => {
+	return {
+		type: DESELECT_NOTE,
+		payload: { noteId }
+	}
+}

@@ -1,4 +1,5 @@
-export const SELECT_NOTE = 'SELECT_NOTE';
-export const FAVOR_SHARPS = 'FAVOR_SHARPS';
-export const FAVOR_FLATS = 'FAVOR_FLATS';
-export const CLEAR_NOTES = 'CLEAR_NOTES';
+export const SELECT_NOTE = 'SELECT_NOTE'
+export const DESELECT_NOTE = 'DESELECT_NOTE'
+export const FAVOR_SHARPS = 'FAVOR_SHARPS'
+export const FAVOR_FLATS = 'FAVOR_FLATS'
+export const CLEAR_NOTES = 'CLEAR_NOTES'

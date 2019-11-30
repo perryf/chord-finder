@@ -34,7 +34,7 @@ export const shapeToKeys = state => {
 		{ id: 'fS4', notes: [f4.sharp, g4.flat], value: 6, blackKey: true },
 		{ id: 'g4', notes: [g4.natural], value: 7, blackKey: false },
 		{ id: 'gS4', notes: [g4.sharp, a4.flat], value: 8, blackKey: true },
-		{ id: 'a4', notes: [g4.natural], value: 9, blackKey: false },
+		{ id: 'a4', notes: [a4.natural], value: 9, blackKey: false },
 		{ id: 'aS4', notes: [a4.sharp, b4.flat], value: 10, blackKey: true },
 		{ id: 'b4', notes: [b4.natural, c5.flat], value: 11, blackKey: false },
 		{ id: 'c5', notes: [c5.natural, b4.sharp], value: 12, blackKey: false },
@@ -42,7 +42,7 @@ export const shapeToKeys = state => {
 		{ id: 'd5', notes: [d5.natural], value: 14, blackKey: false },
 		{ id: 'dS5', notes: [d5.sharp, e5.flat], value: 15, blackKey: true },
 		{ id: 'e5', notes: [e5.natural, f5.flat], value: 16, blackKey: false },
-		{ id: 'f5', notes: [e5.natural, e5.sharp], value: 17, blackKey: false },
+		{ id: 'f5', notes: [f5.natural, e5.sharp], value: 17, blackKey: false },
 		{ id: 'fS5', notes: [f5.sharp, g5.flat], value: 18, blackKey: true },
 		{ id: 'g5', notes: [g5.natural], value: 19, blackKey: false },
 		{ id: 'gS5', notes: [g5.sharp], value: 20, blackKey: true } // ? should a.flat be included in gS1.notes?
