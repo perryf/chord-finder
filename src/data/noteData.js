@@ -25,7 +25,8 @@ export const notesData = [
 		type: 'flat',
 		isNatural: false,
 		selected: false,
-		staffType: '' // * May not be needed
+		staffType: '', // * May not be needed
+		ghost: true
 	},
 	{
 		id: 'c4',
@@ -448,7 +449,8 @@ export const notesData = [
 		type: 'sharp',
 		isNatural: false,
 		selected: false,
-		staffType: ''
+		staffType: '',
+		ghost: true
 	},
 	{
 		id: 'aB5',
@@ -460,7 +462,8 @@ export const notesData = [
 		type: 'flat',
 		isNatural: false,
 		selected: false,
-		staffType: ''
+		staffType: '',
+		ghost: true
 	},
 	{
 		id: 'a5',
@@ -472,7 +475,8 @@ export const notesData = [
 		type: 'natural',
 		isNatural: true,
 		selected: false,
-		staffType: 'line'
+		staffType: 'line',
+		ghost: true
 	},
 	{
 		id: 'aS5',
@@ -484,7 +488,8 @@ export const notesData = [
 		type: 'sharp',
 		isNatural: false,
 		selected: false,
-		staffType: ''
+		staffType: '',
+		ghost: true
 	}
 ]
 // above obj is notesData
@@ -530,8 +535,8 @@ export const staffInfo = {
 	d5: { staffType: 'line', bLeft: true, bRight: true },
 	e5: { staffType: 'space', bLeft: true, bRight: false },
 	f5: { staffType: 'line', bLeft: false, bRight: true },
-	g5: { staffType: 'space', bLeft: true, bRight: true },
-	a5: { staffType: 'space', bLeft: true, bRight: true }
+	g5: { staffType: 'space', bLeft: true, bRight: true }
+	// a5: { staffType: 'space', bLeft: true, bRight: true }
 }
 
 // * Do not change directly, changes as a result of notesMaster change
@@ -547,8 +552,8 @@ const staffMaster = [
 	{ id: 'd5', notes: d5, staffInfo: staffInfo.d5 },
 	{ id: 'e5', notes: e5, staffInfo: staffInfo.e5 },
 	{ id: 'f5', notes: f5, staffInfo: staffInfo.f5 },
-	{ id: 'g5', notes: g5, staffInfo: staffInfo.g5 },
-	{ id: 'a5', notes: a5, staffInfo: staffInfo.a5 }
+	{ id: 'g5', notes: g5, staffInfo: staffInfo.g5 }
+	// { id: 'a5', notes: a5, staffInfo: staffInfo.a5 }
 ]
 
 // * Do not change directly, changes as a result of notesMaster change

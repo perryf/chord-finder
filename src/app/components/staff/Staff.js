@@ -35,7 +35,7 @@ class Staff extends Component {
 			}
 		})
 
-		if (newType) {
+		if (newType && !noteObj.notes[newType].ghost) {
 			selectNote(noteObj.notes[newType].id)
 		}
 		if (noteId) {
