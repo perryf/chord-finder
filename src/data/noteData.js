@@ -51,7 +51,6 @@ export const notesData = [
 		selected: false,
 		staffType: ''
 	},
-
 	{
 		id: 'dB4',
 		value: 1,
@@ -88,7 +87,6 @@ export const notesData = [
 		selected: false,
 		staffType: ''
 	},
-
 	{
 		id: 'eB4',
 		value: 3,
@@ -125,7 +123,6 @@ export const notesData = [
 		selected: false,
 		staffType: ''
 	},
-
 	{
 		id: 'fB4',
 		value: 4,
@@ -198,7 +195,6 @@ export const notesData = [
 		selected: false,
 		staffType: ''
 	},
-
 	{
 		id: 'aB4',
 		value: 8,
@@ -235,7 +231,6 @@ export const notesData = [
 		selected: false,
 		staffType: ''
 	},
-
 	{
 		id: 'bB4',
 		value: 10,
@@ -311,7 +306,6 @@ export const notesData = [
 		selected: false,
 		staffType: ''
 	},
-
 	{
 		id: 'dB5',
 		value: 13,
@@ -348,7 +342,6 @@ export const notesData = [
 		selected: false,
 		staffType: ''
 	},
-
 	{
 		id: 'eB5',
 		value: 15,
@@ -385,7 +378,6 @@ export const notesData = [
 		selected: false,
 		staffType: ''
 	},
-
 	{
 		id: 'fB5',
 		value: 16,
@@ -422,7 +414,6 @@ export const notesData = [
 		selected: false,
 		staffType: ''
 	},
-
 	{
 		id: 'gB5',
 		value: 18,
@@ -458,6 +449,42 @@ export const notesData = [
 		isNatural: false,
 		selected: false,
 		staffType: ''
+	},
+	{
+		id: 'aB5',
+		value: 20,
+		absoluteValue: 8,
+		name: 'a',
+		label: 'Ab',
+		altLabel: 'G#',
+		type: 'flat',
+		isNatural: false,
+		selected: false,
+		staffType: ''
+	},
+	{
+		id: 'a5',
+		value: 21,
+		absoluteValue: 9,
+		name: 'a',
+		label: 'A',
+		altLabel: '',
+		type: 'natural',
+		isNatural: true,
+		selected: false,
+		staffType: 'line'
+	},
+	{
+		id: 'aS5',
+		value: 22,
+		absoluteValue: 10,
+		name: 'a',
+		label: 'A#',
+		altLabel: 'G#',
+		type: 'sharp',
+		isNatural: false,
+		selected: false,
+		staffType: ''
 	}
 ]
 // above obj is notesData
@@ -484,10 +511,11 @@ export const notesMaster = {
 	d5: staffArrToObj(notesData.slice(24, 27)),
 	e5: staffArrToObj(notesData.slice(27, 30)),
 	f5: staffArrToObj(notesData.slice(30, 33)),
-	g5: staffArrToObj(notesData.slice(33, 36))
+	g5: staffArrToObj(notesData.slice(33, 36)),
+	a5: staffArrToObj(notesData.slice(36, 39))
 }
 
-const { c4, d4, e4, f4, g4, a4, b4, c5, d5, e5, f5, g5 } = notesMaster // * Deconstructs notesObj to more easily access in keysMaster
+const { c4, d4, e4, f4, g4, a4, b4, c5, d5, e5, f5, g5, a5 } = notesMaster // * Deconstructs notesObj to more easily access in keysMaster
 
 // * Static info used to construct visual of staff
 export const staffInfo = {
@@ -502,7 +530,8 @@ export const staffInfo = {
 	d5: { staffType: 'line', bLeft: true, bRight: true },
 	e5: { staffType: 'space', bLeft: true, bRight: false },
 	f5: { staffType: 'line', bLeft: false, bRight: true },
-	g5: { staffType: 'space', bLeft: true, bRight: true }
+	g5: { staffType: 'space', bLeft: true, bRight: true },
+	a5: { staffType: 'space', bLeft: true, bRight: true }
 }
 
 // * Do not change directly, changes as a result of notesMaster change
@@ -518,7 +547,8 @@ const staffMaster = [
 	{ id: 'd5', notes: d5, staffInfo: staffInfo.d5 },
 	{ id: 'e5', notes: e5, staffInfo: staffInfo.e5 },
 	{ id: 'f5', notes: f5, staffInfo: staffInfo.f5 },
-	{ id: 'g5', notes: g5, staffInfo: staffInfo.g5 }
+	{ id: 'g5', notes: g5, staffInfo: staffInfo.g5 },
+	{ id: 'a5', notes: a5, staffInfo: staffInfo.a5 }
 ]
 
 // * Do not change directly, changes as a result of notesMaster change
@@ -543,5 +573,5 @@ const keysMaster = [
 	{ id: 'f5', notes: [f5.natural, e5.sharp], value: 17, blackKey: false },
 	{ id: 'fS5', notes: [f5.sharp, g5.flat], value: 18, blackKey: true },
 	{ id: 'g5', notes: [g5.natural], value: 19, blackKey: false },
-	{ id: 'gS5', notes: [g5.sharp], value: 20, blackKey: true } // ? should a.flat be included in gS1.notes?
+	{ id: 'gS5', notes: [g5.sharp, a5.flat], value: 20, blackKey: true } // ? should a.flat be included in gS1.notes?
 ]

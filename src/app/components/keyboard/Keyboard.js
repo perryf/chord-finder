@@ -22,15 +22,14 @@ class Keyboard extends Component {
 			const update = noteObj.notes.find(n => {
 				return favorSharps ? n.type === 'sharp' : n.type === 'flat'
 			})
-
 			// * accidental swap (handles cases where accidental note was previously selected and then selected again with different value for favorSharps)
 			const bizarro = noteObj.notes.find(n => {
 				return favorSharps ? n.type === 'flat' : n.type === 'sharp'
 			})
-			if (bizarro.selected) {
+			if (bizarro && bizarro.selected) {
 				selected = bizarro.selected ? true : false
 				id = bizarro.id
-			} else {
+			} else if (update) {
 				selected = update.selected
 				id = update.id
 			}
