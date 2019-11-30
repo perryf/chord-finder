@@ -17,24 +17,25 @@ class Keyboard extends Component {
 		let id = ''
 		let selected = ''
 
-		// * Handles Sharps
+		// * Handles Sharps / Flats
 		if (noteObj.id.includes('B') || noteObj.id.includes('S')) {
 			const update = noteObj.notes.find(n => {
 				return favorSharps ? n.type === 'sharp' : n.type === 'flat'
 			})
 
-			selected = update.selected
-			id = update.id
-
 			// * accidental swap (handles cases where accidental note was previously selected and then selected again with different value for favorSharps)
 			const bizarro = noteObj.notes.find(n => {
 				return favorSharps ? n.type === 'flat' : n.type === 'sharp'
 			})
-			if (bizarro) {
-				deselectNote(bizarro.id)
+			if (bizarro.selected) {
+				selected = bizarro.selected ? true : false
+				id = bizarro.id
+			} else {
+				selected = update.selected
+				id = update.id
 			}
 
-			// * Handles Flats
+			// * Handles Naturals
 		} else {
 			selected = noteObj.notes[0].selected
 			id = noteObj.id
