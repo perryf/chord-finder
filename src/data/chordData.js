@@ -139,7 +139,7 @@ export const minor7 = {
 	notes: [0, 3, 7, 10],
 	label: 'Minor 7th',
 	short: 'm7',
-	type: 'common'
+	type: 'basic'
 }
 export const minor9 = {
 	notes: [0, 3, 7, 10, 2],
@@ -295,5 +295,5 @@ export const majorMinor = {
 	notes: [0, 3, 4, 7],
 	label: 'Major add flat 3',
 	short: 'M add b3',
-	type: 'basic'
+	type: 'uncommon'
 }

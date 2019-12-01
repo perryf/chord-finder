@@ -1,2 +1,3 @@
-export * from './chordData';
-export * from './noteData';
+import * as chordData from './chordData'
+export const allChords = Object.keys(chordData).map(key => chordData[key])
+export * from './noteData'

@@ -257,7 +257,7 @@ export const notesData = [
 		staffType: 'line'
 	},
 	{
-		id: 'bS5',
+		id: 'bS4',
 		value: 12,
 		absoluteValue: 0,
 		name: 'b',

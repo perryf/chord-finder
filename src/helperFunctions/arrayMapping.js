@@ -47,96 +47,13 @@ export const toggleNoteById = (notesState = {}, noteId, selected = true) => {
 	}
 }
 
-// export const selectNoteById = (notesState = {}, noteId) => {
-// 	let updateKey = ''
-// 	let updateType = ''
+export const getSelectedNotes = (notesMaster = {}) => {
+	return Object.keys(notesMaster).reduce((acc, key) => {
+		const noteObj = notesMaster[key]
+		const accSelect = Object.keys(noteObj).find(accKey => {
+			return noteObj[accKey].selected
+		})
 
-// 	Object.keys(notesState).map(key => {
-// 		types.forEach(type => {
-// 			if (notesState[key][type].id === noteId) {
-// 				updateKey = key
-// 				updateType = type
-// 			}
-// 		})
-// 	})
-
-// 	return {
-// 		...notesState,
-// 		[updateKey]: {
-// 			...notesState[updateKey],
-// 			[updateType]: {
-// 				...notesState[updateKey][updateType],
-// 				selected: true
-// 			}
-// 		}
-// 	}
-// }
-
-// export const deselectNoteById = (notesState = {}, noteId) => {
-// 	let updateKey = ''
-// 	let updateType = ''
-
-// 	Object.keys(notesState).map(key => {
-// 		types.forEach(type => {
-// 			if (notesState[key][type].id === noteId) {
-// 				updateKey = key
-// 				updateType = type
-// 			}
-// 		})
-// 	})
-
-// 	return {
-// 		...notesState,
-// 		[updateKey]: {
-// 			...notesState[updateKey],
-// 			[updateType]: {
-// 				...notesState[updateKey][updateType],
-// 				selected: false
-// 			}
-// 		}
-// 	}
-// }
-
-// export const toggleNoteById = (notesState = {}, noteObj, favorSharps) => {
-// 	let prevSelected = false // * turns true when going from natural to accidental
-// 	let selected = true // * whether or not updated note should be selected/shown
-// 	let prevType = '' // * what the note was when it was clicked
-// 	let newType = 'natural' // * updated note type
-
-// 	// * Finds selected note, updates variables
-// 	Object.keys(noteObj.notes).forEach(key => {
-// 		if (noteObj.notes[key].selected) {
-// 			prevType = noteObj.notes[key].type
-// 			prevSelected = true
-
-// 			if (prevType === 'natural') {
-// 				newType = favorSharps ? 'sharp' : 'flat'
-// 			}
-// 			if (prevType === 'sharp' || prevType === 'flat') {
-// 				newType = 'natural'
-// 				selected = false
-// 			}
-// 		}
-// 	})
-
-// 	const selectedNote = {
-// 		...noteObj.notes,
-// 		[newType]: {
-// 			...noteObj.notes[newType],
-// 			selected
-// 		}
-// 	}
-
-// 	return {
-// 		...notesState,
-// 		[noteObj.id]: prevType
-// 			? {
-// 					...selectedNote,
-// 					[prevType]: {
-// 						...noteObj.notes[prevType],
-// 						selected: !prevSelected
-// 					}
-// 			  }
-// 			: selectedNote
-// 	}
-// }
+		return accSelect ? acc.concat(noteObj[accSelect]) : acc
+	}, [])
+}

@@ -1,4 +1,9 @@
-import { staffInfo } from 'data'
+import { staffInfo, allChords, notesData } from 'data'
+
+const badIds = ['eS4', 'fB4', 'bS5', 'cB5', 'eS5', 'fB5']
+const shapedNotes = notesData.filter(n => {
+	return !badIds.includes(n.id)
+})
 
 // * Creates Staff Master
 export const shapeToStaff = state => {
@@ -48,4 +53,50 @@ export const shapeToKeys = state => {
 		{ id: 'fS5', notes: [f5.sharp, g5.flat], value: 18, blackKey: true },
 		{ id: 'g5', notes: [g5.natural], value: 19, blackKey: false }
 	]
+}
+
+const chordMatcher = (noteArr, chord) => {
+	if (noteArr.length === 0) {
+		return
+	}
+
+	const isMatch = noteArr.every(inputNote => {
+		return chord.notes.some(note => note === inputNote.absoluteValue)
+	})
+
+	const perfectMatch = noteArr.every(inputNote => {
+		return chord.notes.every(note => note === inputNote.absoluteValue)
+	})
+
+	return isMatch ? { ...chord, perfectMatch } : null
+}
+
+export const getMatchingChords = noteArr => {
+	let matchingChords = []
+
+	for (let i = 0; i < 12; i++) {
+		const noteMatch = shapedNotes.find(note => note.value === i)
+
+		const shapedChords = allChords
+			// TODO -> combine these functions
+			.map(chord => ({
+				...chord,
+				notes: chord.notes.map(n => {
+					const newVal = n + i
+					return newVal < 12 ? newVal : newVal - 12
+				})
+			}))
+			.map(chord => chordMatcher(noteArr, chord))
+			.filter(c => c)
+
+		const update = {
+			id: noteMatch.id,
+			noteInfo: noteMatch,
+			chords: shapedChords
+		}
+
+		matchingChords = matchingChords.concat(update)
+	}
+
+	return matchingChords
 }
