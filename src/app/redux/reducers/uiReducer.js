@@ -11,7 +11,7 @@ const initialState = {
 	checkBoxes: {
 		basic: true,
 		common: true,
-		uncommon: true,
+		uncommon: false,
 		rare: false
 	}
 }

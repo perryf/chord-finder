@@ -1,5 +1,11 @@
 // ***** MAJOR *****
 
+export const five = {
+	notes: [0, 7],
+	label: '5',
+	short: '5',
+	type: 'basic'
+}
 export const major = {
 	notes: [0, 4, 7],
 	label: 'Major',

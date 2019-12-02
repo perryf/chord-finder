@@ -12,17 +12,15 @@ const ChordFilters = props => {
 
 	return (
 		<div>
-			<div>
-				<div>
-					<span>Only include root matches</span>
-					<input
-						type="checkbox"
-						name="rootMatch"
-						value="rootMatch"
-						checked={rootMatch}
-						onChange={toggleRootMatch}
-					/>
-				</div>
+			<div className="onlyRoots">
+				<span>Only root matches</span>
+				<input
+					type="checkbox"
+					name="rootMatch"
+					value="rootMatch"
+					checked={rootMatch}
+					onChange={toggleRootMatch}
+				/>
 			</div>
 			<div className="checkBoxes">
 				<div>

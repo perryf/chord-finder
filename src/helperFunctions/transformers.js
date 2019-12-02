@@ -55,7 +55,7 @@ export const shapeToKeys = state => {
 	]
 }
 
-// TODO -> This is still not perfect - CEGBbCC#D read exact match for C9
+// TODO -> This is still not perfect - CEGBbCDD# read exact match for C9
 // * noteArr (array of objects) - Input of notes
 // * chord (object, chord.note is array of note values ) - individual chord
 const chordMatcher = (noteArr, chord) => {
@@ -70,6 +70,7 @@ const chordMatcher = (noteArr, chord) => {
 
 	const perfectMatch =
 		isMatch &&
+		noteArr.length === chord.notes.length &&
 		chord.notes.every(note => {
 			return noteArr.some(inputNote => note === inputNote.absoluteValue)
 		})
@@ -82,6 +83,26 @@ const chordMatcher = (noteArr, chord) => {
 }
 
 export const getMatchingChords = noteArr => {
+	const shapedArr = noteArr.reduce((acc, note, i, self) => {
+		const duplicate = self.find(n => {
+			return n.absoluteValue === note.absoluteValue && n.value !== note.value
+		})
+
+		if (duplicate) {
+			if (
+				acc.find(n => {
+					return n.absoluteValue === duplicate.absoluteValue
+				})
+			)
+				return acc
+			else {
+				return acc.concat(note)
+			}
+		} else {
+			return acc.concat(note)
+		}
+	}, [])
+
 	let matchingChords = []
 
 	for (let i = 0; i < 12; i++) {
@@ -96,7 +117,7 @@ export const getMatchingChords = noteArr => {
 					return newVal < 12 ? newVal : newVal - 12
 				})
 			}))
-			.map(chord => chordMatcher(noteArr, chord))
+			.map(chord => chordMatcher(shapedArr, chord))
 			.filter(c => c)
 
 		const update = {

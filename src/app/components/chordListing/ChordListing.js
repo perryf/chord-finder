@@ -42,7 +42,7 @@ class ChordListing extends Component {
 			let chordsUpdate = note.chords.filter(c => checkBoxArr.includes(c.type))
 
 			if (rootMatch) {
-				chordsUpdate = note.chords.filter(c => c.rootMatch)
+				chordsUpdate = chordsUpdate.filter(c => c.rootMatch)
 			}
 
 			return {
@@ -56,7 +56,7 @@ class ChordListing extends Component {
 		}, 0)
 
 		return (
-			<div style={{ margin: '20px auto', width: '50%' }}>
+			<div className="chordListingBox">
 				<h4>{totalChords} possible chords</h4>
 				<ChordFilters />
 				<div className="chordListing">
@@ -80,8 +80,6 @@ class ChordListing extends Component {
 													<span
 														className={`${
 															chord.perfectMatch ? 'perfectMatch' : ''
-														} ${
-															rootMatch && chord.rootMatch ? 'rootMatch' : ''
 														}`}
 													>
 														{chordName}
