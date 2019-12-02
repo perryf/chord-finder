@@ -17,11 +17,7 @@
 	margin-bottom: 6px;
 }
 
-.chordRow span {
-	margin: 2px 6px;
-}
-
-.chordRow > p {
+.chordName {
 	margin: 2px 4px;
 }
 
@@ -40,5 +36,8 @@
 
 .perfectMatch {
 	color: red;
+}
+
+.rootMatch {
 	font-weight: bold;
 }

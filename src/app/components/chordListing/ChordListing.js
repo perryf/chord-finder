@@ -9,6 +9,7 @@ class ChordListing extends Component {
 	static propTypes = {
 		matchingChords: PropTypes.array.isRequired,
 		checkBoxes: PropTypes.object.isRequired,
+		rootMatch: PropTypes.bool.isRequired,
 		favorSharps: PropTypes.bool.isRequired
 	}
 
@@ -34,14 +35,19 @@ class ChordListing extends Component {
 	}
 
 	render() {
-		const { matchingChords, checkBoxes, favorSharps } = this.props
-
+		const { matchingChords, checkBoxes, favorSharps, rootMatch } = this.props
 		const checkBoxArr = Object.keys(checkBoxes).filter(c => checkBoxes[c])
 
 		const filteredChords = matchingChords.map(note => {
+			let chordsUpdate = note.chords.filter(c => checkBoxArr.includes(c.type))
+
+			if (rootMatch) {
+				chordsUpdate = note.chords.filter(c => c.rootMatch)
+			}
+
 			return {
 				...note,
-				chords: note.chords.filter(c => checkBoxArr.includes(c.type))
+				chords: chordsUpdate
 			}
 		})
 
@@ -60,22 +66,26 @@ class ChordListing extends Component {
 								<div key={c.id}>
 									<div className="chordRow">
 										{c.chords.map(chord => {
+											// TODO -> Redo this var assignment
 											const chordName = `${
 												favorSharps
 													? c.noteInfo.label
 													: c.noteInfo.type === 'natural'
 													? c.noteInfo.label
 													: c.noteInfo.altLabel
-											}${chord.short}`
+											}`
 
 											return (
-												<div key={chord.short}>
+												<div key={chord.short} className="chordName">
 													<span
 														className={`${
 															chord.perfectMatch ? 'perfectMatch' : ''
+														} ${
+															rootMatch && chord.rootMatch ? 'rootMatch' : ''
 														}`}
 													>
 														{chordName}
+														{chord.short}
 													</span>
 												</div>
 											)
@@ -99,7 +109,8 @@ const mapStateToProps = ({ notesMaster = {}, ui }) => {
 	return {
 		matchingChords,
 		checkBoxes: ui.checkBoxes,
-		favorSharps: ui.favorSharps
+		favorSharps: ui.favorSharps,
+		rootMatch: ui.rootMatch
 	}
 }
 

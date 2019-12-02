@@ -1,6 +1,12 @@
-import { FAVOR_SHARPS, FAVOR_FLATS, CHANGE_CHORD_FILTER } from 'app/redux/types'
+import {
+	FAVOR_SHARPS,
+	FAVOR_FLATS,
+	CHANGE_CHORD_FILTER,
+	TOGGLE_ROOT_MATCH
+} from 'app/redux/types'
 
 const initialState = {
+	rootMatch: true,
 	favorSharps: true,
 	checkBoxes: {
 		basic: true,
@@ -25,6 +31,11 @@ export const ui = (state = initialState, action) => {
 					...state.checkBoxes,
 					[payload]: !state.checkBoxes[payload]
 				}
+			}
+		case TOGGLE_ROOT_MATCH:
+			return {
+				...state,
+				rootMatch: !state.rootMatch
 			}
 		default:
 			return state

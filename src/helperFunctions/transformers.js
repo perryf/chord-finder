@@ -55,11 +55,15 @@ export const shapeToKeys = state => {
 	]
 }
 
+// TODO -> This is still not perfect - CEGBbCC#D read exact match for C9
+// * noteArr (array of objects) - Input of notes
+// * chord (object, chord.note is array of note values ) - individual chord
 const chordMatcher = (noteArr, chord) => {
 	if (noteArr.length === 0) {
 		return
 	}
 
+	// * Main matching function
 	const isMatch = noteArr.every(inputNote => {
 		return chord.notes.some(note => note === inputNote.absoluteValue)
 	})
@@ -70,7 +74,11 @@ const chordMatcher = (noteArr, chord) => {
 			return noteArr.some(inputNote => note === inputNote.absoluteValue)
 		})
 
-	return isMatch ? { ...chord, perfectMatch } : null
+	const rootMatch = noteArr.some(inputNote => {
+		return inputNote.absoluteValue === chord.notes[0]
+	})
+
+	return isMatch ? { ...chord, perfectMatch, rootMatch } : null
 }
 
 export const getMatchingChords = noteArr => {
