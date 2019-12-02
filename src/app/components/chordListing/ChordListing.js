@@ -7,9 +7,9 @@ import './ChordListing.css'
 
 class ChordListing extends Component {
 	static propTypes = {
-		notesMaster: PropTypes.object.isRequired,
 		matchingChords: PropTypes.array.isRequired,
-		selectedNotes: PropTypes.array.isRequired
+		checkBoxes: PropTypes.object.isRequired,
+		favorSharps: PropTypes.bool.isRequired
 	}
 
 	constructor(props) {
@@ -34,13 +34,7 @@ class ChordListing extends Component {
 	}
 
 	render() {
-		const {
-			notesMaster,
-			selectedNotes,
-			matchingChords,
-			checkBoxes,
-			favorSharps
-		} = this.props
+		const { matchingChords, checkBoxes, favorSharps } = this.props
 
 		const checkBoxArr = Object.keys(checkBoxes).filter(c => checkBoxes[c])
 
@@ -78,7 +72,7 @@ class ChordListing extends Component {
 												<div key={chord.short}>
 													<span
 														className={`${
-															chord.exactMatch ? 'exactMatch' : ''
+															chord.perfectMatch ? 'perfectMatch' : ''
 														}`}
 													>
 														{chordName}
@@ -103,9 +97,7 @@ const mapStateToProps = ({ notesMaster = {}, ui }) => {
 	const matchingChords = getMatchingChords(selectedNotes)
 
 	return {
-		notesMaster,
 		matchingChords,
-		selectedNotes,
 		checkBoxes: ui.checkBoxes,
 		favorSharps: ui.favorSharps
 	}

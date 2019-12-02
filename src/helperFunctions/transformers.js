@@ -64,9 +64,11 @@ const chordMatcher = (noteArr, chord) => {
 		return chord.notes.some(note => note === inputNote.absoluteValue)
 	})
 
-	const perfectMatch = noteArr.every(inputNote => {
-		return chord.notes.every(note => note === inputNote.absoluteValue)
-	})
+	const perfectMatch =
+		isMatch &&
+		chord.notes.every(note => {
+			return noteArr.some(inputNote => note === inputNote.absoluteValue)
+		})
 
 	return isMatch ? { ...chord, perfectMatch } : null
 }

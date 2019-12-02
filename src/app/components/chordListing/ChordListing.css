@@ -32,3 +32,13 @@
 	padding: 0 -4px;
 	background: black;
 }
+
+.checkBoxes {
+	display: flex;
+	justify-content: space-around;
+}
+
+.perfectMatch {
+	color: red;
+	font-weight: bold;
+}

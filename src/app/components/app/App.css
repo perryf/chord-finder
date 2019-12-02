@@ -1,24 +1,30 @@
 .homeBox {
+	background: #fcf4fc;
 	min-height: 100vh;
 	height: 100%;
-	/* padding: 20px; */
-	width: 980px;
 	margin: 0 auto;
-	background: #fcf4fc;
+	max-width: 1300px;
+}
+
+.homeHeader {
+	border-bottom: 1px solid black;
+}
+
+.homeBody {
+	width: 980px;
+	display: flex;
+}
+
+.title {
+	font-size: 20px;
+	margin: 0 0 8px;
+}
+
+.inputs {
+	margin: 20px 8px;
+	height: 84vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-}
-
-.inputs {
-	/* height: 100%; */
-	/* margin: 0 auto; */
-}
-
-.chordBox {
-	width: 50%;
-	align-self: center;
-	margin-bottom: 20px;
-	min-height: 600px;
 }
