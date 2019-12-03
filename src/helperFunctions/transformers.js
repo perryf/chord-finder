@@ -1,7 +1,7 @@
-import { staffInfo, allChords, notesData } from 'data'
+import { staffInfo, allChords, notesData as notesMaster } from 'data'
 
 const badIds = ['eS4', 'fB4', 'bS5', 'cB5', 'eS5', 'fB5']
-const shapedNotes = notesData.filter(n => {
+const notesData = notesMaster.filter(n => {
 	return !badIds.includes(n.id)
 })
 
@@ -55,7 +55,8 @@ export const shapeToKeys = state => {
 	]
 }
 
-// TODO -> This is still not perfect - CEGBbCDD# read exact match for C9
+// TODO -> combine with filter
+// * Matches input with all chords in a key
 // * noteArr (array of objects) - Input of notes
 // * chord (object, chord.note is array of note values ) - individual chord
 const chordMatcher = (noteArr, chord) => {
@@ -83,21 +84,16 @@ const chordMatcher = (noteArr, chord) => {
 }
 
 export const getMatchingChords = noteArr => {
+	// * Eliminates duplicates
 	const shapedArr = noteArr.reduce((acc, note, i, self) => {
 		const duplicate = self.find(n => {
 			return n.absoluteValue === note.absoluteValue && n.value !== note.value
 		})
 
 		if (duplicate) {
-			if (
-				acc.find(n => {
-					return n.absoluteValue === duplicate.absoluteValue
-				})
-			)
-				return acc
-			else {
-				return acc.concat(note)
-			}
+			return acc.find(n => n.absoluteValue === duplicate.absoluteValue)
+				? acc
+				: acc.concat(note)
 		} else {
 			return acc.concat(note)
 		}
@@ -105,11 +101,11 @@ export const getMatchingChords = noteArr => {
 
 	let matchingChords = []
 
+	// * Transpose
 	for (let i = 0; i < 12; i++) {
-		const noteMatch = shapedNotes.find(note => note.value === i)
+		const noteMatch = notesData.find(note => note.value === i)
 
 		const shapedChords = allChords
-			// TODO -> combine these functions
 			.map(chord => ({
 				...chord,
 				notes: chord.notes.map(n => {

@@ -1,6 +1,6 @@
 import { notesMaster as notesMasterData } from 'data'
 import { SELECT_NOTE, DESELECT_NOTE, CLEAR_NOTES } from 'app/redux/types'
-import { toggleNoteById } from 'helperFunctions/arrayMapping'
+import { toggleNoteById } from 'helperFunctions'
 
 export const notesMaster = (state = notesMasterData, action = {}) => {
 	const { type, payload } = action
