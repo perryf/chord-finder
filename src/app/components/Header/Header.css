@@ -1,0 +1,11 @@
+.homeHeader {
+	background: linear-gradient(90deg, #eb88eb, #a6c, #729);
+	text-align: center;
+	border-bottom: 1px solid black;
+}
+
+.mainTitle {
+	font-size: 20px;
+	margin: 0;
+	padding: 8px 0;
+}

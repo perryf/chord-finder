@@ -1,8 +1,5 @@
 .controlsBox {
 	width: 40%;
-}
-
-.controls {
 	padding: 8px;
 	background: lightgrey;
 	border: 2px grey solid;
@@ -23,6 +20,8 @@
 }
 
 .clearStaffButton {
+	display: block;
+	margin: 0 auto;
 	font-weight: bold;
 	border: 1px solid #aaaaaa;
 	padding: 4px;

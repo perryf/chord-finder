@@ -1,18 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const StaffLine = props => {
-	const { handleSelectNote, note } = props;
+	const { handleSelectNote, note, prevSelected } = props
 
 	const selected =
 		note.notes.flat.selected ||
 		note.notes.sharp.selected ||
-		note.notes.natural.selected;
+		note.notes.natural.selected
 
-	const isSharp = note.notes.sharp.selected;
-	const isFlat = note.notes.flat.selected;
+	const isSharp = note.notes.sharp.selected
+	const isFlat = note.notes.flat.selected
 
-	const isMiddleC = note.notes.natural.id === 'c4';
+	const isMiddleC = note.notes.natural.id === 'c4'
 
 	return (
 		<div
@@ -23,7 +23,11 @@ const StaffLine = props => {
 				className={`flexRowCenter ${isMiddleC ? 'staffLineC' : 'staffLine'}`}
 			>
 				{selected && (
-					<div id={note.id} tabIndex={-1} className="noteHead">
+					<div
+						id={note.id}
+						tabIndex={-1}
+						className={`noteHead ${prevSelected ? 'prevSelected' : ''}`}
+					>
 						<span tabIndex={-1} className="accidental">
 							{isSharp && '#'}
 							{isFlat && <em>b</em>}
@@ -32,12 +36,17 @@ const StaffLine = props => {
 				)}
 			</div>
 		</div>
-	);
-};
+	)
+}
 
 StaffLine.propTypes = {
 	handleSelectNote: PropTypes.func.isRequired,
-	note: PropTypes.object.isRequired
-};
+	note: PropTypes.object.isRequired,
+	prevSelected: PropTypes.bool
+}
 
-export default StaffLine;
+StaffLine.defaultProps = {
+	prevSelected: false
+}
+
+export default StaffLine

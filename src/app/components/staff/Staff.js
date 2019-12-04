@@ -65,18 +65,50 @@ class Staff extends Component {
 						<img src="/images/G-clef.svg" className="clef" alt="g-clef" />
 					</div>
 
-					{notesMaster.map(note => {
+					{notesMaster.map((note, i) => {
+						// TODO -> Need to build an algorithm
+						const prevNote = notesMaster[i + 1] // * staff build from top down
+						let prevSelected = false
+						if (prevNote) {
+							Object.keys(prevNote.notes).forEach(n => {
+								if (prevNote.notes[n].selected) {
+									prevSelected = true
+								}
+							})
+
+							const morePrevNote = notesMaster[i + 2]
+
+							if (morePrevNote) {
+								Object.keys(morePrevNote.notes).forEach(n => {
+									if (morePrevNote.notes[n].selected) {
+										prevSelected = false
+									}
+								})
+
+								// const lastPrevNote = notesMaster[i + 3]
+
+								// if (lastPrevNote) {
+								// 	Object.keys(lastPrevNote.notes).forEach(n => {
+								// 		if (lastPrevNote.notes[n].selected) {
+								// 			prevSelected = true
+								// 		}
+								// 	})
+								// }
+							}
+						}
 						return note.staffInfo.staffType === 'line' ? (
 							<StaffLine
 								handleSelectNote={this.selectNoteIntercept}
 								note={note}
 								key={note.id}
+								prevSelected={prevSelected}
 							/>
 						) : (
 							<StaffSpace
 								handleSelectNote={this.selectNoteIntercept}
 								note={note}
 								key={note.id}
+								prevSelected={prevSelected}
 							/>
 						)
 					})}

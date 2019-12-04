@@ -19,34 +19,32 @@ class Controls extends Component {
 
 		return (
 			<div className="controlsBox">
-				<div className="controls">
-					<button className="clearStaffButton" onClick={handleClearNotes}>
-						Clear Staff
-					</button>
-					<div className="radioBox">
-						<div className="radioInputBox">
-							<input
-								type="radio"
-								name="sharpsFlat"
-								value="sharps"
-								checked={favorSharps}
-								onChange={handleFavorSharps}
-							/>
-							<span>Sharps</span>
-						</div>
+				<div className="radioBox">
+					<div className="radioInputBox">
+						<input
+							type="radio"
+							name="sharpsFlat"
+							value="sharps"
+							checked={favorSharps}
+							onChange={handleFavorSharps}
+						/>
+						<span>Sharps</span>
+					</div>
 
-						<div className="radioInputBox">
-							<input
-								type="radio"
-								name="sharpsFlat"
-								value="flats"
-								checked={!favorSharps}
-								onChange={handleFavorFlats}
-							/>
-							<span>Flats</span>
-						</div>
+					<div className="radioInputBox">
+						<input
+							type="radio"
+							name="sharpsFlat"
+							value="flats"
+							checked={!favorSharps}
+							onChange={handleFavorFlats}
+						/>
+						<span>Flats</span>
 					</div>
 				</div>
+				<button className="clearStaffButton" onClick={handleClearNotes}>
+					Clear Staff
+				</button>
 			</div>
 		)
 	}

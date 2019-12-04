@@ -1,16 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const StaffSpace = props => {
-	const { handleSelectNote, note } = props;
+	const { handleSelectNote, note, prevSelected } = props
 
 	const selected =
 		note.notes.sharp.selected ||
 		note.notes.flat.selected ||
-		note.notes.natural.selected;
+		note.notes.natural.selected
 
-	const isSharp = note.notes.sharp.selected;
-	const isFlat = note.notes.flat.selected;
+	const isSharp = note.notes.sharp.selected
+	const isFlat = note.notes.flat.selected
 
 	return (
 		<div
@@ -18,7 +18,11 @@ const StaffSpace = props => {
 			onClick={() => handleSelectNote(note)}
 		>
 			{selected && (
-				<div id={note.id} tabIndex={-1} className="noteHead">
+				<div
+					id={note.id}
+					tabIndex={-1}
+					className={`noteHead ${prevSelected ? 'prevSelected' : ''}`}
+				>
 					<span tabIndex={-1} className="accidental">
 						{isSharp && '#'}
 						{isFlat && <em>b</em>}
@@ -26,12 +30,17 @@ const StaffSpace = props => {
 				</div>
 			)}
 		</div>
-	);
-};
+	)
+}
 
 StaffSpace.propTypes = {
 	handleSelectNote: PropTypes.func.isRequired,
-	note: PropTypes.object.isRequired
-};
+	note: PropTypes.object.isRequired,
+	prevSelected: PropTypes.bool
+}
 
-export default StaffSpace;
+StaffSpace.defaultProps = {
+	prevSelected: false
+}
+
+export default StaffSpace

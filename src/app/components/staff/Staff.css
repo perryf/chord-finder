@@ -67,6 +67,10 @@
 	outline: none;
 }
 
+.prevSelected {
+	margin-left: 40px;
+}
+
 .accidental {
 	position: absolute;
 	left: -18px;

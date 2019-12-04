@@ -6,17 +6,8 @@
 	max-width: 1300px;
 }
 
-.homeHeader {
-	border-bottom: 1px solid black;
-}
-
 .homeBody {
 	display: flex;
-}
-
-.title {
-	font-size: 20px;
-	margin: 0 0 8px;
 }
 
 .inputs {
