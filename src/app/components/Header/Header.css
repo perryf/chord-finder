@@ -1,7 +1,10 @@
 .homeHeader {
 	background: linear-gradient(90deg, #eb88eb, #a6c, #729);
 	text-align: center;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid rgb(75, 29, 29);
+	display: flex;
+	justify-content: space-between;
+	padding: 0 20px;
 }
 
 .mainTitle {

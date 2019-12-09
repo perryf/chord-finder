@@ -11,7 +11,6 @@ const StaffLine = props => {
 
 	const isSharp = note.notes.sharp.selected
 	const isFlat = note.notes.flat.selected
-
 	const isMiddleC = note.notes.natural.id === 'c4'
 
 	return (

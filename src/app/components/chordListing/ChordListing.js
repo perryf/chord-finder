@@ -34,13 +34,16 @@ class ChordListing extends Component {
 		}))
 	}
 
+	handleHoverChord = value => {
+		// TODO -> Hover over chords
+	}
+
 	render() {
 		const { matchingChords, checkBoxes, favorSharps, rootMatch } = this.props
 		const checkBoxArr = Object.keys(checkBoxes).filter(c => checkBoxes[c])
 
 		const filteredChords = matchingChords.map(note => {
 			let chordsUpdate = note.chords.filter(c => checkBoxArr.includes(c.type))
-
 			if (rootMatch) {
 				chordsUpdate = chordsUpdate.filter(c => c.rootMatch)
 			}
@@ -76,7 +79,11 @@ class ChordListing extends Component {
 											}`
 
 											return (
-												<div key={chord.short} className="chordName">
+												<div
+													key={chord.short}
+													className="chordName"
+													onMouseOver={() => this.handleHoverChord(chord)}
+												>
 													<span
 														className={`${
 															chord.perfectMatch ? 'perfectMatch' : ''
