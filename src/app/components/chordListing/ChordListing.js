@@ -1,79 +1,102 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { getSelectedNotes, getMatchingChords } from 'helperFunctions'
 import ChordFilters from './ChordFilters'
 import './ChordListing.css'
 
-const ChordListing = props => {
-	const handleHoverChord = value => {
-		// TODO -> Hover over chords
+class ChordListing extends Component {
+	constructor(props) {
+		super(props)
+		this.state = { hoverVal: '' }
 	}
 
-	const { matchingChords, checkBoxes, favorSharps, rootMatch } = props
-	const checkBoxArr = Object.keys(checkBoxes).filter(c => checkBoxes[c])
+	handleHoverChord = (name, chordInfo) => {
+		// TODO -> Hover over chords
+		console.log(name, chordInfo)
 
-	const filteredChords = matchingChords.map(note => {
-		let chordsUpdate = note.chords.filter(c => checkBoxArr.includes(c.type))
-		if (rootMatch) {
-			chordsUpdate = chordsUpdate.filter(c => c.rootMatch)
-		}
+		this.setState({ hoverVal: name })
+	}
 
-		return { ...note, chords: chordsUpdate }
-	})
+	render() {
+		const { matchingChords, checkBoxes, favorSharps, rootMatch } = this.props
+		const { hoverVal } = this.state
 
-	const totalChords = filteredChords.reduce((acc, c) => {
-		return acc + c.chords.length
-	}, 0)
+		const checkBoxArr = Object.keys(checkBoxes).filter(c => checkBoxes[c])
 
-	return (
-		<div className="chordListingBox">
-			<h4>{totalChords} possible chords</h4>
-			<ChordFilters />
-			{totalChords > 0 && (
-				<div className="chordListing">
-					{filteredChords.map(c => {
-						return (
-							c.chords.length > 0 && (
-								<div key={c.id}>
-									<div className="chordRow">
-										{c.chords.map(chord => {
-											// TODO -> Redo this var assignment
-											const chordName = `${
-												favorSharps
-													? c.noteInfo.label
-													: c.noteInfo.type === 'natural'
-													? c.noteInfo.label
-													: c.noteInfo.altLabel
-											}`
+		const filteredChords = matchingChords.map(note => {
+			let chordsUpdate = note.chords.filter(c => checkBoxArr.includes(c.type))
+			if (rootMatch) {
+				chordsUpdate = chordsUpdate.filter(c => c.rootMatch)
+			}
 
-											return (
-												<div
-													key={chord.short}
-													className="chordName"
-													onMouseOver={() => handleHoverChord(chord)}
-												>
-													<span
-														className={`${
-															chord.perfectMatch ? 'perfectMatch' : ''
-														}`}
+			return { ...note, chords: chordsUpdate }
+		})
+
+		const totalChords = filteredChords.reduce((acc, c) => {
+			return acc + c.chords.length
+		}, 0)
+
+		return (
+			<div className="chordListingBox">
+				<h4>{totalChords} possible chords</h4>
+				<ChordFilters />
+				{totalChords > 0 && (
+					<div className="chordListing">
+						{filteredChords.map(c => {
+							return (
+								c.chords.length > 0 && (
+									<div key={c.id}>
+										<div className="chordRow">
+											{c.chords.map(chord => {
+												// TODO -> Redo this var assignment
+												const chordPrefix = `${
+													favorSharps
+														? c.noteInfo.label
+														: c.noteInfo.type === 'natural'
+														? c.noteInfo.label
+														: c.noteInfo.altLabel
+												}`
+
+												console.log(chordPrefix, chord.short)
+
+												const chordName = `${chordPrefix} ${chord.short}`
+
+												return (
+													<div
+														key={chord.short}
+														className="chordName pointer"
+														onMouseOver={() =>
+															this.handleHoverChord(chordName, chord)
+														}
+														onMouseLeave={() => this.handleHoverChord('')}
 													>
-														{chordName}
-														{chord.short}
-													</span>
-												</div>
-											)
-										})}
+														<span
+															className={`${
+																chord.perfectMatch ? 'perfectMatch' : ''
+															}`}
+														>
+															{chordName}
+														</span>
+														{hoverVal === chordName && (
+															<div className="hoverInfo">
+																{chordPrefix} {chord.label}
+															</div>
+														)}
+													</div>
+												)
+											})}
+										</div>
+										<div className="rowBreak" />
 									</div>
-									<div className="rowBreak" />
-								</div>
+								)
 							)
-						)
-					})}
-				</div>
-			)}
-		</div>
-	)
+						})}
+					</div>
+				)}
+			</div>
+		)
+	}
 }
 
 ChordListing.propTypes = {
