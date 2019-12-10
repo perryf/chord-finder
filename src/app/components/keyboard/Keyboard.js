@@ -1,19 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { selectNote, deselectNote } from 'app/redux/actions'
 import { shapeToKeys } from 'helperFunctions/transformers'
 import './Keyboard.css'
 
-class Keyboard extends Component {
-	static propTypes = {
-		notesMaster: PropTypes.array.isRequired,
-		favorSharps: PropTypes.bool.isRequired,
-		selectNote: PropTypes.func.isRequired
-	}
+const Keyboard = props => {
+	const { notesMaster, selectNote, deselectNote, favorSharps } = props
 
-	selectNoteIntercept = noteObj => {
-		const { selectNote, deselectNote, favorSharps } = this.props
+	const selectNoteIntercept = noteObj => {
 		let id = ''
 		let selected = ''
 
@@ -26,6 +21,7 @@ class Keyboard extends Component {
 			const bizarro = noteObj.notes.find(n => {
 				return favorSharps ? n.type === 'flat' : n.type === 'sharp'
 			})
+
 			if (bizarro && bizarro.selected) {
 				selected = bizarro.selected ? true : false
 				id = bizarro.id
@@ -43,47 +39,45 @@ class Keyboard extends Component {
 		selected ? deselectNote(id) : selectNote(id)
 	}
 
-	render() {
-		const { notesMaster } = this.props
+	return (
+		<div className="keyboardWhole">
+			<div className="keyboardBox">
+				{notesMaster.map(noteObj => {
+					const selected = noteObj.notes.find(note => note.selected)
 
-		return (
-			<div className="keyboardWhole">
-				<div className="keyboardBox">
-					{notesMaster.map(noteObj => {
-						const selected = noteObj.notes.find(note => note.selected)
-						return noteObj.blackKey ? (
-							<div
-								onClick={() => this.selectNoteIntercept(noteObj)}
-								className="blackKeyBox"
-								key={noteObj.id}
-							>
-								<div
-									key={noteObj.id}
-									className={`blackKey ${selected ? 'keySelected' : ''}`}
-								/>
-							</div>
-						) : (
-							<div
-								onClick={() => this.selectNoteIntercept(noteObj)}
-								key={noteObj.id}
-								className={`whiteKey ${selected ? 'keySelected' : ''}`}
-								key={noteObj.id}
-							/>
-						)
-					})}
-				</div>
+					return noteObj.blackKey ? (
+						<div
+							onClick={() => selectNoteIntercept(noteObj)}
+							className="blackKeyBox"
+							key={noteObj.id}
+						>
+							<div className={`blackKey ${selected ? 'keySelected' : ''}`} />
+						</div>
+					) : (
+						<div
+							onClick={() => selectNoteIntercept(noteObj)}
+							key={noteObj.id}
+							className={`whiteKey ${selected ? 'keySelected' : ''}`}
+						/>
+					)
+				})}
 			</div>
-		)
-	}
+		</div>
+	)
 }
 
-const mapStateToProps = state => {
-	return {
-		notesMaster: shapeToKeys(state),
-		favorSharps: state.ui.favorSharps,
-		selectNote: PropTypes.func.isRequired
-	}
+Keyboard.propTypes = {
+	notesMaster: PropTypes.array.isRequired,
+	favorSharps: PropTypes.bool.isRequired,
+	selectNote: PropTypes.func.isRequired,
+	deselectNote: PropTypes.func.isRequired
 }
+
+const mapStateToProps = state => ({
+	notesMaster: shapeToKeys(state),
+	favorSharps: state.ui.favorSharps,
+	selectNote: PropTypes.func.isRequired
+})
 
 const mapDispatchToProps = dispatch => ({
 	selectNote: noteId => dispatch(selectNote(noteId)),

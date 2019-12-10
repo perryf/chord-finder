@@ -4,7 +4,7 @@ export const toggleNoteById = (notesState = {}, noteId, selected = true) => {
 	let updateKey = ''
 	let updateType = ''
 
-	Object.keys(notesState).map(key => {
+	Object.keys(notesState).forEach(key => {
 		types.forEach(type => {
 			if (notesState[key][type].id === noteId) {
 				updateKey = key

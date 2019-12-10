@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { selectNote, deselectNote } from 'app/redux/actions'
@@ -29,15 +29,10 @@ const notePositionShifter = (index, notesMaster) => {
 	return shouldShift
 }
 
-class Staff extends Component {
-	static propTypes = {
-		favorSharps: PropTypes.bool.isRequired,
-		selectNote: PropTypes.func.isRequired,
-		notesMaster: PropTypes.array.isRequired
-	}
+const Staff = props => {
+	const { notesMaster, favorSharps, selectNote, deselectNote } = props
 
-	selectNoteIntercept = noteObj => {
-		const { favorSharps, selectNote, deselectNote } = this.props
+	const selectNoteIntercept = noteObj => {
 		let noteId = ''
 		let newType = 'natural'
 
@@ -65,59 +60,63 @@ class Staff extends Component {
 		}
 	}
 
-	render() {
-		const { notesMaster } = this.props
+	// * List of notes adjacent to staff
+	const noteList = notesMaster.reduce((acc, noteObj) => {
+		const notes = [
+			noteObj.notes.flat,
+			noteObj.notes.sharp,
+			noteObj.notes.natural
+		]
+		const selectedNotes = notes.filter(n => n.selected)
 
-		const noteList = notesMaster.reduce((acc, noteObj) => {
-			const notes = [
-				noteObj.notes.flat,
-				noteObj.notes.sharp,
-				noteObj.notes.natural
-			]
-			const selectedNotes = notes.filter(n => n.selected)
+		return acc.concat(selectedNotes)
+	}, [])
 
-			return acc.concat(selectedNotes)
-		}, [])
-
-		return (
-			<div className="staffBox">
-				<div className="staff">
-					<div className="clefBox">
-						<img src="/images/G-clef.svg" className="clef" alt="g-clef" />
-					</div>
-
-					{notesMaster.map((note, i) => {
-						const prevSelected = notePositionShifter(i, notesMaster)
-
-						return note.staffInfo.staffType === 'line' ? (
-							<StaffLine
-								handleSelectNote={this.selectNoteIntercept}
-								note={note}
-								key={note.id}
-								prevSelected={prevSelected}
-							/>
-						) : (
-							<StaffSpace
-								handleSelectNote={this.selectNoteIntercept}
-								note={note}
-								key={note.id}
-								prevSelected={prevSelected}
-							/>
-						)
-					})}
-					<div className="fillerNote" />
+	return (
+		<div className="staffBox">
+			<div className="staff">
+				<div className="clefBox">
+					<img src="/images/G-clef.svg" className="clef" alt="g-clef" />
 				</div>
-				<div className="noteList">
-					{noteList.map(note => (
-						<span key={note.id}>
-							{note.label}
-							{note.accidentalTag || ''}
-						</span>
-					))}
-				</div>
+
+				{notesMaster.map((note, i) => {
+					const prevSelected = notePositionShifter(i, notesMaster)
+
+					return note.staffInfo.staffType === 'line' ? (
+						<StaffLine
+							handleSelectNote={selectNoteIntercept}
+							note={note}
+							key={note.id}
+							prevSelected={prevSelected}
+						/>
+					) : (
+						<StaffSpace
+							handleSelectNote={selectNoteIntercept}
+							note={note}
+							key={note.id}
+							prevSelected={prevSelected}
+						/>
+					)
+				})}
+				<div className="fillerNote" />
 			</div>
-		)
-	}
+			<div className="noteList">
+				{noteList.map(note => (
+					<span key={note.id}>
+						{note.label}
+						{note.accidentalTag || ''}
+					</span>
+				))}
+			</div>
+		</div>
+	)
+}
+
+Staff.propTypes = {
+	favorSharps: PropTypes.bool.isRequired,
+	notesMaster: PropTypes.array.isRequired,
+	selectNote: PropTypes.func.isRequired,
+	deselectNote: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({

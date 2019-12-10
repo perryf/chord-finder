@@ -1,67 +1,36 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { getSelectedNotes, getMatchingChords } from 'helperFunctions'
 import ChordFilters from './ChordFilters'
 import './ChordListing.css'
 
-class ChordListing extends Component {
-	static propTypes = {
-		matchingChords: PropTypes.array.isRequired,
-		checkBoxes: PropTypes.object.isRequired,
-		rootMatch: PropTypes.bool.isRequired,
-		favorSharps: PropTypes.bool.isRequired
-	}
-
-	constructor(props) {
-		super(props)
-		this.state = {
-			checkBoxes: {
-				basic: true,
-				common: true,
-				uncommon: true,
-				rare: false
-			}
-		}
-	}
-
-	handleCheck = ({ target: { value } }) => {
-		this.setState(state => ({
-			checkBoxes: {
-				...state.checkBoxes,
-				[value]: !state.checkBoxes[value]
-			}
-		}))
-	}
-
-	handleHoverChord = value => {
+const ChordListing = props => {
+	const handleHoverChord = value => {
 		// TODO -> Hover over chords
 	}
 
-	render() {
-		const { matchingChords, checkBoxes, favorSharps, rootMatch } = this.props
-		const checkBoxArr = Object.keys(checkBoxes).filter(c => checkBoxes[c])
+	const { matchingChords, checkBoxes, favorSharps, rootMatch } = props
+	const checkBoxArr = Object.keys(checkBoxes).filter(c => checkBoxes[c])
 
-		const filteredChords = matchingChords.map(note => {
-			let chordsUpdate = note.chords.filter(c => checkBoxArr.includes(c.type))
-			if (rootMatch) {
-				chordsUpdate = chordsUpdate.filter(c => c.rootMatch)
-			}
+	const filteredChords = matchingChords.map(note => {
+		let chordsUpdate = note.chords.filter(c => checkBoxArr.includes(c.type))
+		if (rootMatch) {
+			chordsUpdate = chordsUpdate.filter(c => c.rootMatch)
+		}
 
-			return {
-				...note,
-				chords: chordsUpdate
-			}
-		})
+		return { ...note, chords: chordsUpdate }
+	})
 
-		const totalChords = filteredChords.reduce((acc, c) => {
-			return acc + c.chords.length
-		}, 0)
+	const totalChords = filteredChords.reduce((acc, c) => {
+		return acc + c.chords.length
+	}, 0)
 
-		return (
-			<div className="chordListingBox">
-				<h4>{totalChords} possible chords</h4>
-				<ChordFilters />
+	return (
+		<div className="chordListingBox">
+			<h4>{totalChords} possible chords</h4>
+			<ChordFilters />
+			{totalChords > 0 && (
 				<div className="chordListing">
 					{filteredChords.map(c => {
 						return (
@@ -82,7 +51,7 @@ class ChordListing extends Component {
 												<div
 													key={chord.short}
 													className="chordName"
-													onMouseOver={() => this.handleHoverChord(chord)}
+													onMouseOver={() => handleHoverChord(chord)}
 												>
 													<span
 														className={`${
@@ -102,9 +71,16 @@ class ChordListing extends Component {
 						)
 					})}
 				</div>
-			</div>
-		)
-	}
+			)}
+		</div>
+	)
+}
+
+ChordListing.propTypes = {
+	matchingChords: PropTypes.array.isRequired,
+	checkBoxes: PropTypes.object.isRequired,
+	rootMatch: PropTypes.bool.isRequired,
+	favorSharps: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = ({ notesMaster = {}, ui }) => {

@@ -10,10 +10,16 @@ const ChordFilters = props => {
 		changeChordFilter(value)
 	}
 
+	const handleTextClick = value => {
+		changeChordFilter(value)
+	}
+
 	return (
 		<div>
 			<div className="onlyRoots">
-				<span>Only root matches</span>
+				<span className="pointer" onClick={toggleRootMatch}>
+					Only root matches
+				</span>
 				<input
 					type="checkbox"
 					name="rootMatch"
@@ -22,9 +28,12 @@ const ChordFilters = props => {
 					onChange={toggleRootMatch}
 				/>
 			</div>
+
 			<div className="checkBoxes">
 				<div>
-					<span>Basic</span>
+					<span className="pointer" onClick={() => handleTextClick('basic')}>
+						Basic
+					</span>
 					<input
 						type="checkbox"
 						name="chordType"
@@ -34,7 +43,9 @@ const ChordFilters = props => {
 					/>
 				</div>
 				<div>
-					<span>Common</span>
+					<span className="pointer" onClick={() => handleTextClick('common')}>
+						Common
+					</span>
 					<input
 						type="checkbox"
 						name="chordType"
@@ -44,7 +55,9 @@ const ChordFilters = props => {
 					/>
 				</div>
 				<div>
-					<span>Uncommon</span>
+					<span className="pointer" onClick={() => handleTextClick('uncommon')}>
+						Uncommon
+					</span>
 					<input
 						type="checkbox"
 						name="chordType"
@@ -54,7 +67,9 @@ const ChordFilters = props => {
 					/>
 				</div>
 				<div>
-					<span>Rare</span>
+					<span className="pointer" onClick={() => handleTextClick('rare')}>
+						Rare
+					</span>
 					<input
 						type="checkbox"
 						name="chordType"
@@ -75,15 +90,14 @@ ChordFilters.propTypes = {
 	toggleRootMatch: PropTypes.func.isRequired
 }
 
-const mapStateToProps = state => {
-	return { checkBoxes: state.ui.checkBoxes, rootMatch: state.ui.rootMatch }
-}
+const mapStateToProps = state => ({
+	checkBoxes: state.ui.checkBoxes,
+	rootMatch: state.ui.rootMatch
+})
 
-const mapDispatchToProps = dispatch => {
-	return {
-		changeChordFilter: value => dispatch(changeChordFilter(value)),
-		toggleRootMatch: () => dispatch(toggleRootMatch())
-	}
-}
+const mapDispatchToProps = dispatch => ({
+	changeChordFilter: value => dispatch(changeChordFilter(value)),
+	toggleRootMatch: () => dispatch(toggleRootMatch())
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChordFilters)

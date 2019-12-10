@@ -21,6 +21,9 @@ class Controls extends Component {
 			<div className="controlsBox">
 				<div className="radioBox">
 					<div className="radioInputBox">
+						<span className="pointer" onClick={handleFavorSharps}>
+							Sharps
+						</span>
 						<input
 							type="radio"
 							name="sharpsFlat"
@@ -28,10 +31,12 @@ class Controls extends Component {
 							checked={favorSharps}
 							onChange={handleFavorSharps}
 						/>
-						<span>Sharps</span>
 					</div>
 
 					<div className="radioInputBox">
+						<span className="pointer" onClick={handleFavorFlats}>
+							Flats
+						</span>
 						<input
 							type="radio"
 							name="sharpsFlat"
@@ -39,7 +44,6 @@ class Controls extends Component {
 							checked={!favorSharps}
 							onChange={handleFavorFlats}
 						/>
-						<span>Flats</span>
 					</div>
 				</div>
 				<button className="clearStaffButton" onClick={handleClearNotes}>
