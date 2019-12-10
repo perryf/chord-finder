@@ -7,6 +7,28 @@ import StaffLine from './StaffLine'
 import StaffSpace from './StaffSpace'
 import './Staff.css'
 
+// * Determines whether or not note should shift to the right due to previous note being selected
+const notePositionShifter = (index, notesMaster) => {
+	let shouldShift = false
+	for (let i = index + 1; i < notesMaster.length; i++) {
+		const thisNote = notesMaster[i]
+		let noteSelected = false
+
+		Object.keys(thisNote.notes).forEach(n => {
+			if (thisNote.notes[n].selected) {
+				noteSelected = true
+			}
+		})
+
+		if (!noteSelected) {
+			break
+		} else {
+			shouldShift = !shouldShift
+		}
+	}
+	return shouldShift
+}
+
 class Staff extends Component {
 	static propTypes = {
 		favorSharps: PropTypes.bool.isRequired,
@@ -52,7 +74,6 @@ class Staff extends Component {
 				noteObj.notes.sharp,
 				noteObj.notes.natural
 			]
-
 			const selectedNotes = notes.filter(n => n.selected)
 
 			return acc.concat(selectedNotes)
@@ -66,36 +87,8 @@ class Staff extends Component {
 					</div>
 
 					{notesMaster.map((note, i) => {
-						// TODO -> Need to build an algorithm
-						const prevNote = notesMaster[i + 1] // * staff build from top down
-						let prevSelected = false
-						if (prevNote) {
-							Object.keys(prevNote.notes).forEach(n => {
-								if (prevNote.notes[n].selected) {
-									prevSelected = true
-								}
-							})
+						const prevSelected = notePositionShifter(i, notesMaster)
 
-							const morePrevNote = notesMaster[i + 2]
-
-							if (morePrevNote) {
-								Object.keys(morePrevNote.notes).forEach(n => {
-									if (morePrevNote.notes[n].selected) {
-										prevSelected = false
-									}
-								})
-
-								// const lastPrevNote = notesMaster[i + 3]
-
-								// if (lastPrevNote) {
-								// 	Object.keys(lastPrevNote.notes).forEach(n => {
-								// 		if (lastPrevNote.notes[n].selected) {
-								// 			prevSelected = true
-								// 		}
-								// 	})
-								// }
-							}
-						}
 						return note.staffInfo.staffType === 'line' ? (
 							<StaffLine
 								handleSelectNote={this.selectNoteIntercept}
