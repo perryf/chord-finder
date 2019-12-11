@@ -127,3 +127,22 @@ export const getMatchingChords = noteArr => {
 
 	return matchingChords
 }
+
+export const getNoteValueById = id => {
+	const value = notesData.reduce((acc, n) => {
+		return n.id === id ? n.absoluteValue : acc
+	}, -1)
+	return value
+}
+
+export const getNoteByValue = (value, favorSharps) => {
+	const noteName = notesData.reduce((acc, n) => {
+		const type = favorSharps ? 'sharp' : 'flat'
+
+		return n.value === value && (n.type === type || n.type === 'natural')
+			? n.label
+			: acc
+	}, '')
+
+	return noteName
+}

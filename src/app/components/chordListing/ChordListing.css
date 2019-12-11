@@ -1,5 +1,5 @@
 .chordListingBox {
-	width: 100%;
+	max-width: 450px;
 	margin: 0 20px;
 }
 
@@ -42,7 +42,7 @@
 	border-radius: 4px;
 	z-index: 10;
 	white-space: nowrap;
-	top: -40px;
+	top: -60px;
 	left: -60px;
 }
 

@@ -1,26 +1,40 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { getSelectedNotes, getMatchingChords } from 'helperFunctions'
+import {
+	getSelectedNotes,
+	getMatchingChords,
+	getNoteByValue
+} from 'helperFunctions'
 import ChordFilters from './ChordFilters'
 import './ChordListing.css'
 
 class ChordListing extends Component {
 	constructor(props) {
 		super(props)
-		this.state = { hoverVal: '' }
+		this.state = { hoverName: '', hoverDetail: '' }
 	}
 
 	handleHoverChord = (name, chordInfo) => {
-		// TODO -> Hover over chords
-		console.log(name, chordInfo)
+		if (!name) {
+			this.setState({ hoverName: '', hoverDetail: '' })
+			return
+		}
 
-		this.setState({ hoverVal: name })
+		const chordNotes = chordInfo.notes.reduce((acc, n, i) => {
+			const noteName = getNoteByValue(n, this.props.favorSharps)
+			return acc.concat(`${i === acc.length ? '' : ' '}${noteName}`)
+		}, '')
+
+		this.setState({
+			hoverName: name,
+			hoverDetail: chordNotes
+		})
 	}
 
 	render() {
 		const { matchingChords, checkBoxes, favorSharps, rootMatch } = this.props
-		const { hoverVal } = this.state
+		const { hoverName, hoverDetail } = this.state
 
 		const checkBoxArr = Object.keys(checkBoxes).filter(c => checkBoxes[c])
 
@@ -58,17 +72,15 @@ class ChordListing extends Component {
 														: c.noteInfo.altLabel
 												}`
 
-												console.log(chordPrefix, chord.short)
-
 												const chordName = `${chordPrefix} ${chord.short}`
 
 												return (
 													<div
 														key={chord.short}
 														className="chordName pointer"
-														onMouseOver={() =>
+														onMouseOver={() => {
 															this.handleHoverChord(chordName, chord)
-														}
+														}}
 														onMouseLeave={() => this.handleHoverChord('')}
 													>
 														<span
@@ -78,9 +90,12 @@ class ChordListing extends Component {
 														>
 															{chordName}
 														</span>
-														{hoverVal === chordName && (
+														{hoverName === chordName && (
 															<div className="hoverInfo">
-																{chordPrefix} {chord.label}
+																<p>
+																	{chordPrefix} {chord.label}
+																</p>
+																<p>notes: {hoverDetail}</p>
 															</div>
 														)}
 													</div>
