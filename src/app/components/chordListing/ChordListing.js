@@ -14,42 +14,34 @@ const stateInit = { hoverName: '', hoverDetailStr: '', hoverDetailArr: [] }
 class ChordListing extends Component {
 	constructor(props) {
 		super(props)
-		this.state = { hoverName: '', hoverDetailStr: '', hoverDetailArr: [] }
+		this.state = { hoverName: '', hoverDetailArr: [] }
 	}
 
 	handleHoverChord = (name, chordInfo) => {
+		// * For when mouse leaves chord
 		if (!name) {
 			this.setState(stateInit)
 			return
 		}
 
-		const chordNotes = chordInfo.notes.reduce((acc, n, i, self) => {
-			const noteName = getNoteByValue(n, this.props.favorSharps)
-			return acc.concat(`${i === self.length ? '' : ' '}${noteName}`)
-		}, '')
+		const chordNotes = chordInfo.notes.reduce((acc, n) => {
+			return acc.concat(getNoteByValue(n, this.props.favorSharps))
+		}, [])
 
-		this.setState({
-			hoverName: name,
-			hoverDetailStr: chordNotes,
-			hoverDetailArr: chordInfo.notes
-		})
+		this.setState({ hoverName: name, hoverDetailArr: chordNotes })
 	}
 
 	render() {
 		const { matchingChords, checkBoxes, favorSharps, rootMatch } = this.props
-		const { hoverName, hoverDetailStr, hoverDetailArr } = this.state
+		const { hoverName, hoverDetailArr } = this.state
 
 		const checkBoxArr = Object.keys(checkBoxes).filter(c => checkBoxes[c])
-
-		const filteredChords = matchingChords.map(note => {
-			let chordsUpdate = note.chords.filter(c => checkBoxArr.includes(c.type))
-			if (rootMatch) {
-				chordsUpdate = chordsUpdate.filter(c => c.rootMatch)
-			}
-
-			return { ...note, chords: chordsUpdate }
-		})
-
+		const filteredChords = matchingChords.map(note => ({
+			...note,
+			chords: note.chords.filter(c => {
+				return checkBoxArr.includes(c.type) && (rootMatch ? c.rootMatch : true)
+			})
+		}))
 		const totalChords = filteredChords.reduce((acc, c) => {
 			return acc + c.chords.length
 		}, 0)
@@ -87,18 +79,22 @@ class ChordListing extends Component {
 														onMouseLeave={() => this.handleHoverChord('')}
 													>
 														<span
-															className={`${
+															className={
 																chord.perfectMatch ? 'perfectMatch' : ''
-															}`}
+															}
 														>
 															{chordName}
 														</span>
 														{hoverName === chordName && (
 															<div className="hoverInfo">
-																<p>
+																<p className="hoverInfoName">
 																	{chordPrefix} {chord.label}
 																</p>
-																<p>notes: {hoverDetailStr}</p>
+																<div className="flexColumnCenter hoverInfoNotes">
+																	{hoverDetailArr.map(note => (
+																		<span key={note}>{note}</span>
+																	))}
+																</div>
 															</div>
 														)}
 													</div>

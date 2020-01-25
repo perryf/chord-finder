@@ -23,6 +23,13 @@ code {
 	flex-direction: column;
 }
 
+.flexColumnCenter {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
 .flexRowCenter {
 	display: flex;
 	justify-content: center;

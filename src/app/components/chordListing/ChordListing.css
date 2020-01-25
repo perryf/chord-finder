@@ -36,14 +36,28 @@
 
 .hoverInfo {
 	position: absolute;
-	display: inline;
 	background: lightgray;
 	padding: 8px;
 	border-radius: 4px;
 	z-index: 10;
-	white-space: nowrap;
-	top: -60px;
-	left: -60px;
+	top: -100px;
+	left: -180px;
+	width: 160px;
+}
+
+.hoverInfoName {
+	padding: 8px;
+	border-radius: 4px;
+	text-decoration: underline;
+}
+
+.hoverInfoNotes {
+	width: 60px;
+	margin: 0 auto;
+	text-align: center;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-radius: 8px;
 }
 
 .hoverInfo p {
