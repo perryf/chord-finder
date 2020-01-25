@@ -76,7 +76,11 @@ const Staff = props => {
 		<div className="staffBox">
 			<div className="staff">
 				<div className="clefBox">
-					<img src="/images/G-clef.svg" className="clef" alt="g-clef" />
+					<img
+						src={`${process.env.PUBLIC_URL}/images/G-clef.svg`}
+						className="clef"
+						alt="g-clef"
+					/>
 				</div>
 
 				{notesMaster.map((note, i) => {
