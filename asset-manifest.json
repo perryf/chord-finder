@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "//perryf.github.io/chord-reader/static/css/main.6abc8c60.chunk.css",
-    "main.js": "//perryf.github.io/chord-reader/static/js/main.2230ef08.chunk.js",
-    "main.js.map": "//perryf.github.io/chord-reader/static/js/main.2230ef08.chunk.js.map",
+    "main.css": "//perryf.github.io/chord-reader/static/css/main.c58fd9a2.chunk.css",
+    "main.js": "//perryf.github.io/chord-reader/static/js/main.b0d78cbc.chunk.js",
+    "main.js.map": "//perryf.github.io/chord-reader/static/js/main.b0d78cbc.chunk.js.map",
     "runtime-main.js": "//perryf.github.io/chord-reader/static/js/runtime-main.5907b31c.js",
     "runtime-main.js.map": "//perryf.github.io/chord-reader/static/js/runtime-main.5907b31c.js.map",
     "static/js/2.e84ca5b6.chunk.js": "//perryf.github.io/chord-reader/static/js/2.e84ca5b6.chunk.js",
     "static/js/2.e84ca5b6.chunk.js.map": "//perryf.github.io/chord-reader/static/js/2.e84ca5b6.chunk.js.map",
     "index.html": "//perryf.github.io/chord-reader/index.html",
-    "precache-manifest.845e8036dc4a0313c3d62b53726d3da7.js": "//perryf.github.io/chord-reader/precache-manifest.845e8036dc4a0313c3d62b53726d3da7.js",
+    "precache-manifest.5ef3c9f571c367d698d036999ae44b0c.js": "//perryf.github.io/chord-reader/precache-manifest.5ef3c9f571c367d698d036999ae44b0c.js",
     "service-worker.js": "//perryf.github.io/chord-reader/service-worker.js",
-    "static/css/main.6abc8c60.chunk.css.map": "//perryf.github.io/chord-reader/static/css/main.6abc8c60.chunk.css.map"
+    "static/css/main.c58fd9a2.chunk.css.map": "//perryf.github.io/chord-reader/static/css/main.c58fd9a2.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.5907b31c.js",
     "static/js/2.e84ca5b6.chunk.js",
-    "static/css/main.6abc8c60.chunk.css",
-    "static/js/main.2230ef08.chunk.js"
+    "static/css/main.c58fd9a2.chunk.css",
+    "static/js/main.b0d78cbc.chunk.js"
   ]
 }
