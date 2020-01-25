@@ -16,7 +16,7 @@ const StaffSpace = props => {
 
 	return (
 		<div
-			className="staffSpace staffRow flexRowCenter"
+			className="staffRow flexRowCenter"
 			onClick={() => handleSelectNote(note)}
 		>
 			{selected && (

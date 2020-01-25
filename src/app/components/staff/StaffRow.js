@@ -1,14 +1,17 @@
+// TODO -> Account for prev selected when duplicates
+// TODO -> Improve spacing for duplicate row notes
+
 import React from 'react'
 import PropTypes from 'prop-types'
 
 const StaffLine = props => {
+	// TODO -> Clean up var assignments
 	const { handleSelectNote, note, type, prevSelected } = props
 
 	const isMiddleC = note.notes.natural.id === 'c4'
 	const isFlat = note.notes.flat.selected
 	const isNatural = note.notes.natural.selected
 	const isSharp = note.notes.sharp.selected
-	const selected = isFlat || isNatural || isSharp
 
 	let selectedLength = 0
 	if (isFlat) selectedLength = selectedLength + 1
@@ -66,7 +69,7 @@ const StaffLine = props => {
 				</div>
 			) : (
 				<div
-					className="staffSpace staffRow flexRowCenter"
+					className="staffRow flexRowCenter"
 					onClick={() => handleSelectNote(note)}
 				>
 					{isFlat && (

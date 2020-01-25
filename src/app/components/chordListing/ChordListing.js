@@ -9,12 +9,12 @@ import {
 import ChordFilters from './ChordFilters'
 import './ChordListing.css'
 
-const stateInit = { hoverName: '', hoverDetailStr: '', hoverDetailArr: [] }
+const stateInit = { hoverName: '', hoverDetailArr: [{}] }
 
 class ChordListing extends Component {
 	constructor(props) {
 		super(props)
-		this.state = { hoverName: '', hoverDetailArr: [] }
+		this.state = stateInit
 	}
 
 	handleHoverChord = (name, chordInfo) => {
@@ -25,7 +25,13 @@ class ChordListing extends Component {
 		}
 
 		const chordNotes = chordInfo.notes.reduce((acc, n) => {
-			return acc.concat(getNoteByValue(n, this.props.favorSharps))
+			const noteName = getNoteByValue(n, this.props.favorSharps)
+			const note = {
+				name: noteName,
+				selected: this.props.selectedNotes.find(n => n.label === noteName)
+			}
+
+			return [note].concat(acc)
 		}, [])
 
 		this.setState({ hoverName: name, hoverDetailArr: chordNotes })
@@ -67,7 +73,7 @@ class ChordListing extends Component {
 														: c.noteInfo.altLabel
 												}`
 
-												const chordName = `${chordPrefix} ${chord.short}`
+												const chordName = `${chordPrefix}${chord.short}`
 
 												return (
 													<div
@@ -92,7 +98,14 @@ class ChordListing extends Component {
 																</p>
 																<div className="flexColumnCenter hoverInfoNotes">
 																	{hoverDetailArr.map(note => (
-																		<span key={note}>{note}</span>
+																		<span
+																			key={note.name}
+																			className={
+																				note.selected ? 'perfectMatch' : ''
+																			}
+																		>
+																			{note.name}
+																		</span>
 																	))}
 																</div>
 															</div>
@@ -123,8 +136,8 @@ ChordListing.propTypes = {
 const mapStateToProps = ({ notesMaster = {}, ui }) => {
 	const selectedNotes = getSelectedNotes(notesMaster)
 	const matchingChords = getMatchingChords(selectedNotes)
-
 	return {
+		selectedNotes,
 		matchingChords,
 		checkBoxes: ui.checkBoxes,
 		favorSharps: ui.favorSharps,
