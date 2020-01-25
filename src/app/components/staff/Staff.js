@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { selectNote, deselectNote } from 'app/redux/actions'
 import { shapeToStaff } from 'helperFunctions/transformers'
-import StaffLine from './StaffLine'
-import StaffSpace from './StaffSpace'
+import StaffRow from './StaffRow'
 import './Staff.css'
 
 // * Determines whether or not note should shift to the right due to previous note being selected
@@ -86,21 +85,33 @@ const Staff = props => {
 				{notesMaster.map((note, i) => {
 					const prevSelected = notePositionShifter(i, notesMaster)
 
-					return note.staffInfo.staffType === 'line' ? (
-						<StaffLine
+					return (
+						<StaffRow
+							key={note.id}
 							handleSelectNote={selectNoteIntercept}
 							note={note}
-							key={note.id}
-							prevSelected={prevSelected}
-						/>
-					) : (
-						<StaffSpace
-							handleSelectNote={selectNoteIntercept}
-							note={note}
-							key={note.id}
+							// TODO -> change "row" in data to "space"
+							type={note.staffInfo.staffType === 'line' ? 'line' : 'space'}
 							prevSelected={prevSelected}
 						/>
 					)
+
+					// ! Delete if no longer used
+					// return note.staffInfo.staffType === 'line' ? (
+					// 	<StaffLine
+					// 		handleSelectNote={selectNoteIntercept}
+					// 		note={note}
+					// 		key={note.id}
+					// 		prevSelected={prevSelected}
+					// 	/>
+					// ) : (
+					// 	<StaffSpace
+					// 		handleSelectNote={selectNoteIntercept}
+					// 		note={note}
+					// 		key={note.id}
+					// 		prevSelected={prevSelected}
+					// 	/>
+					// )
 				})}
 				<div className="fillerNote" />
 			</div>

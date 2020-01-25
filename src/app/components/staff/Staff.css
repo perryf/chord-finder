@@ -32,13 +32,11 @@
 
 .staffLine {
 	height: 2px;
-	width: 100%;
 	background: black;
 }
 
 .staffLineC {
 	height: 2px;
-	width: 30px;
 	background: black;
 }
 
@@ -65,6 +63,8 @@
 	width: 24px;
 	height: 22px;
 	outline: none;
+	margin-left: 12px;
+	margin-right: 12px;
 }
 
 .prevSelected {
@@ -73,12 +73,14 @@
 
 .accidental {
 	position: absolute;
-	top: -4px;
-	font-weight: bold;
 	font-size: 22px;
 	outline: none;
 	text-emphasis-color: white;
 	user-select: none;
+}
+
+.sharp {
+	top: -4px;
 }
 
 .flat {
@@ -86,8 +88,11 @@
 	font-style: italic;
 }
 
-.sharp {
-	top: -4px;
+.natural {
+	top: -10px;
+	margin-right: 6px;
+	font-weight: bold;
+	font-size: 30px;
 }
 
 .prevSelectAcc {
@@ -95,7 +100,11 @@
 }
 
 .notPrevSelectAcc {
-	left: -18px;
+	left: -22px;
+}
+
+.notPrevSelectAccFlat {
+	left: -16px;
 }
 
 .noteList {
