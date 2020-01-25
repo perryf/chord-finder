@@ -73,10 +73,29 @@
 
 .accidental {
 	position: absolute;
-	left: -18px;
 	top: -4px;
-	font-size: 22px;
 	font-weight: bold;
+	font-size: 22px;
+	outline: none;
+	text-emphasis-color: white;
+	user-select: none;
+}
+
+.flat {
+	top: -6px;
+	font-style: italic;
+}
+
+.sharp {
+	top: -4px;
+}
+
+.prevSelectAcc {
+	left: -30px;
+}
+
+.notPrevSelectAcc {
+	left: -18px;
 }
 
 .noteList {

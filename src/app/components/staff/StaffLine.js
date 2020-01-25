@@ -27,9 +27,14 @@ const StaffLine = props => {
 						tabIndex={-1}
 						className={`noteHead ${prevSelected ? 'prevSelected' : ''}`}
 					>
-						<span tabIndex={-1} className="accidental">
+						<span
+							tabIndex={-1}
+							className={`accidental ${
+								prevSelected ? 'prevSelectAcc' : 'notPrevSelectAcc'
+							} ${isFlat ? 'flat' : 'sharp'}`}
+						>
 							{isSharp && '#'}
-							{isFlat && <em>b</em>}
+							{isFlat && 'b'}
 						</span>
 					</div>
 				)}

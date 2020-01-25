@@ -9,32 +9,35 @@ import {
 import ChordFilters from './ChordFilters'
 import './ChordListing.css'
 
+const stateInit = { hoverName: '', hoverDetailStr: '', hoverDetailArr: [] }
+
 class ChordListing extends Component {
 	constructor(props) {
 		super(props)
-		this.state = { hoverName: '', hoverDetail: '' }
+		this.state = { hoverName: '', hoverDetailStr: '', hoverDetailArr: [] }
 	}
 
 	handleHoverChord = (name, chordInfo) => {
 		if (!name) {
-			this.setState({ hoverName: '', hoverDetail: '' })
+			this.setState(stateInit)
 			return
 		}
 
-		const chordNotes = chordInfo.notes.reduce((acc, n, i) => {
+		const chordNotes = chordInfo.notes.reduce((acc, n, i, self) => {
 			const noteName = getNoteByValue(n, this.props.favorSharps)
-			return acc.concat(`${i === acc.length ? '' : ' '}${noteName}`)
+			return acc.concat(`${i === self.length ? '' : ' '}${noteName}`)
 		}, '')
 
 		this.setState({
 			hoverName: name,
-			hoverDetail: chordNotes
+			hoverDetailStr: chordNotes,
+			hoverDetailArr: chordInfo.notes
 		})
 	}
 
 	render() {
 		const { matchingChords, checkBoxes, favorSharps, rootMatch } = this.props
-		const { hoverName, hoverDetail } = this.state
+		const { hoverName, hoverDetailStr, hoverDetailArr } = this.state
 
 		const checkBoxArr = Object.keys(checkBoxes).filter(c => checkBoxes[c])
 
@@ -95,7 +98,7 @@ class ChordListing extends Component {
 																<p>
 																	{chordPrefix} {chord.label}
 																</p>
-																<p>notes: {hoverDetail}</p>
+																<p>notes: {hoverDetailStr}</p>
 															</div>
 														)}
 													</div>
