@@ -20,14 +20,20 @@ const StaffLine = props => {
 
 	let rowWidth = '100%'
 	if (isMiddleC) {
-		rowWidth = selectedCount > 1 ? `${48 * selectedCount}px` : '48px'
+		rowWidth = selectedCount > 1 ? `${64 * selectedCount}px` : '48px'
 	}
 
-	const noteClass = `noteHead ${prevSelected ? 'prevSelected' : ''}`
+	const noteClass = `noteHead ${prevSelected ? 'prevSelected' : ''} ${
+		selectedCount > 1 ? 'multiNote' : ''
+	}`
 
 	const accClass = `${
 		prevSelected ? 'prevSelectAcc' : 'notPrevSelectAcc'
 	} accidental`
+
+	const noteList = Object.keys(note.notes).reduce((acc, n) => {
+		return note.notes[n].selected ? acc.concat(note.notes[n].label) : acc
+	}, [])
 
 	return (
 		<div
@@ -64,6 +70,7 @@ const StaffLine = props => {
 							</span>
 						</div>
 					)}
+					<div className="noteListName">{noteList.join(', ')}</div>
 				</div>
 			) : (
 				<div
@@ -95,6 +102,7 @@ const StaffLine = props => {
 							</span>
 						</div>
 					)}
+					<div className="noteListName">{noteList.join(', ')}</div>
 				</div>
 			)}
 		</div>

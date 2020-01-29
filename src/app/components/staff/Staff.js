@@ -118,14 +118,17 @@ const Staff = props => {
 				})}
 				<div className="fillerNote" />
 			</div>
-			<div className="noteList">
-				{noteList.map(note => (
-					<span key={note.id}>
-						{note.label}
-						{note.accidentalTag || ''}
-					</span>
-				))}
-			</div>
+			{// ! DELETE IF NO LONGER USED
+			false && (
+				<div className="noteList">
+					{noteList.map(note => (
+						<span key={note.id}>
+							{note.label}
+							{note.accidentalTag || ''}
+						</span>
+					))}
+				</div>
+			)}
 		</div>
 	)
 }
