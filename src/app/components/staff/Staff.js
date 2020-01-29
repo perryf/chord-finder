@@ -9,13 +9,16 @@ import './Staff.css'
 // * Determines whether or not note should shift to the right due to previous note being selected
 const notePositionShifter = (index, notesMaster) => {
 	let shouldShift = false
-	for (let i = index + 1; i < notesMaster.length; i++) {
-		const thisNote = notesMaster[i]
-		let noteSelected = false
 
-		Object.keys(thisNote.notes).forEach(n => {
-			if (thisNote.notes[n].selected) {
+	for (let i = index + 1; i < notesMaster.length; i++) {
+		const prevNote = notesMaster[i]
+		let noteSelected = false
+		let prevCount = 0
+
+		Object.keys(prevNote.notes).forEach(n => {
+			if (prevNote.notes[n].selected) {
 				noteSelected = true
+				prevCount = prevCount + 1
 			}
 		})
 

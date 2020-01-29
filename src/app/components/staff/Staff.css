@@ -60,12 +60,16 @@
 	width: 24px;
 	height: 22px;
 	outline: none;
-	margin-left: 12px;
-	margin-right: 12px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 .prevSelected {
-	margin-left: 40px;
+	left: 16px;
+}
+
+.multiNote {
+	left: 12px;
 }
 
 .accidental {

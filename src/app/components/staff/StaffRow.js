@@ -13,22 +13,20 @@ const StaffLine = props => {
 	const isNatural = note.notes.natural.selected
 	const isSharp = note.notes.sharp.selected
 
-	let selectedLength = 0
-	if (isFlat) selectedLength = selectedLength + 1
-	if (isNatural) selectedLength = selectedLength + 1
-	if (isSharp) selectedLength = selectedLength + 1
+	let selectedCount = 0
+	if (isFlat) selectedCount = selectedCount + 1
+	if (isNatural) selectedCount = selectedCount + 1
+	if (isSharp) selectedCount = selectedCount + 1
 
 	let rowWidth = '100%'
 	if (isMiddleC) {
-		rowWidth = selectedLength > 1 ? `${48 * selectedLength}px` : '48px'
+		rowWidth = selectedCount > 1 ? `${48 * selectedCount}px` : '48px'
 	}
 
-	const noteClass = `noteHead ${
-		prevSelected && selectedLength === 1 ? 'prevSelected' : ''
-	}`
+	const noteClass = `noteHead ${prevSelected ? 'prevSelected' : ''}`
 
 	const accClass = `${
-		prevSelected && selectedLength === 1 ? 'prevSelectAcc' : 'notPrevSelectAcc'
+		prevSelected ? 'prevSelectAcc' : 'notPrevSelectAcc'
 	} accidental`
 
 	return (
@@ -51,7 +49,7 @@ const StaffLine = props => {
 
 					{isNatural && (
 						<div id={note.id} tabIndex={-1} className={noteClass}>
-							{selectedLength > 1 && (
+							{selectedCount > 1 && (
 								<span tabIndex={-1} className={`${accClass} natural`}>
 									♮
 								</span>
@@ -82,7 +80,7 @@ const StaffLine = props => {
 
 					{isNatural && (
 						<div id={note.id} tabIndex={-1} className={noteClass}>
-							{selectedLength > 1 && (
+							{selectedCount > 1 && (
 								<span tabIndex={-1} className={`${accClass} natural`}>
 									♮
 								</span>
