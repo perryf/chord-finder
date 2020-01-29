@@ -115,7 +115,7 @@ export const dom7b913 = {
 	type: 'uncommon'
 }
 export const dom7S913 = {
-	notes: [0, 4, 7, 10, 1, 6, 9],
+	notes: [0, 4, 7, 10, 3, 6, 9],
 	label: 'Dominant 7th sharp 9th 13th',
 	short: '7#9#11 13',
 	type: 'uncommon'
