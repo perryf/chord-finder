@@ -228,28 +228,28 @@ export const aug13 = {
 	type: 'rare'
 }
 export const augM7 = {
-	notes: [0, 4, 8, 10],
+	notes: [0, 4, 8, 11],
 	label: 'Augmented Major 7th',
 	short: 'AugM7',
 	abbr: '+∆7',
 	type: 'rare'
 }
 export const augM9 = {
-	notes: [0, 4, 8, 10, 2],
+	notes: [0, 4, 8, 11, 2],
 	label: 'Augmented 9th',
 	short: 'AugM9',
 	abbr: '+∆9',
 	type: 'rare'
 }
 export const augM11 = {
-	notes: [0, 4, 8, 10, 2, 6],
+	notes: [0, 4, 8, 11, 2, 6],
 	label: 'Augmented 7th sharp 11th',
 	short: 'AugM7 #11',
 	abbr: '+∆#11',
 	type: 'rare'
 }
 export const augM13 = {
-	notes: [0, 4, 8, 10, 2, 6, 9],
+	notes: [0, 4, 8, 11, 2, 6, 9],
 	label: 'Augmented 13th',
 	short: 'AugM7 13',
 	abbr: '+∆13',

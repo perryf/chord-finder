@@ -73,7 +73,9 @@ class ChordListing extends Component {
 														: c.noteInfo.altLabel
 												}`
 
-												const chordName = `${chordPrefix}${chord.short}`
+												const chordName = `
+													${chordPrefix}${chord.abbr || chord.short}
+												`
 
 												return (
 													<div
