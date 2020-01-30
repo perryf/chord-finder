@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../Header/Header'
+import Header from '../header/Header'
 import Staff from '../staff/Staff'
 import Keyboard from '../keyboard/Keyboard'
 import Controls from '../controls/Controls'

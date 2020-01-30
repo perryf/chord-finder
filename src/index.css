@@ -36,6 +36,10 @@ code {
 	align-items: center;
 }
 
+.justifyAround {
+	justify-content: space-around;
+}
+
 .pointer {
 	cursor: pointer;
 }

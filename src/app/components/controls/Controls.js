@@ -6,6 +6,7 @@ import {
 	favorFlats,
 	handleClearNotes
 } from 'app/redux/actions/uiActions'
+import Player from '../player/Player'
 import './Controls.css'
 
 const Controls = props => {
@@ -27,6 +28,7 @@ const Controls = props => {
 						type="radio"
 						name="sharpsFlat"
 						value="sharps"
+						className="pointer"
 						checked={favorSharps}
 						onChange={handleFavorSharps}
 					/>
@@ -40,14 +42,18 @@ const Controls = props => {
 						type="radio"
 						name="sharpsFlat"
 						value="flats"
+						className="pointer"
 						checked={!favorSharps}
 						onChange={handleFavorFlats}
 					/>
 				</div>
 			</div>
-			<button className="clearStaffButton" onClick={handleClearNotes}>
-				Clear Staff
-			</button>
+			<div className="flexRow justifyAround">
+				<button className="clearStaffButton" onClick={handleClearNotes}>
+					Clear Staff
+				</button>
+				<Player />
+			</div>
 		</div>
 	)
 }

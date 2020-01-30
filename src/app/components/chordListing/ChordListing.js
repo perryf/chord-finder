@@ -18,6 +18,8 @@ class ChordListing extends Component {
 	}
 
 	handleHoverChord = (name, chordInfo) => {
+		const { favorSharps, selectedNotes } = this.props
+
 		// * For when mouse leaves chord
 		if (!name) {
 			this.setState(stateInit)
@@ -25,10 +27,10 @@ class ChordListing extends Component {
 		}
 
 		const chordNotes = chordInfo.notes.reduce((acc, n) => {
-			const noteName = getNoteByValue(n, this.props.favorSharps)
+			const noteName = getNoteByValue(n, favorSharps)
 			const note = {
 				name: noteName,
-				selected: this.props.selectedNotes.find(n => n.label === noteName)
+				selected: selectedNotes.find(n => n.label === noteName)
 			}
 
 			return [note].concat(acc)

@@ -146,3 +146,13 @@ export const getNoteByValue = (value, favorSharps) => {
 
 	return noteName
 }
+
+export const formatNoteId = noteId => {
+	return (
+		noteId.charAt(0).toUpperCase() +
+		noteId
+			.slice(1)
+			.replace('S', '#')
+			.replace('B', 'b')
+	)
+}

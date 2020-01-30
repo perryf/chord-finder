@@ -10,22 +10,21 @@
 .radioBox {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
-	margin: 12px auto;
+	justify-content: center;
+	margin: 12px auto 24px;
 }
 
 .radioInputBox {
 	display: flex;
 	flex-direction: row;
+	margin: 0 12px;
 }
 
 .clearStaffButton {
-	display: block;
-	margin: 0 auto;
 	font-weight: bold;
-	border: 1px solid #aaaaaa;
-	padding: 4px;
+	border: 1px solid #888;
+	padding: 8px;
 	border-radius: 4px;
-	background: linear-gradient(#dddddd, #7799bb);
+	background: linear-gradient(#ddd, #b66);
 	cursor: pointer;
 }
