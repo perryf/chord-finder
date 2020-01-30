@@ -77,8 +77,6 @@ class ChordListing extends Component {
 			return acc + c.chords.length
 		}, 0)
 
-		console.log(hoverDetailArr)
-
 		return (
 			<div className="chordListingBox">
 				<h4>{totalChords} possible chords</h4>
