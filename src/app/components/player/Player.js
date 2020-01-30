@@ -1,10 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { PolySynth } from 'tone'
+import { PolySynth, Compressor, Master } from 'tone'
 import { getSelectedNotes, formatNoteId } from 'helperFunctions'
 import './Player.css'
 
-const synth = new PolySynth().toMaster()
+const compressor = new Compressor()
+const synth = new PolySynth(20).chain(compressor, Master)
 
 const Player = props => {
 	const { noteIds } = props

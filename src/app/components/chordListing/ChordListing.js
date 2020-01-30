@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { PolySynth, Compressor, Master } from 'tone'
 import {
 	getSelectedNotes,
 	getMatchingChords,
@@ -8,6 +9,9 @@ import {
 } from 'helperFunctions'
 import ChordFilters from './ChordFilters'
 import './ChordListing.css'
+
+const compressor = new Compressor()
+const synth = new PolySynth(20).chain(compressor, Master)
 
 const stateInit = { hoverName: '', hoverDetailArr: [{}] }
 
@@ -26,10 +30,19 @@ class ChordListing extends Component {
 			return
 		}
 
-		const chordNotes = chordInfo.notes.reduce((acc, n) => {
+		let noteRegister = 4
+		const chordNotes = chordInfo.notes.reduce((acc, n, i) => {
 			const noteName = getNoteByValue(n, favorSharps)
+			const altName = getNoteByValue(n, !favorSharps)
+
+			if (chordInfo.notes[i - 1] && n < chordInfo.notes[i - 1]) {
+				noteRegister = 5
+			}
+
 			const note = {
-				name: noteName,
+				name:
+					noteName + (altName && altName !== noteName ? ` [${altName}]` : ''),
+				noteId: noteName + noteRegister,
 				selected: selectedNotes.find(n => n.label === noteName)
 			}
 
@@ -37,6 +50,16 @@ class ChordListing extends Component {
 		}, [])
 
 		this.setState({ hoverName: name, hoverDetailArr: chordNotes })
+	}
+
+	playChord = () => {
+		const { hoverDetailArr } = this.state
+
+		const noteIds = hoverDetailArr.map(n => n.noteId)
+
+		if (noteIds) {
+			synth.triggerAttackRelease(noteIds, '8n')
+		}
 	}
 
 	render() {
@@ -53,6 +76,8 @@ class ChordListing extends Component {
 		const totalChords = filteredChords.reduce((acc, c) => {
 			return acc + c.chords.length
 		}, 0)
+
+		console.log(hoverDetailArr)
 
 		return (
 			<div className="chordListingBox">
@@ -83,6 +108,7 @@ class ChordListing extends Component {
 													<div
 														key={chord.short}
 														className="chordName pointer"
+														onClick={this.playChord}
 														onMouseOver={() => {
 															this.handleHoverChord(chordName, chord)
 														}}
@@ -100,7 +126,7 @@ class ChordListing extends Component {
 																<p className="hoverInfoName">
 																	{chordPrefix} {chord.label}
 																</p>
-																<div className="flexColumnCenter hoverInfoNotes">
+																<div className="flexColumn hoverInfoNotes">
 																	{hoverDetailArr.map(note => (
 																		<span
 																			key={note.name}
