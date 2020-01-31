@@ -19,12 +19,3 @@
 	flex-direction: row;
 	margin: 0 12px;
 }
-
-.clearStaffButton {
-	font-weight: bold;
-	border: 1px solid #888;
-	padding: 8px;
-	border-radius: 4px;
-	background: linear-gradient(#ddd, #b66);
-	cursor: pointer;
-}

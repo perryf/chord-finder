@@ -53,12 +53,12 @@ class ChordListing extends Component {
 	}
 
 	playChord = () => {
-		const { hoverDetailArr } = this.state
+		if (!this.props.mute) {
+			const noteIds = this.state.hoverDetailArr.map(n => n.noteId)
 
-		const noteIds = hoverDetailArr.map(n => n.noteId)
-
-		if (noteIds) {
-			synth.triggerAttackRelease(noteIds, '8n')
+			if (noteIds) {
+				synth.triggerAttackRelease(noteIds, '8n')
+			}
 		}
 	}
 
@@ -156,20 +156,24 @@ class ChordListing extends Component {
 
 ChordListing.propTypes = {
 	matchingChords: PropTypes.array.isRequired,
+	selectedNotes: PropTypes.array.isRequired,
 	checkBoxes: PropTypes.object.isRequired,
 	rootMatch: PropTypes.bool.isRequired,
-	favorSharps: PropTypes.bool.isRequired
+	favorSharps: PropTypes.bool.isRequired,
+	mute: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = ({ notesMaster = {}, ui }) => {
 	const selectedNotes = getSelectedNotes(notesMaster)
 	const matchingChords = getMatchingChords(selectedNotes)
+
 	return {
 		selectedNotes,
 		matchingChords,
 		checkBoxes: ui.checkBoxes,
 		favorSharps: ui.favorSharps,
-		rootMatch: ui.rootMatch
+		rootMatch: ui.rootMatch,
+		mute: ui.mute
 	}
 }
 

@@ -55,12 +55,13 @@
 }
 
 .hoverInfoNotes {
-	max-width: 70px;
+	max-width: 80px;
 	margin: 0 auto;
 	border-radius: 8px;
 }
 
 .hoverInfoNotes span {
+	padding-left: 6px;
 	border-left: 1px solid black;
 	border-right: 1px solid black;
 }

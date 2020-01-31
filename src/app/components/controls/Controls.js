@@ -6,7 +6,8 @@ import {
 	favorFlats,
 	handleClearNotes
 } from 'app/redux/actions/uiActions'
-import Player from '../player/Player'
+import PlayButton from '../buttons/PlayButton'
+import MuteButton from '../buttons/MuteButton'
 import './Controls.css'
 
 const Controls = props => {
@@ -49,10 +50,14 @@ const Controls = props => {
 				</div>
 			</div>
 			<div className="flexRow justifyAround">
-				<button className="clearStaffButton" onClick={handleClearNotes}>
+				<MuteButton />
+				<button
+					className="uiButton clearStaffButton pointer"
+					onClick={handleClearNotes}
+				>
 					Clear Staff
 				</button>
-				<Player />
+				<PlayButton />
 			</div>
 		</div>
 	)

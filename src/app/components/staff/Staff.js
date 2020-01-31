@@ -1,10 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { PolySynth, Compressor, Master } from 'tone'
 import { selectNote, deselectNote } from 'app/redux/actions'
-import { shapeToStaff } from 'helperFunctions/transformers'
+import { shapeToStaff, formatNoteId } from 'helperFunctions'
 import StaffRow from './StaffRow'
 import './Staff.css'
+
+const compressor = new Compressor()
+const synth = new PolySynth().chain(compressor, Master)
 
 // * Determines whether or not note should shift to the right due to previous note being selected
 const notePositionShifter = (index, notesMaster) => {
@@ -32,7 +36,7 @@ const notePositionShifter = (index, notesMaster) => {
 }
 
 const Staff = props => {
-	const { notesMaster, favorSharps, selectNote, deselectNote } = props
+	const { notesMaster, favorSharps, selectNote, deselectNote, mute } = props
 
 	const selectNoteIntercept = noteObj => {
 		let noteId = ''
@@ -55,6 +59,11 @@ const Staff = props => {
 		})
 
 		if (newType && !noteObj.notes[newType].ghost) {
+			if (!mute) {
+				const toneId = formatNoteId(noteObj.notes[newType].id)
+				synth.triggerAttackRelease(toneId, '8n')
+			}
+
 			selectNote(noteObj.notes[newType].id)
 		}
 		if (noteId) {
@@ -137,12 +146,14 @@ Staff.propTypes = {
 	favorSharps: PropTypes.bool.isRequired,
 	notesMaster: PropTypes.array.isRequired,
 	selectNote: PropTypes.func.isRequired,
-	deselectNote: PropTypes.func.isRequired
+	deselectNote: PropTypes.func.isRequired,
+	mute: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = state => ({
 	notesMaster: shapeToStaff(state).reverse(),
-	favorSharps: state.ui.favorSharps
+	favorSharps: state.ui.favorSharps,
+	mute: state.ui.mute
 })
 
 const mapDispatchToProps = dispatch => ({

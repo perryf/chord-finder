@@ -1,12 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { PolySynth, Compressor, Master } from 'tone'
 import { selectNote, deselectNote } from 'app/redux/actions'
-import { shapeToKeys } from 'helperFunctions/transformers'
+import { shapeToKeys, formatNoteId } from 'helperFunctions'
 import './Keyboard.css'
 
+const compressor = new Compressor()
+const synth = new PolySynth().chain(compressor, Master)
+
 const Keyboard = props => {
-	const { notesMaster, selectNote, deselectNote, favorSharps } = props
+	const { notesMaster, selectNote, deselectNote, favorSharps, mute } = props
 
 	const selectNoteIntercept = noteObj => {
 		let id = ''
@@ -34,6 +38,11 @@ const Keyboard = props => {
 		} else {
 			selected = noteObj.notes[0].selected
 			id = noteObj.id
+		}
+
+		if (!selected && !mute) {
+			const toneId = formatNoteId(noteObj.id)
+			synth.triggerAttackRelease(toneId, '8n')
 		}
 
 		selected ? deselectNote(id) : selectNote(id)
@@ -70,13 +79,14 @@ Keyboard.propTypes = {
 	notesMaster: PropTypes.array.isRequired,
 	favorSharps: PropTypes.bool.isRequired,
 	selectNote: PropTypes.func.isRequired,
-	deselectNote: PropTypes.func.isRequired
+	deselectNote: PropTypes.func.isRequired,
+	mute: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = state => ({
 	notesMaster: shapeToKeys(state),
 	favorSharps: state.ui.favorSharps,
-	selectNote: PropTypes.func.isRequired
+	mute: state.ui.mute
 })
 
 const mapDispatchToProps = dispatch => ({

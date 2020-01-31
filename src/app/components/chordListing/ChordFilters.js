@@ -18,12 +18,13 @@ const ChordFilters = props => {
 		<div>
 			<div className="onlyRoots">
 				<span className="pointer" onClick={toggleRootMatch}>
-					Only root matches
+					Root must be in chord
 				</span>
 				<input
 					type="checkbox"
 					name="rootMatch"
 					value="rootMatch"
+					className="pointer"
 					checked={rootMatch}
 					onChange={toggleRootMatch}
 				/>
@@ -38,6 +39,7 @@ const ChordFilters = props => {
 						type="checkbox"
 						name="chordType"
 						value="basic"
+						className="pointer"
 						checked={checkBoxes.basic}
 						onChange={handleClick}
 					/>
@@ -50,6 +52,7 @@ const ChordFilters = props => {
 						type="checkbox"
 						name="chordType"
 						value="common"
+						className="pointer"
 						checked={checkBoxes.common}
 						onChange={handleClick}
 					/>
@@ -62,6 +65,7 @@ const ChordFilters = props => {
 						type="checkbox"
 						name="chordType"
 						value="uncommon"
+						className="pointer"
 						checked={checkBoxes.uncommon}
 						onChange={handleClick}
 					/>
@@ -74,6 +78,7 @@ const ChordFilters = props => {
 						type="checkbox"
 						name="chordType"
 						value="rare"
+						className="pointer"
 						checked={checkBoxes.rare}
 						onChange={handleClick}
 					/>

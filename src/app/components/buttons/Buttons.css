@@ -1,0 +1,20 @@
+.uiButton {
+	padding: 8px;
+	border: 1px solid #888;
+	border-radius: 4px;
+	font-weight: bold;
+}
+
+.clearStaffButton {
+	background: linear-gradient(#ddd, #b66);
+}
+
+.muteButton {
+	background: linear-gradient(#ddd, #4b8);
+	font-size: 20px;
+	padding: 4px;
+}
+
+.playButton {
+	background: linear-gradient(#dddddd, #7799bb);
+}

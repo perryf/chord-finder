@@ -2,7 +2,8 @@ import {
 	FAVOR_SHARPS,
 	FAVOR_FLATS,
 	CHANGE_CHORD_FILTER,
-	TOGGLE_ROOT_MATCH
+	TOGGLE_ROOT_MATCH,
+	TOGGLE_MUTE
 } from 'app/redux/types'
 
 const initialState = {
@@ -13,7 +14,8 @@ const initialState = {
 		common: true,
 		uncommon: false,
 		rare: false
-	}
+	},
+	mute: false
 }
 
 export const ui = (state = initialState, action) => {
@@ -36,6 +38,11 @@ export const ui = (state = initialState, action) => {
 			return {
 				...state,
 				rootMatch: !state.rootMatch
+			}
+		case TOGGLE_MUTE:
+			return {
+				...state,
+				mute: !state.mute
 			}
 		default:
 			return state
