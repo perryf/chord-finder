@@ -37,10 +37,6 @@
 	background: black;
 }
 
-.inVisible {
-	visibility: hidden;
-}
-
 .clefBox {
 	position: absolute;
 	left: -10px;

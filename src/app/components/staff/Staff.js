@@ -107,37 +107,9 @@ const Staff = props => {
 							prevSelected={prevSelected}
 						/>
 					)
-
-					// ! Delete if no longer used
-					// return note.staffInfo.staffType === 'line' ? (
-					// 	<StaffLine
-					// 		handleSelectNote={selectNoteIntercept}
-					// 		note={note}
-					// 		key={note.id}
-					// 		prevSelected={prevSelected}
-					// 	/>
-					// ) : (
-					// 	<StaffSpace
-					// 		handleSelectNote={selectNoteIntercept}
-					// 		note={note}
-					// 		key={note.id}
-					// 		prevSelected={prevSelected}
-					// 	/>
-					// )
 				})}
 				<div className="fillerNote" />
 			</div>
-			{// ! DELETE IF NO LONGER USED
-			false && (
-				<div className="noteList">
-					{noteList.map(note => (
-						<span key={note.id}>
-							{note.label}
-							{note.accidentalTag || ''}
-						</span>
-					))}
-				</div>
-			)}
 		</div>
 	)
 }

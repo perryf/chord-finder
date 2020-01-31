@@ -1,10 +1,7 @@
-// TODO -> Account for prev selected when duplicates
-// TODO -> Improve spacing for duplicate row notes
-
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const StaffLine = props => {
+const StaffRow = props => {
 	// TODO -> Clean up var assignments
 	const { handleSelectNote, note, type, prevSelected } = props
 
@@ -109,15 +106,15 @@ const StaffLine = props => {
 	)
 }
 
-StaffLine.propTypes = {
+StaffRow.propTypes = {
 	handleSelectNote: PropTypes.func.isRequired,
 	note: PropTypes.object.isRequired,
 	type: PropTypes.oneOf(['line', 'space']).isRequired,
 	prevSelected: PropTypes.bool
 }
 
-StaffLine.defaultProps = {
+StaffRow.defaultProps = {
 	prevSelected: false
 }
 
-export default StaffLine
+export default StaffRow
