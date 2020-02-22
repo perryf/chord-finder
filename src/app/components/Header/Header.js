@@ -3,7 +3,7 @@ import './Header.css'
 
 const Header = () => (
 	<div className="homeHeader">
-		<h1 className="mainTitle">Chord Finder</h1>
+		<h1 className="mainTitle">Chord Identifier</h1>
 		<p>Made by Perry</p>
 	</div>
 )

@@ -1,14 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { PolySynth, Compressor, Master } from 'tone'
 import { selectNote, deselectNote } from 'app/redux/actions'
 import { shapeToStaff, formatNoteId } from 'helperFunctions'
 import StaffRow from './StaffRow'
 import './Staff.css'
-
-const compressor = new Compressor()
-const synth = new PolySynth().chain(compressor, Master)
 
 // * Determines whether or not note should shift to the right due to previous note being selected
 const notePositionShifter = (index, notesMaster) => {
@@ -36,7 +32,14 @@ const notePositionShifter = (index, notesMaster) => {
 }
 
 const Staff = props => {
-	const { notesMaster, favorSharps, selectNote, deselectNote, mute } = props
+	const {
+		notesMaster,
+		favorSharps,
+		selectNote,
+		deselectNote,
+		mute,
+		synth
+	} = props
 
 	const selectNoteIntercept = noteObj => {
 		let noteId = ''
@@ -70,18 +73,6 @@ const Staff = props => {
 			deselectNote(noteId)
 		}
 	}
-
-	// * List of notes adjacent to staff
-	const noteList = notesMaster.reduce((acc, noteObj) => {
-		const notes = [
-			noteObj.notes.flat,
-			noteObj.notes.sharp,
-			noteObj.notes.natural
-		]
-		const selectedNotes = notes.filter(n => n.selected)
-
-		return acc.concat(selectedNotes)
-	}, [])
 
 	return (
 		<div className="staffBox">

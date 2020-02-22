@@ -1,16 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { PolySynth, Compressor, Master } from 'tone'
 import { selectNote, deselectNote } from 'app/redux/actions'
 import { shapeToKeys, formatNoteId } from 'helperFunctions'
 import './Keyboard.css'
 
-const compressor = new Compressor()
-const synth = new PolySynth().chain(compressor, Master)
-
 const Keyboard = props => {
-	const { notesMaster, selectNote, deselectNote, favorSharps, mute } = props
+	const {
+		notesMaster,
+		selectNote,
+		deselectNote,
+		favorSharps,
+		mute,
+		synth
+	} = props
 
 	const selectNoteIntercept = noteObj => {
 		let id = ''

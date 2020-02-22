@@ -11,11 +11,15 @@ const MuteButton = props => {
 		<div>
 			{mute ? (
 				<button className="uiButton muteButton pointer" onClick={toggleMute}>
-					&#x1f507;
+					<span role="img" aria-label="mute">
+						&#x1f507;
+					</span>
 				</button>
 			) : (
 				<button className="uiButton muteButton pointer" onClick={toggleMute}>
-					&#x1f50a;
+					<span role="img" aria-label="unmute">
+						&#x1f50a;
+					</span>
 				</button>
 			)}
 		</div>
