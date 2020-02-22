@@ -15,7 +15,7 @@ const ChordFilters = props => {
 	}
 
 	return (
-		<div>
+		<div className="listingInputs">
 			<div className="onlyRoots">
 				<span className="pointer" onClick={toggleRootMatch}>
 					Root must be in chord

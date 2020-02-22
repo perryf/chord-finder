@@ -126,3 +126,14 @@
 	flex-direction: row;
 	flex-wrap: nowrap;
 }
+
+@media (max-width: 450px) {
+	staff {
+		width: 300px;
+		margin-top: 10px;
+	}
+
+	.noteListName {
+		display: none;
+	}
+}

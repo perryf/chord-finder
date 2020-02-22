@@ -39,9 +39,7 @@
 }
 
 .blackKeys {
-	/* position: absolute; */
 	width: 89%;
-	/* height: 90px; */
 	display: flex;
 	justify-content: space-between;
 	z-index: 2;
@@ -84,4 +82,28 @@
 
 .keySelected {
 	background: lightskyblue !important;
+}
+
+@media (max-width: 900px) {
+	:root {
+		--bg-height: 144px;
+		--bg-width: 240px; /* Increase back to 400px when done with octave visual perfection */
+		--low-high-ratio: calc(5 / 7);
+	}
+
+	.blackKey {
+		height: 70px;
+	}
+}
+
+@media (max-width: 450px) {
+	:root {
+		--bg-height: 86px;
+		--bg-width: 160px; /* Increase back to 400px when done with octave visual perfection */
+		--low-high-ratio: calc(5 / 7);
+	}
+
+	.blackKey {
+		height: 46px;
+	}
 }

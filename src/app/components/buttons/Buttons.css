@@ -1,5 +1,5 @@
 .uiButton {
-	padding: 8px;
+	padding: 4px 8px;
 	border: 1px solid #888;
 	border-radius: 4px;
 	font-weight: bold;
@@ -17,4 +17,10 @@
 
 .playButton {
 	background: linear-gradient(#dddddd, #7799bb);
+}
+
+@media (max-width: 900px) {
+	.uiButton {
+		padding: 2px;
+	}
 }

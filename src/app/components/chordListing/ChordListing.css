@@ -1,5 +1,4 @@
 .chordListingBox {
-	max-width: 450px;
 	margin: 0 20px;
 }
 
@@ -13,6 +12,8 @@
 	padding: 4px;
 	border-radius: 5px;
 	box-shadow: 2px 2px 4px black;
+	max-width: 450px;
+	min-width: 240px;
 }
 
 .chordRow {
@@ -75,6 +76,7 @@
 .checkBoxes {
 	display: flex;
 	justify-content: space-between;
+	flex-wrap: wrap;
 }
 
 .onlyRoots {
@@ -84,4 +86,24 @@
 .perfectMatch {
 	color: red;
 	font-weight: bold;
+}
+
+@media (max-width: 900px) {
+	.chordListingBox {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		margin: 0;
+	}
+
+	.chordListingTop {
+		display: flex;
+		justify-content: space-around;
+		width: 100%;
+	}
+
+	.listingInputs {
+		font-size: 14px;
+	}
 }

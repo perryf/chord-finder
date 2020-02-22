@@ -79,8 +79,10 @@ class ChordListing extends Component {
 
 		return (
 			<div className="chordListingBox">
-				<h4>{totalChords} possible chords</h4>
-				<ChordFilters />
+				<div className="chordListingTop">
+					<h4>{totalChords} possible chords</h4>
+					<ChordFilters />
+				</div>
 				{totalChords > 0 && (
 					<div className="chordListing">
 						{filteredChords.map(c => {
