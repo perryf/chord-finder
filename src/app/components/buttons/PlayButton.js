@@ -1,22 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { PolySynth, Compressor, Master } from 'tone'
 import { getSelectedNotes, formatNoteId } from 'helperFunctions'
 import './Buttons.css'
 
-const compressor = new Compressor()
-const synth = new PolySynth(20).chain(compressor, Master)
-
 const PlayButton = props => {
-	const { noteIds, mute } = props
+	const { noteIds = [], mute, synth } = props
 
 	return (
 		<button
 			className={`uiButton playButton ${mute ? '' : 'pointer'}`}
 			disabled={mute}
 			onClick={() => {
-				synth.triggerAttackRelease(noteIds, '8n')
+				if (noteIds.length > 0) {
+					synth.triggerAttackRelease(noteIds, '8n')
+				}
 			}}
 		>
 			Play

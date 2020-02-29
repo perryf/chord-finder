@@ -80,10 +80,11 @@ const Keyboard = props => {
 
 Keyboard.propTypes = {
 	notesMaster: PropTypes.array.isRequired,
+	synth: PropTypes.object.isRequired,
 	favorSharps: PropTypes.bool.isRequired,
+	mute: PropTypes.bool.isRequired,
 	selectNote: PropTypes.func.isRequired,
-	deselectNote: PropTypes.func.isRequired,
-	mute: PropTypes.bool.isRequired
+	deselectNote: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({

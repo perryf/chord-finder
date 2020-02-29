@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const StaffRow = props => {
-	// TODO -> Clean up var assignments
 	const { handleSelectNote, note, type, prevSelected } = props
 
 	const isMiddleC = note.notes.natural.id === 'c4'

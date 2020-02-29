@@ -85,20 +85,16 @@ const Staff = props => {
 					/>
 				</div>
 
-				{notesMaster.map((note, i) => {
-					const prevSelected = notePositionShifter(i, notesMaster)
-
-					return (
-						<StaffRow
-							key={note.id}
-							handleSelectNote={selectNoteIntercept}
-							note={note}
-							// TODO -> change "row" in data to "space"
-							type={note.staffInfo.staffType === 'line' ? 'line' : 'space'}
-							prevSelected={prevSelected}
-						/>
-					)
-				})}
+				{notesMaster.map((note, i) => (
+					<StaffRow
+						key={note.id}
+						handleSelectNote={selectNoteIntercept}
+						note={note}
+						// TODO -> change "row" in data to "space"
+						type={note.staffInfo.staffType === 'line' ? 'line' : 'space'}
+						prevSelected={notePositionShifter(i, notesMaster)}
+					/>
+				))}
 				<div className="fillerNote" />
 			</div>
 		</div>
@@ -106,11 +102,12 @@ const Staff = props => {
 }
 
 Staff.propTypes = {
-	favorSharps: PropTypes.bool.isRequired,
 	notesMaster: PropTypes.array.isRequired,
+	synth: PropTypes.object.isRequired,
+	favorSharps: PropTypes.bool.isRequired,
+	mute: PropTypes.bool.isRequired,
 	selectNote: PropTypes.func.isRequired,
-	deselectNote: PropTypes.func.isRequired,
-	mute: PropTypes.bool.isRequired
+	deselectNote: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({

@@ -6,14 +6,6 @@ import { changeChordFilter, toggleRootMatch } from 'app/redux/actions'
 const ChordFilters = props => {
 	const { checkBoxes, rootMatch, changeChordFilter, toggleRootMatch } = props
 
-	const handleClick = ({ target: { value } }) => {
-		changeChordFilter(value)
-	}
-
-	const handleTextClick = value => {
-		changeChordFilter(value)
-	}
-
 	return (
 		<div className="listingInputs">
 			<div className="onlyRoots">
@@ -32,7 +24,7 @@ const ChordFilters = props => {
 
 			<div className="checkBoxes">
 				<div>
-					<span className="pointer" onClick={() => handleTextClick('basic')}>
+					<span className="pointer" onClick={() => changeChordFilter('basic')}>
 						Basic
 					</span>
 					<input
@@ -41,11 +33,11 @@ const ChordFilters = props => {
 						value="basic"
 						className="pointer"
 						checked={checkBoxes.basic}
-						onChange={handleClick}
+						onChange={() => changeChordFilter('basic')}
 					/>
 				</div>
 				<div>
-					<span className="pointer" onClick={() => handleTextClick('common')}>
+					<span className="pointer" onClick={() => changeChordFilter('common')}>
 						Common
 					</span>
 					<input
@@ -54,11 +46,14 @@ const ChordFilters = props => {
 						value="common"
 						className="pointer"
 						checked={checkBoxes.common}
-						onChange={handleClick}
+						onChange={() => changeChordFilter('common')}
 					/>
 				</div>
 				<div>
-					<span className="pointer" onClick={() => handleTextClick('uncommon')}>
+					<span
+						className="pointer"
+						onClick={() => changeChordFilter('uncommon')}
+					>
 						Uncommon
 					</span>
 					<input
@@ -67,11 +62,11 @@ const ChordFilters = props => {
 						value="uncommon"
 						className="pointer"
 						checked={checkBoxes.uncommon}
-						onChange={handleClick}
+						onChange={() => changeChordFilter('uncommon')}
 					/>
 				</div>
 				<div>
-					<span className="pointer" onClick={() => handleTextClick('rare')}>
+					<span className="pointer" onClick={() => changeChordFilter('rare')}>
 						Rare
 					</span>
 					<input
@@ -80,7 +75,7 @@ const ChordFilters = props => {
 						value="rare"
 						className="pointer"
 						checked={checkBoxes.rare}
-						onChange={handleClick}
+						onChange={() => changeChordFilter('rare')}
 					/>
 				</div>
 			</div>

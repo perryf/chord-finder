@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { PolySynth, Compressor, Master } from 'tone'
 import {
 	getSelectedNotes,
 	getMatchingChords,
@@ -9,9 +8,6 @@ import {
 } from 'helperFunctions'
 import ChordFilters from './ChordFilters'
 import './ChordListing.css'
-
-const compressor = new Compressor()
-const synth = new PolySynth(20).chain(compressor, Master)
 
 const stateInit = { hoverName: '', hoverDetailArr: [{}] }
 
@@ -35,6 +31,7 @@ class ChordListing extends Component {
 			const noteName = getNoteByValue(n, favorSharps)
 			const altName = getNoteByValue(n, !favorSharps)
 
+			// * Moves note octave higher if absolute value is lower than preceding note (i.e. Bb, D -- D would be moved up/given 5)
 			if (chordInfo.notes[i - 1] && n < chordInfo.notes[i - 1]) {
 				noteRegister = 5
 			}
@@ -53,7 +50,8 @@ class ChordListing extends Component {
 	}
 
 	playChord = () => {
-		if (!this.props.mute) {
+		const { synth, mute } = this.props
+		if (!mute) {
 			const noteIds = this.state.hoverDetailArr.map(n => n.noteId)
 
 			if (noteIds) {
@@ -91,7 +89,6 @@ class ChordListing extends Component {
 									<div key={c.id}>
 										<div className="chordRow">
 											{c.chords.map(chord => {
-												// TODO -> Redo this var assignment
 												const chordPrefix = `${
 													favorSharps
 														? c.noteInfo.label
@@ -157,8 +154,9 @@ class ChordListing extends Component {
 }
 
 ChordListing.propTypes = {
-	matchingChords: PropTypes.array.isRequired,
 	selectedNotes: PropTypes.array.isRequired,
+	matchingChords: PropTypes.array.isRequired,
+	synth: PropTypes.object.isRequired,
 	checkBoxes: PropTypes.object.isRequired,
 	rootMatch: PropTypes.bool.isRequired,
 	favorSharps: PropTypes.bool.isRequired,
