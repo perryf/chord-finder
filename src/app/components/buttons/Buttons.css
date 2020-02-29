@@ -12,7 +12,7 @@
 .muteButton {
 	background: linear-gradient(#ddd, #4b8);
 	font-size: 20px;
-	padding: 4px;
+	padding: 0 4px;
 }
 
 .playButton {
@@ -21,6 +21,6 @@
 
 @media (max-width: 900px) {
 	.uiButton {
-		padding: 2px;
+		padding: 0 4px;
 	}
 }

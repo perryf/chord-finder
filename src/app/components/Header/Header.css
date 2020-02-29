@@ -17,3 +17,33 @@
 	margin: 0;
 	padding: 8px 0;
 }
+
+.madeBy {
+	animation: colorChange 3s infinite linear;
+	animation-play-state: paused;
+}
+
+.madeBy:hover {
+	animation-play-state: running;
+}
+
+@keyframes colorChange {
+	0% {
+		color: #000;
+	}
+	20% {
+		color: cyan;
+	}
+	40% {
+		color: goldenrod;
+	}
+	60% {
+		color: red;
+	}
+	80% {
+		color: lightskyblue;
+	}
+	100% {
+		color: #000;
+	}
+}
