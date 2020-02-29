@@ -30,10 +30,23 @@ PlayButton.propTypes = {
 }
 
 const mapStateToProps = state => {
-	const selectedNotes = getSelectedNotes(state.notesMaster)
+	const notes = getSelectedNotes(state.notesMaster)
+
+	// * Filters out dups
+	const noteVals = []
+	const selectedNotes = notes
+		.filter(n => {
+			if (!noteVals.includes(n.value)) {
+				noteVals.push(n.value)
+				return true
+			} else {
+				return false
+			}
+		})
+		.map(n => formatNoteId(n.id))
 
 	return {
-		noteIds: selectedNotes.map(n => formatNoteId(n.id)),
+		noteIds: selectedNotes,
 		mute: state.ui.mute
 	}
 }

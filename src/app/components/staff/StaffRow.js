@@ -70,10 +70,7 @@ const StaffRow = props => {
 					<div className="noteListName">{noteList.join(', ')}</div>
 				</div>
 			) : (
-				<div
-					className="staffRow flexRowCenter"
-					onClick={() => handleSelectNote(note)}
-				>
+				<div className="staffRow flexRowCenter">
 					{isFlat && (
 						<div id={note.id} tabIndex={-1} className={noteClass}>
 							<span tabIndex={-1} className={`${accClass} flat`}>

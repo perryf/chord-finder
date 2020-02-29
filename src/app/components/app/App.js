@@ -13,7 +13,10 @@ class App extends Component {
 
 		Tone.context.resume()
 		const compressor = new Tone.Compressor()
-		this.synth = new Tone.PolySynth().chain(compressor, Tone.Master)
+		this.synth = new Tone.PolySynth({ volume: -12 }).chain(
+			compressor,
+			Tone.Master
+		)
 	}
 
 	render() {
