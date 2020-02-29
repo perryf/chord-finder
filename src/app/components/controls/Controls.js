@@ -20,7 +20,7 @@ const Controls = props => {
 		changeOscillator,
 		synth,
 		partialCount,
-		waveType
+		type
 	} = props
 
 	return (
@@ -58,7 +58,7 @@ const Controls = props => {
 			<div className="instrumentControls">
 				<div>
 					<span>Wave</span>
-					<select name="waveType" value={waveType} onChange={changeOscillator}>
+					<select name="type" value={type} onChange={changeOscillator}>
 						<option value="sine">Sine</option>
 						<option value="square">Square</option>
 						<option value="triangle">Triangle</option>
@@ -82,6 +82,10 @@ const Controls = props => {
 						<option value="6">6</option>
 						<option value="7">7</option>
 						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
 					</select>
 				</div>
 			</div>
@@ -109,7 +113,7 @@ Controls.propTypes = {
 	changeOscillator: PropTypes.func.isRequired,
 	changePartials: PropTypes.func.isRequired,
 	partialCount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-	waveType: PropTypes.string.isRequired
+	type: PropTypes.string.isRequired
 }
 
 const mapStateToProps = state => ({ favorSharps: state.ui.favorSharps })

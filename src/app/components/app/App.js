@@ -7,7 +7,7 @@ import Controls from '../controls/Controls'
 import ChordListing from '../chordListing/ChordListing'
 import './App.css'
 
-const initSynth = { waveType: 'sine', partialCount: 0 }
+const initSynth = { type: 'sine', partialCount: 2 }
 
 class App extends Component {
 	constructor(props) {
@@ -34,7 +34,7 @@ class App extends Component {
 				}
 			})
 
-			return { waveType: value }
+			return { type: value }
 		})
 	}
 
@@ -42,7 +42,7 @@ class App extends Component {
 		this.setState(state => {
 			this.synth.set({
 				oscillator: {
-					type: state.waveType,
+					type: state.type,
 					partialCount: value
 				}
 			})
