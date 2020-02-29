@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "//perryf.github.io/chord-reader/static/css/main.8bcf7878.chunk.css",
-    "main.js": "//perryf.github.io/chord-reader/static/js/main.169894d8.chunk.js",
-    "main.js.map": "//perryf.github.io/chord-reader/static/js/main.169894d8.chunk.js.map",
+    "main.css": "//perryf.github.io/chord-reader/static/css/main.8f018c71.chunk.css",
+    "main.js": "//perryf.github.io/chord-reader/static/js/main.0ec87645.chunk.js",
+    "main.js.map": "//perryf.github.io/chord-reader/static/js/main.0ec87645.chunk.js.map",
     "runtime-main.js": "//perryf.github.io/chord-reader/static/js/runtime-main.5907b31c.js",
     "runtime-main.js.map": "//perryf.github.io/chord-reader/static/js/runtime-main.5907b31c.js.map",
-    "static/js/2.3c0303a6.chunk.js": "//perryf.github.io/chord-reader/static/js/2.3c0303a6.chunk.js",
-    "static/js/2.3c0303a6.chunk.js.map": "//perryf.github.io/chord-reader/static/js/2.3c0303a6.chunk.js.map",
+    "static/js/2.744db1e1.chunk.js": "//perryf.github.io/chord-reader/static/js/2.744db1e1.chunk.js",
+    "static/js/2.744db1e1.chunk.js.map": "//perryf.github.io/chord-reader/static/js/2.744db1e1.chunk.js.map",
     "index.html": "//perryf.github.io/chord-reader/index.html",
-    "precache-manifest.89550c18dde98c9bbc388e5c204506e2.js": "//perryf.github.io/chord-reader/precache-manifest.89550c18dde98c9bbc388e5c204506e2.js",
+    "precache-manifest.5facca6546d100da66240ca96d6e4119.js": "//perryf.github.io/chord-reader/precache-manifest.5facca6546d100da66240ca96d6e4119.js",
     "service-worker.js": "//perryf.github.io/chord-reader/service-worker.js",
-    "static/css/main.8bcf7878.chunk.css.map": "//perryf.github.io/chord-reader/static/css/main.8bcf7878.chunk.css.map"
+    "static/css/main.8f018c71.chunk.css.map": "//perryf.github.io/chord-reader/static/css/main.8f018c71.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.5907b31c.js",
-    "static/js/2.3c0303a6.chunk.js",
-    "static/css/main.8bcf7878.chunk.css",
-    "static/js/main.169894d8.chunk.js"
+    "static/js/2.744db1e1.chunk.js",
+    "static/css/main.8f018c71.chunk.css",
+    "static/js/main.0ec87645.chunk.js"
   ]
 }
