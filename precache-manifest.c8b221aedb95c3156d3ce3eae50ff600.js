@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1c7d614c9e3e1126275ad8b51be6d2e7",
+    "revision": "1dd82692c73636dbab4d9e93ac3ef3e3",
     "url": "//perryf.github.io/chord-reader/index.html"
   },
   {
-    "revision": "3dbca56f102f8dd978b2",
+    "revision": "5c6b33e8882c61c1a7ef",
     "url": "//perryf.github.io/chord-reader/static/css/main.8f018c71.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "//perryf.github.io/chord-reader/static/js/2.72e0a6cc.chunk.js"
   },
   {
-    "revision": "3dbca56f102f8dd978b2",
-    "url": "//perryf.github.io/chord-reader/static/js/main.2a7cf3cd.chunk.js"
+    "revision": "5c6b33e8882c61c1a7ef",
+    "url": "//perryf.github.io/chord-reader/static/js/main.c43e39df.chunk.js"
   },
   {
     "revision": "3caa7a630d9e64bbd9ef",
