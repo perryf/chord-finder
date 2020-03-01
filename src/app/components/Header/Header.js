@@ -5,7 +5,10 @@ const Header = () => (
 	<div className="homeHeader">
 		<h1 className="mainTitle">Chord Identifier</h1>
 		<p>
-			<a className="cancelLinkStyle madeBy" href="https://perryf.github.io/">
+			<a
+				className="cancelLinkStyle madeBy"
+				href="https://github.com/perryf/chord-reader"
+			>
 				Made by Perry
 			</a>
 		</p>
