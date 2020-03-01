@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import Tone from 'tone'
 import {
 	getSelectedNotes,
 	getMatchingChords,
@@ -9,12 +10,15 @@ import {
 import ChordFilters from './ChordFilters'
 import './ChordListing.css'
 
-const stateInit = { hoverName: '', hoverDetailArr: [{}] }
+const hoverInit = { hoverName: '', hoverDetailArr: [{}] }
 
 class ChordListing extends Component {
 	constructor(props) {
 		super(props)
-		this.state = stateInit
+		this.state = {
+			...hoverInit,
+			playing: false
+		}
 	}
 
 	handleHoverChord = (name, chordInfo) => {
@@ -22,25 +26,29 @@ class ChordListing extends Component {
 
 		// * For when mouse leaves chord
 		if (!name) {
-			this.setState(stateInit)
+			this.setState(hoverInit)
 			return
 		}
 
 		let noteRegister = 4
-		const chordNotes = chordInfo.notes.reduce((acc, n, i) => {
+		const chordNotes = chordInfo.notes.reduce((acc, n, i, arr) => {
 			const noteName = getNoteByValue(n, favorSharps)
 			const altName = getNoteByValue(n, !favorSharps)
+			const prev = arr[i - 1]
 
 			// * Moves note octave higher if absolute value is lower than preceding note (i.e. Bb, D -- D would be moved up/given 5)
-			if (chordInfo.notes[i - 1] && n < chordInfo.notes[i - 1]) {
-				noteRegister = 5
+			if (prev && n < prev) {
+				const found = acc.find(n => n.value === prev)
+				noteRegister = found.noteRegister + 1
 			}
 
 			const note = {
 				name:
 					noteName + (altName && altName !== noteName ? ` [${altName}]` : ''),
 				noteId: noteName + noteRegister,
-				selected: selectedNotes.find(n => n.label === noteName)
+				noteRegister,
+				value: n,
+				selected: selectedNotes.find(n => n.label === noteName) || null
 			}
 
 			return [note].concat(acc)
@@ -54,8 +62,30 @@ class ChordListing extends Component {
 		if (!mute) {
 			const noteIds = this.state.hoverDetailArr.map(n => n.noteId)
 
-			if (noteIds) {
-				synth.triggerAttackRelease(noteIds, '8n')
+			if (noteIds && !this.state.playing) {
+				this.setState({ playing: true })
+				// synth.triggerAttackRelease(noteIds, '8n') // * Block chord
+
+				let i = 0
+				const pattern = new Tone.Pattern(
+					(_, note) => {
+						i++
+						synth.triggerAttackRelease(note, '16n')
+						if (i === noteIds.length) {
+							pattern.stop()
+							Tone.Transport.stop()
+							this.setState({ playing: false })
+						}
+					},
+					noteIds,
+					'down'
+				)
+
+				pattern.iterations = noteIds.length
+				pattern.interval = '16n'
+
+				pattern.start(0)
+				Tone.Transport.start()
 			}
 		}
 	}
