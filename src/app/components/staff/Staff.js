@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { selectNote, deselectNote } from 'app/redux/actions'
+import { selectNote, deselectNote, handleHoverNote } from 'app/redux/actions'
 import { shapeToStaff, formatNoteId } from 'helperFunctions'
 import StaffRow from './StaffRow'
 import './Staff.css'
@@ -37,6 +37,8 @@ const Staff = props => {
 		favorSharps,
 		selectNote,
 		deselectNote,
+		handleHoverNote,
+		hoverNote,
 		mute,
 		synth
 	} = props
@@ -74,6 +76,10 @@ const Staff = props => {
 		}
 	}
 
+	const hoverIntercept = noteObj => {
+		noteObj ? handleHoverNote(noteObj.id) : handleHoverNote(null)
+	}
+
 	return (
 		<div className="staffBox">
 			<div className="staff">
@@ -89,6 +95,8 @@ const Staff = props => {
 					<StaffRow
 						key={note.id}
 						handleSelectNote={selectNoteIntercept}
+						handleHover={hoverIntercept}
+						hoverNote={hoverNote}
 						note={note}
 						// TODO -> change "row" in data to "space"
 						type={note.staffInfo.staffType === 'line' ? 'line' : 'space'}
@@ -106,19 +114,23 @@ Staff.propTypes = {
 	synth: PropTypes.object.isRequired,
 	favorSharps: PropTypes.bool.isRequired,
 	mute: PropTypes.bool.isRequired,
+	hoverNote: PropTypes.string,
 	selectNote: PropTypes.func.isRequired,
-	deselectNote: PropTypes.func.isRequired
+	deselectNote: PropTypes.func.isRequired,
+	handleHoverNote: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
 	notesMaster: shapeToStaff(state).reverse(),
 	favorSharps: state.ui.favorSharps,
-	mute: state.ui.mute
+	mute: state.ui.mute,
+	hoverNote: state.ui.hoverNote
 })
 
 const mapDispatchToProps = dispatch => ({
 	selectNote: noteId => dispatch(selectNote(noteId)),
-	deselectNote: noteId => dispatch(deselectNote(noteId))
+	deselectNote: noteId => dispatch(deselectNote(noteId)),
+	handleHoverNote: noteId => dispatch(handleHoverNote(noteId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Staff)

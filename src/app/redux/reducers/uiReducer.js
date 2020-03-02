@@ -4,7 +4,8 @@ import {
 	CHANGE_CHORD_FILTER,
 	TOGGLE_ROOT_MATCH,
 	TOGGLE_MUTE,
-	TOGGLE_ARP
+	TOGGLE_ARP,
+	HOVER_NOTE
 } from 'app/redux/types'
 
 const initialState = {
@@ -17,7 +18,8 @@ const initialState = {
 		rare: false
 	},
 	mute: false,
-	arpeggiate: true
+	arpeggiate: true,
+	hoverNote: null
 }
 
 export const ui = (state = initialState, action) => {
@@ -50,6 +52,11 @@ export const ui = (state = initialState, action) => {
 			return {
 				...state,
 				arpeggiate: !state.arpeggiate
+			}
+		case HOVER_NOTE:
+			return {
+				...state,
+				hoverNote: payload.noteId
 			}
 		default:
 			return state

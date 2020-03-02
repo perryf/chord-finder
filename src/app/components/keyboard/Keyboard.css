@@ -54,10 +54,6 @@
 	z-index: 1;
 }
 
-.key:hover {
-	background: deepskyblue;
-}
-
 .whiteKey {
 	background: white;
 	border-left: 1px solid black;
@@ -88,8 +84,9 @@
 	background: lightskyblue;
 }
 
-.keySelected:hover {
-	background: deepskyblue;
+/* Also applies to staff */
+.hovered {
+	background: lightblue;
 }
 
 @media (max-width: 900px) {

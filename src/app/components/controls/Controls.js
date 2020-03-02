@@ -1,11 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import {
-	favorSharps,
-	favorFlats,
-	handleClearNotes
-} from 'app/redux/actions/uiActions'
+import { favorSharps, favorFlats, handleClearNotes } from 'app/redux/actions'
 import PlayButton from '../buttons/PlayButton'
 import MuteButton from '../buttons/MuteButton'
 import ArpButton from '../buttons/ArpButton'

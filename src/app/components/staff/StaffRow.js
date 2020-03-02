@@ -2,7 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const StaffRow = props => {
-	const { handleSelectNote, note, type, prevSelected } = props
+	const {
+		handleSelectNote,
+		handleHover,
+		note,
+		hoverNote,
+		type,
+		prevSelected
+	} = props
 
 	const isMiddleC = note.notes.natural.id === 'c4'
 	const isFlat = note.notes.flat.selected
@@ -32,9 +39,14 @@ const StaffRow = props => {
 	}, [])
 
 	return (
+		// TODO -> Clean up hover effect
 		<div
-			className="staffLineBox staffRow flexRowCenter"
+			className={`staffLineBox staffRow flexRowCenter ${
+				hoverNote === note.id ? 'hovered' : ''
+			}`}
 			onClick={() => handleSelectNote(note)}
+			onMouseEnter={() => handleHover(note)}
+			onMouseLeave={() => handleHover(null)}
 		>
 			{type === 'line' ? (
 				<div
@@ -69,7 +81,11 @@ const StaffRow = props => {
 					<div className="noteListName">{noteList.join(', ')}</div>
 				</div>
 			) : (
-				<div className="staffRow flexRowCenter">
+				<div
+					className={`staffRow flexRowCenter ${
+						hoverNote === note.id ? 'hovered' : ''
+					}`}
+				>
 					{isFlat && (
 						<div id={note.id} tabIndex={-1} className={noteClass}>
 							<span tabIndex={-1} className={`${accClass} flat`}>
@@ -103,10 +119,12 @@ const StaffRow = props => {
 }
 
 StaffRow.propTypes = {
-	handleSelectNote: PropTypes.func.isRequired,
 	note: PropTypes.object.isRequired,
 	type: PropTypes.oneOf(['line', 'space']).isRequired,
-	prevSelected: PropTypes.bool
+	prevSelected: PropTypes.bool,
+	hoverNote: PropTypes.string,
+	handleSelectNote: PropTypes.func.isRequired,
+	handleHover: PropTypes.func.isRequired
 }
 
 StaffRow.defaultProps = {

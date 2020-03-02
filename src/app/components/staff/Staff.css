@@ -19,10 +19,6 @@
 	background: white;
 }
 
-.staffRow:hover {
-	background: deepskyblue;
-}
-
 .staffLineBox {
 	flex-direction: column;
 }
