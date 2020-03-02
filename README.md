@@ -2,15 +2,16 @@
 
 A place to figure out what chords you've been playing
 
-[Deployed early release version!](https://perryf.github.io/chord-finder/)
-
 ## Development (Under construction!)
 
 > This is currently a work in progress...more coming soon!
+> [Deployed early release version!](https://perryf.github.io/chord-finder/)
 
-## Technologies
+## Technologies / Tools
 
 React, Redux, Tone.js
+
+Only image used is the treble clef, everything else is built with good ol' fashion css
 
 ## Misc
 
