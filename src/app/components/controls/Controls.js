@@ -88,15 +88,15 @@ const Controls = props => {
 			</div>
 
 			<div className="flexRow justifyAround">
-				<PlayButton synth={synth} />
-				<ArpButton />
+				<MuteButton />
 				<button
 					className="uiButton clearStaffButton pointer"
 					onClick={handleClearNotes}
 				>
 					Clear Staff
 				</button>
-				<MuteButton />
+				<ArpButton />
+				<PlayButton synth={synth} />
 			</div>
 		</div>
 	)
