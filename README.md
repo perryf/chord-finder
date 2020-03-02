@@ -1,8 +1,8 @@
-# Chord Reader
+# Chord Finder
 
 A place to figure out what chords you've been playing
 
-[Deployed early release version!](https://perryf.github.io/chord-reader/)
+[Deployed early release version!](https://perryf.github.io/chord-finder/)
 
 ## Development (Under construction!)
 

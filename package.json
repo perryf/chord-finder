@@ -1,8 +1,8 @@
 {
-	"name": "chord-reader-v2",
+	"name": "chord-finder",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "https://https://perryf.github.io/chord-reader/",
+	"homepage": "https://https://perryf.github.io/chord-finder/",
 	"dependencies": {
 		"gh-pages": "^2.2.0",
 		"react": "^16.10.2",
