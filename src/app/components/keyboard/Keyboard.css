@@ -54,6 +54,10 @@
 	z-index: 1;
 }
 
+.key:hover {
+	background: deepskyblue;
+}
+
 .whiteKey {
 	background: white;
 	border-left: 1px solid black;
@@ -81,7 +85,11 @@
 }
 
 .keySelected {
-	background: lightskyblue !important;
+	background: lightskyblue;
+}
+
+.keySelected:hover {
+	background: deepskyblue;
 }
 
 @media (max-width: 900px) {

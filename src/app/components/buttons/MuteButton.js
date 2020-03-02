@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { toggleMute } from 'app/redux/actions'
-import './Buttons.css'
 
 const MuteButton = props => {
 	const { mute, toggleMute } = props

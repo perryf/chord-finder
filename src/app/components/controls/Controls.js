@@ -8,6 +8,7 @@ import {
 } from 'app/redux/actions/uiActions'
 import PlayButton from '../buttons/PlayButton'
 import MuteButton from '../buttons/MuteButton'
+import ArpButton from '../buttons/ArpButton'
 import './Controls.css'
 
 const Controls = props => {
@@ -91,14 +92,15 @@ const Controls = props => {
 			</div>
 
 			<div className="flexRow justifyAround">
-				<MuteButton />
+				<PlayButton synth={synth} />
+				<ArpButton />
 				<button
 					className="uiButton clearStaffButton pointer"
 					onClick={handleClearNotes}
 				>
 					Clear Staff
 				</button>
-				<PlayButton synth={synth} />
+				<MuteButton />
 			</div>
 		</div>
 	)

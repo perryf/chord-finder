@@ -58,34 +58,40 @@ class ChordListing extends Component {
 	}
 
 	playChord = () => {
-		const { synth, mute } = this.props
+		const { synth, mute, arpeggiate } = this.props
 		if (!mute) {
 			const noteIds = this.state.hoverDetailArr.map(n => n.noteId)
 
 			if (noteIds && !this.state.playing) {
 				this.setState({ playing: true })
-				// synth.triggerAttackRelease(noteIds, '8n') // * Block chord
 
-				let i = 0
-				const pattern = new Tone.Pattern(
-					(_, note) => {
-						i++
-						synth.triggerAttackRelease(note, '16n')
-						if (i === noteIds.length) {
-							pattern.stop()
-							Tone.Transport.stop()
-							this.setState({ playing: false })
-						}
-					},
-					noteIds,
-					'down'
-				)
+				// * Arpeggio
+				if (arpeggiate) {
+					let i = 0
+					const pattern = new Tone.Pattern(
+						(_, note) => {
+							i++
+							synth.triggerAttackRelease(note, '16n')
+							if (i === noteIds.length) {
+								pattern.stop()
+								Tone.Transport.stop()
+								this.setState({ playing: false })
+							}
+						},
+						noteIds,
+						'down'
+					)
 
-				pattern.iterations = noteIds.length
-				pattern.interval = '16n'
+					pattern.iterations = noteIds.length
+					pattern.interval = '16n'
 
-				pattern.start(0)
-				Tone.Transport.start()
+					pattern.start(0)
+					Tone.Transport.start()
+					// * Block Chord
+				} else {
+					synth.triggerAttackRelease(noteIds, '8n')
+					this.setState({ playing: false })
+				}
 			}
 		}
 	}
@@ -190,7 +196,8 @@ ChordListing.propTypes = {
 	checkBoxes: PropTypes.object.isRequired,
 	rootMatch: PropTypes.bool.isRequired,
 	favorSharps: PropTypes.bool.isRequired,
-	mute: PropTypes.bool.isRequired
+	mute: PropTypes.bool.isRequired,
+	arpeggiate: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = ({ notesMaster = {}, ui }) => {
@@ -203,7 +210,8 @@ const mapStateToProps = ({ notesMaster = {}, ui }) => {
 		checkBoxes: ui.checkBoxes,
 		favorSharps: ui.favorSharps,
 		rootMatch: ui.rootMatch,
-		mute: ui.mute
+		mute: ui.mute,
+		arpeggiate: ui.arpeggiate
 	}
 }
 

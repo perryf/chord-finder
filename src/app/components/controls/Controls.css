@@ -1,5 +1,5 @@
 .controlsBox {
-	width: 40%;
+	width: 50%;
 	padding: 8px;
 	background: lightgrey;
 	border: 2px grey solid;
@@ -23,5 +23,5 @@
 .instrumentControls {
 	margin-bottom: 12px;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 }

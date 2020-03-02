@@ -3,7 +3,8 @@ import {
 	FAVOR_FLATS,
 	CHANGE_CHORD_FILTER,
 	TOGGLE_ROOT_MATCH,
-	TOGGLE_MUTE
+	TOGGLE_MUTE,
+	TOGGLE_ARP
 } from 'app/redux/types'
 
 const initialState = {
@@ -15,7 +16,8 @@ const initialState = {
 		uncommon: false,
 		rare: false
 	},
-	mute: false
+	mute: false,
+	arpeggiate: true
 }
 
 export const ui = (state = initialState, action) => {
@@ -43,6 +45,11 @@ export const ui = (state = initialState, action) => {
 			return {
 				...state,
 				mute: !state.mute
+			}
+		case TOGGLE_ARP:
+			return {
+				...state,
+				arpeggiate: !state.arpeggiate
 			}
 		default:
 			return state

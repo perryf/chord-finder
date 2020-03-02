@@ -4,7 +4,8 @@ import {
 	CLEAR_NOTES,
 	CHANGE_CHORD_FILTER,
 	TOGGLE_ROOT_MATCH,
-	TOGGLE_MUTE
+	TOGGLE_MUTE,
+	TOGGLE_ARP
 } from 'app/redux/types'
 
 export const favorSharps = () => ({ type: FAVOR_SHARPS })
@@ -21,3 +22,5 @@ export const changeChordFilter = value => ({
 export const toggleRootMatch = () => ({ type: TOGGLE_ROOT_MATCH })
 
 export const toggleMute = () => ({ type: TOGGLE_MUTE })
+
+export const toggleArp = () => ({ type: TOGGLE_ARP })

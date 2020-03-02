@@ -63,13 +63,15 @@ const Keyboard = props => {
 							className="blackKeyBox"
 							key={noteObj.id}
 						>
-							<div className={`blackKey ${selected ? 'keySelected' : ''}`} />
+							<div
+								className={`key blackKey ${selected ? 'keySelected' : ''}`}
+							/>
 						</div>
 					) : (
 						<div
 							onClick={() => selectNoteIntercept(noteObj)}
 							key={noteObj.id}
-							className={`whiteKey ${selected ? 'keySelected' : ''}`}
+							className={`key whiteKey ${selected ? 'keySelected' : ''}`}
 						/>
 					)
 				})}
