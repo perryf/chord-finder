@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "//perryf.github.io/chord-reader/static/css/main.a8bcd7b3.chunk.css",
-    "main.js": "//perryf.github.io/chord-reader/static/js/main.5dd8612a.chunk.js",
-    "main.js.map": "//perryf.github.io/chord-reader/static/js/main.5dd8612a.chunk.js.map",
-    "runtime-main.js": "//perryf.github.io/chord-reader/static/js/runtime-main.5907b31c.js",
-    "runtime-main.js.map": "//perryf.github.io/chord-reader/static/js/runtime-main.5907b31c.js.map",
-    "static/js/2.a1680ec5.chunk.js": "//perryf.github.io/chord-reader/static/js/2.a1680ec5.chunk.js",
-    "static/js/2.a1680ec5.chunk.js.map": "//perryf.github.io/chord-reader/static/js/2.a1680ec5.chunk.js.map",
-    "index.html": "//perryf.github.io/chord-reader/index.html",
-    "precache-manifest.c9be673d5c12b1b5a5aa30acdfca1c88.js": "//perryf.github.io/chord-reader/precache-manifest.c9be673d5c12b1b5a5aa30acdfca1c88.js",
-    "service-worker.js": "//perryf.github.io/chord-reader/service-worker.js",
-    "static/css/main.a8bcd7b3.chunk.css.map": "//perryf.github.io/chord-reader/static/css/main.a8bcd7b3.chunk.css.map"
+    "main.css": "//perryf.github.io/chord-finder/static/css/main.a8bcd7b3.chunk.css",
+    "main.js": "//perryf.github.io/chord-finder/static/js/main.0911947b.chunk.js",
+    "main.js.map": "//perryf.github.io/chord-finder/static/js/main.0911947b.chunk.js.map",
+    "runtime-main.js": "//perryf.github.io/chord-finder/static/js/runtime-main.d62ad13b.js",
+    "runtime-main.js.map": "//perryf.github.io/chord-finder/static/js/runtime-main.d62ad13b.js.map",
+    "static/js/2.41078a17.chunk.js": "//perryf.github.io/chord-finder/static/js/2.41078a17.chunk.js",
+    "static/js/2.41078a17.chunk.js.map": "//perryf.github.io/chord-finder/static/js/2.41078a17.chunk.js.map",
+    "index.html": "//perryf.github.io/chord-finder/index.html",
+    "precache-manifest.d860e102baee20b39edd00d92fcc4a50.js": "//perryf.github.io/chord-finder/precache-manifest.d860e102baee20b39edd00d92fcc4a50.js",
+    "service-worker.js": "//perryf.github.io/chord-finder/service-worker.js",
+    "static/css/main.a8bcd7b3.chunk.css.map": "//perryf.github.io/chord-finder/static/css/main.a8bcd7b3.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.5907b31c.js",
-    "static/js/2.a1680ec5.chunk.js",
+    "static/js/runtime-main.d62ad13b.js",
+    "static/js/2.41078a17.chunk.js",
     "static/css/main.a8bcd7b3.chunk.css",
-    "static/js/main.5dd8612a.chunk.js"
+    "static/js/main.0911947b.chunk.js"
   ]
 }
