@@ -7,6 +7,7 @@ import {
 	getMatchingChords,
 	getNoteByValue
 } from 'helperFunctions'
+import Instructions from '../instructions/Instructions'
 import ChordFilters from './ChordFilters'
 import './ChordListing.css'
 
@@ -113,6 +114,7 @@ class ChordListing extends Component {
 
 		return (
 			<div className="chordListingBox">
+				<Instructions />
 				<div className="chordListingTop">
 					<h4>{totalChords} possible chords</h4>
 					<ChordFilters />

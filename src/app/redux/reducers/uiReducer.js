@@ -5,7 +5,8 @@ import {
 	TOGGLE_ROOT_MATCH,
 	TOGGLE_MUTE,
 	TOGGLE_ARP,
-	HOVER_NOTE
+	HOVER_NOTE,
+	TOGGLE_INSTRUCTIONS
 } from 'app/redux/types'
 
 const initialState = {
@@ -19,7 +20,8 @@ const initialState = {
 	},
 	mute: false,
 	arpeggiate: true,
-	hoverNote: null
+	hoverNote: null,
+	showInstructions: false
 }
 
 export const ui = (state = initialState, action) => {
@@ -57,6 +59,11 @@ export const ui = (state = initialState, action) => {
 			return {
 				...state,
 				hoverNote: payload.noteId
+			}
+		case TOGGLE_INSTRUCTIONS:
+			return {
+				...state,
+				showInstructions: !state.showInstructions
 			}
 		default:
 			return state

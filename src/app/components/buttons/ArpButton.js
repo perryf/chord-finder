@@ -8,7 +8,7 @@ const ArpButton = props => {
 
 	return (
 		<button className="uiButton arpButton pointer" onClick={toggleArp}>
-			{arpeggiate ? 'Arpeggio On' : 'Arpeggio Off'}
+			{arpeggiate ? 'Arpeggiate chord' : 'Block chord'}
 		</button>
 	)
 }

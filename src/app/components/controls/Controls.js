@@ -1,7 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { favorSharps, favorFlats, handleClearNotes } from 'app/redux/actions'
+import {
+	favorSharps,
+	favorFlats,
+	handleClearNotes,
+	toggleInstructions
+} from 'app/redux/actions'
 import PlayButton from '../buttons/PlayButton'
 import MuteButton from '../buttons/MuteButton'
 import ArpButton from '../buttons/ArpButton'
@@ -13,6 +18,7 @@ const Controls = props => {
 		handleFavorSharps,
 		handleFavorFlats,
 		handleClearNotes,
+		toggleInstructions,
 		changePartials,
 		changeOscillator,
 		synth,
@@ -22,6 +28,14 @@ const Controls = props => {
 
 	return (
 		<div className="controlsBox">
+			<div className="instructionsButtonBox">
+				<button
+					className="uiButton instructionsButton pointer"
+					onClick={toggleInstructions}
+				>
+					Instructions
+				</button>
+			</div>
 			<div className="radioBox">
 				<div className="radioInputBox">
 					<span className="pointer" onClick={handleFavorSharps}>
@@ -54,7 +68,7 @@ const Controls = props => {
 
 			<div className="instrumentControls">
 				<div>
-					<span>Wave</span>
+					<span className="dropdownLabel">Wave</span>
 					<select name="type" value={type} onChange={changeOscillator}>
 						<option value="sine">Sine</option>
 						<option value="square">Square</option>
@@ -64,7 +78,7 @@ const Controls = props => {
 				</div>
 
 				<div>
-					<span>Partials</span>
+					<span className="dropdownLabel">Partials</span>
 					<select
 						name="partialCount"
 						value={partialCount}
@@ -108,6 +122,7 @@ Controls.propTypes = {
 	handleFavorSharps: PropTypes.func.isRequired,
 	handleFavorFlats: PropTypes.func.isRequired,
 	handleClearNotes: PropTypes.func.isRequired,
+	toggleInstructions: PropTypes.func.isRequired,
 	changeOscillator: PropTypes.func.isRequired,
 	changePartials: PropTypes.func.isRequired,
 	partialCount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -119,7 +134,8 @@ const mapStateToProps = state => ({ favorSharps: state.ui.favorSharps })
 const mapDispatchToProps = dispatch => ({
 	handleFavorSharps: () => dispatch(favorSharps()),
 	handleFavorFlats: () => dispatch(favorFlats()),
-	handleClearNotes: () => dispatch(handleClearNotes())
+	handleClearNotes: () => dispatch(handleClearNotes()),
+	toggleInstructions: () => dispatch(toggleInstructions())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Controls)

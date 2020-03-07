@@ -1,0 +1,39 @@
+.instructionsBox {
+	background: #ddd;
+	border: 4px double black;
+	border-radius: 4px;
+	z-index: 10;
+	width: 500px;
+	min-height: 300px;
+	position: absolute;
+	transition: top 1.5s;
+	top: -400px;
+	right: 60px;
+}
+
+.instructionsBox h4 {
+	margin: 6px;
+}
+
+.instructionsBox li {
+	font-size: 14px;
+}
+
+.instructionsShow {
+	top: 50px;
+}
+
+.instructionsWelcome {
+	text-align: center;
+}
+
+.closeButton {
+	float: right;
+	margin: 8px;
+}
+
+@media (max-width: 900px) {
+	.instructionsShow {
+		top: 150px;
+	}
+}

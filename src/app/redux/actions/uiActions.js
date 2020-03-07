@@ -5,7 +5,8 @@ import {
 	TOGGLE_ROOT_MATCH,
 	TOGGLE_MUTE,
 	TOGGLE_ARP,
-	HOVER_NOTE
+	HOVER_NOTE,
+	TOGGLE_INSTRUCTIONS
 } from 'app/redux/types'
 
 export const favorSharps = () => ({ type: FAVOR_SHARPS })
@@ -26,4 +27,8 @@ export const toggleArp = () => ({ type: TOGGLE_ARP })
 export const handleHoverNote = noteId => ({
 	type: HOVER_NOTE,
 	payload: { noteId }
+})
+
+export const toggleInstructions = () => ({
+	type: TOGGLE_INSTRUCTIONS
 })
