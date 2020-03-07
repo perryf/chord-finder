@@ -16,6 +16,10 @@
 	min-width: 240px;
 }
 
+.chordListingTop h4 {
+	margin: 8px 0;
+}
+
 .chordRow {
 	display: flex;
 	flex-direction: row;
@@ -71,17 +75,6 @@
 	margin: 4px;
 	height: 2px;
 	background: black;
-}
-
-.checkBoxes {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	width: 300px;
-}
-
-.onlyRoots {
-	margin-bottom: 6px;
 }
 
 .perfectMatch {

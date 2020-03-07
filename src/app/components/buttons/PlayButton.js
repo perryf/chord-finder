@@ -65,8 +65,8 @@ class PlayButton extends Component {
 
 PlayButton.propTypes = {
 	noteIds: PropTypes.array.isRequired,
-	mute: PropTypes.bool.isRequired,
-	arpeggiate: PropTypes.bool.isRequired
+	arpeggiate: PropTypes.string.isRequired,
+	mute: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = state => {

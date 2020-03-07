@@ -48,8 +48,12 @@ code {
 	text-align: center;
 }
 
-.inVisible {
-	visibility: hidden;
+.hide {
+	display: none;
+}
+
+.relative {
+	position: relative;
 }
 
 .cancelLinkStyle {

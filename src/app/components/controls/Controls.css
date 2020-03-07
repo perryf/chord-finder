@@ -29,18 +29,3 @@
 .dropdownLabel {
 	margin-right: 4px;
 }
-
-.instructionsButtonBox {
-	display: flex;
-	justify-content: flex-end;
-}
-
-.instructionsButton {
-	background: linear-gradient(#bbb, #ddd);
-}
-
-@media (max-width: 900px) {
-	.instructionsButton {
-		padding: 4px 8px;
-	}
-}

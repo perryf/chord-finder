@@ -18,7 +18,7 @@ class Instructions extends Component {
 				<ul>
 					<li>
 						Click on the staff or the keyboard to play a note and add it to the
-						chord
+						chord. Staff and keyboard are linked together.
 					</li>
 					<li>
 						Clicking on the same note again on the staff will create an

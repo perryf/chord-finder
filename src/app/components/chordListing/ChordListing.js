@@ -146,7 +146,7 @@ class ChordListing extends Component {
 														key={chord.short}
 														className="chordName pointer"
 														onClick={this.playChord}
-														onMouseOver={() => {
+														onMouseEnter={() => {
 															this.handleHoverChord(chordName, chord)
 														}}
 														onMouseLeave={() => this.handleHoverChord('')}
@@ -198,10 +198,10 @@ ChordListing.propTypes = {
 	matchingChords: PropTypes.array.isRequired,
 	synth: PropTypes.object.isRequired,
 	checkBoxes: PropTypes.object.isRequired,
+	arpeggiate: PropTypes.string.isRequired,
 	rootMatch: PropTypes.bool.isRequired,
 	favorSharps: PropTypes.bool.isRequired,
-	mute: PropTypes.bool.isRequired,
-	arpeggiate: PropTypes.bool.isRequired
+	mute: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = ({ notesMaster = {}, ui }) => {

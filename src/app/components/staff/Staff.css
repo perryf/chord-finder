@@ -11,6 +11,7 @@
 	border: 4px double black;
 	position: relative;
 	cursor: pointer;
+	border-radius: 4px;
 }
 
 .staffRow {

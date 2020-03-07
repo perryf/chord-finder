@@ -16,15 +16,28 @@
 }
 
 .arpButton {
-	background: linear-gradient(#ddd, #84b);
+	background: linear-gradient(#ddd, #95c);
 }
 
 .playButton {
 	background: linear-gradient(#dddddd, #7799bb);
 }
 
+.instructionsButtonBox {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.instructionsButton {
+	background: linear-gradient(#fff, #bbb);
+}
+
 @media (max-width: 900px) {
 	.uiButton {
 		padding: 0 4px;
+	}
+
+	.instructionsButton {
+		padding: 4px 8px;
 	}
 }

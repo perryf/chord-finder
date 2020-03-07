@@ -1,0 +1,40 @@
+.onlyRoots {
+	margin-bottom: 6px;
+	position: relative;
+}
+
+.filterHover {
+	position: absolute;
+	left: -60px;
+	background: #ddd;
+	padding: 8px;
+	border: 1px solid #222;
+	border-radius: 8px;
+	z-index: 12px;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.5s;
+	font-size: 14px;
+	min-width: 200px;
+}
+
+.hoverLow {
+	bottom: 24px;
+}
+
+.hoverHigh {
+	bottom: 36px;
+}
+
+.filterVisible {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 1s 0.5s;
+}
+
+.checkBoxes {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	width: 300px;
+}
