@@ -4,23 +4,32 @@ import PropTypes from 'prop-types'
 import { toggleArp } from 'app/redux/actions'
 
 const ArpButton = props => {
-	const { arpeggiate, toggleArp } = props
+	const { buttonName, toggleArp } = props
 
 	return (
 		<button className="uiButton arpButton pointer" onClick={toggleArp}>
-			{arpeggiate ? 'Arpeggiate chord' : 'Block chord'}
+			{buttonName}
 		</button>
 	)
 }
 
 ArpButton.propTypes = {
-	arpeggiate: PropTypes.bool.isRequired,
+	buttonName: PropTypes.string.isRequired,
 	toggleArp: PropTypes.func.isRequired
 }
 
-const mapStateToProps = state => ({
-	arpeggiate: state.ui.arpeggiate
-})
+const mapStateToProps = state => {
+	const { arpeggiate } = state.ui
+
+	let buttonName = 'Arpeggiate fast'
+	if (arpeggiate === 'slow') {
+		buttonName = 'Arpeggiate slow'
+	} else if (arpeggiate === 'block') {
+		buttonName = 'Block chord'
+	}
+
+	return { buttonName }
+}
 
 const mapDispatchToProps = dispatch => ({
 	toggleArp: () => dispatch(toggleArp())

@@ -19,7 +19,7 @@ const initialState = {
 		rare: false
 	},
 	mute: false,
-	arpeggiate: true,
+	arpeggiate: 'fast',
 	hoverNote: null,
 	showInstructions: false
 }
@@ -51,9 +51,16 @@ export const ui = (state = initialState, action) => {
 				mute: !state.mute
 			}
 		case TOGGLE_ARP:
+			let arpUpdate = 'fast'
+			if (state.arpeggiate === 'fast') {
+				arpUpdate = 'slow'
+			} else if (state.arpeggiate === 'slow') {
+				arpUpdate = 'block'
+			}
+
 			return {
 				...state,
-				arpeggiate: !state.arpeggiate
+				arpeggiate: arpUpdate
 			}
 		case HOVER_NOTE:
 			return {

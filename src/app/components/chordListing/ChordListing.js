@@ -67,12 +67,14 @@ class ChordListing extends Component {
 				this.setState({ playing: true })
 
 				// * Arpeggio
-				if (arpeggiate) {
+				if (arpeggiate === 'fast' || arpeggiate === 'slow') {
+					const speed = arpeggiate === 'fast' ? '16n' : '8n'
+
 					let i = 0
 					const pattern = new Tone.Pattern(
 						(_, note) => {
 							i++
-							synth.triggerAttackRelease(note, '16n')
+							synth.triggerAttackRelease(note, speed)
 							if (i === noteIds.length) {
 								pattern.stop()
 								Tone.Transport.stop()
@@ -84,7 +86,7 @@ class ChordListing extends Component {
 					)
 
 					pattern.iterations = noteIds.length
-					pattern.interval = '16n'
+					pattern.interval = speed
 
 					pattern.start(0)
 					Tone.Transport.start()
