@@ -31,9 +31,3 @@
 	float: right;
 	margin: 8px;
 }
-
-@media (max-width: 900px) {
-	.instructionsShow {
-		top: 150px;
-	}
-}

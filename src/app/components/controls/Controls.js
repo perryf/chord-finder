@@ -65,16 +65,14 @@ class Controls extends Component {
 
 		return (
 			<div className="controlsBox">
-				<div className="instructionsButtonBox relative">
-					<button
-						className="uiButton instructionsButton pointer"
-						onClick={toggleInstructions}
-						onMouseEnter={() => this.handleHover('instructions')}
-						onMouseLeave={this.handleUnhover}
-					>
-						Instructions
-					</button>
-				</div>
+				<button
+					className="uiButton instructionsButton pointer"
+					onClick={toggleInstructions}
+					onMouseEnter={() => this.handleHover('instructions')}
+					onMouseLeave={this.handleUnhover}
+				>
+					Instructions
+				</button>
 				<div className="radioBox">
 					<div
 						className="radioInputBox relative"
@@ -85,6 +83,7 @@ class Controls extends Component {
 							className={`filterHover hoverLow ${
 								sharpsHover ? 'filterVisible' : ''
 							}`}
+							onMouseEnter={this.handleUnhover}
 						>
 							Favor sharps when selecting notes
 						</span>
@@ -110,6 +109,7 @@ class Controls extends Component {
 							className={`filterHover hoverLow ${
 								flatsHover ? 'filterVisible' : ''
 							}`}
+							onMouseEnter={this.handleUnhover}
 						>
 							Favor flats when selecting notes
 						</span>
@@ -137,6 +137,7 @@ class Controls extends Component {
 							className={`filterHover hoverLow ${
 								instrumentHover ? 'filterVisible' : ''
 							}`}
+							onMouseEnter={this.handleUnhover}
 						>
 							Select wave type (tone) when playing notes and chords
 						</span>
@@ -158,6 +159,7 @@ class Controls extends Component {
 							className={`filterHover hoverHigh ${
 								partialsHover ? 'filterVisible' : ''
 							}`}
+							onMouseEnter={this.handleUnhover}
 						>
 							Select number of partials (overtones) of instrument.
 							<br />
@@ -197,6 +199,7 @@ class Controls extends Component {
 							className={`filterHover hoverHigh ${
 								muteHover ? 'filterVisible' : ''
 							}`}
+							onMouseEnter={this.handleUnhover}
 						>
 							Mute all sounds
 						</span>
@@ -230,6 +233,7 @@ class Controls extends Component {
 							className={`filterHover hoverHigh ${
 								arpHover ? 'filterVisible' : ''
 							}`}
+							onMouseEnter={this.handleUnhover}
 						>
 							Change playback from fast arpeggio, slow arpeggio, and block chord
 						</span>
@@ -244,6 +248,7 @@ class Controls extends Component {
 							className={`filterHover hoverHigh ${
 								playHover ? 'filterVisible' : ''
 							}`}
+							onMouseEnter={this.handleUnhover}
 						>
 							Play selected notes
 						</span>

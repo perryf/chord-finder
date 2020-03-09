@@ -5,9 +5,10 @@ import Staff from '../staff/Staff'
 import Keyboard from '../keyboard/Keyboard'
 import Controls from '../controls/Controls'
 import ChordListing from '../chordListing/ChordListing'
+import Instructions from '../instructions/Instructions'
 import './App.css'
 
-const initSynth = { type: 'sine', partialCount: 2 }
+const initSynth = { running: false, type: 'sine', partialCount: 2 }
 
 class App extends Component {
 	constructor(props) {
@@ -15,7 +16,6 @@ class App extends Component {
 
 		// TODO -> Move to separate component, and rely on tone getter/setter methods instead of state
 		// * Defines tone objs and connects to master
-		Tone.context.resume()
 		this.compressor = new Tone.Compressor()
 		this.synth = new Tone.PolySynth(20, Tone.Synth, {
 			volume: -18,
@@ -24,6 +24,14 @@ class App extends Component {
 		this.synth.chain(this.compressor, Tone.Master)
 
 		this.state = initSynth
+	}
+
+	startTone = () => {
+		if (this.state.running) {
+			return
+		}
+		Tone.context.resume() // * Not sure this is being done right
+		this.setState({ running: true })
 	}
 
 	changeOscillator = ({ target: { value } }) => {
@@ -54,7 +62,8 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className="appBox">
+			<div className="appBox" onClick={this.startTone}>
+				<Instructions />
 				<Header />
 				<div className="appBody">
 					<div className="inputs">

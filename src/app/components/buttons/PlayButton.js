@@ -13,49 +13,51 @@ class PlayButton extends Component {
 		}
 	}
 
-	render() {
+	playChord = () => {
 		const { noteIds = [], mute, arpeggiate, synth } = this.props
 
-		const playChord = () => {
-			if (!mute && noteIds.length > 0 && !this.state.playing) {
-				this.setState({ playing: true })
-				// * Arpeggio
-				if (arpeggiate === 'fast' || arpeggiate === 'slow') {
-					const speed = arpeggiate === 'fast' ? '16n' : '8n'
+		if (!mute && noteIds.length > 0 && !this.state.playing) {
+			this.setState({ playing: true })
+			// * Arpeggio
+			if (arpeggiate === 'fast' || arpeggiate === 'slow') {
+				const speed = arpeggiate === 'fast' ? '16n' : '8n'
 
-					let i = 0
-					const pattern = new Tone.Pattern(
-						(_, note) => {
-							i++
-							synth.triggerAttackRelease(note, speed)
-							if (i === noteIds.length) {
-								pattern.stop()
-								Tone.Transport.stop()
-								this.setState({ playing: false })
-							}
-						},
-						noteIds,
-						'down'
-					)
+				let i = 0
+				const pattern = new Tone.Pattern(
+					(_, note) => {
+						i++
+						synth.triggerAttackRelease(note, speed)
+						if (i === noteIds.length) {
+							pattern.stop()
+							Tone.Transport.stop()
+							this.setState({ playing: false })
+						}
+					},
+					noteIds,
+					'down'
+				)
 
-					pattern.iterations = noteIds.length
-					pattern.interval = speed
+				pattern.iterations = noteIds.length
+				pattern.interval = speed
 
-					pattern.start(0)
-					Tone.Transport.start()
-					// * Block Chord
-				} else {
-					synth.triggerAttackRelease(noteIds, '8n')
-					this.setState({ playing: false })
-				}
+				pattern.start(0)
+				Tone.Transport.start()
+				// * Block Chord
+			} else {
+				synth.triggerAttackRelease(noteIds, '8n')
+				this.setState({ playing: false })
 			}
 		}
+	}
+
+	render() {
+		const { mute } = this.props
 
 		return (
 			<button
 				className={`uiButton playButton ${mute ? '' : 'pointer'}`}
 				disabled={mute}
-				onClick={playChord}
+				onClick={this.playChord}
 			>
 				Play
 			</button>

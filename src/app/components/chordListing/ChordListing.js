@@ -7,7 +7,6 @@ import {
 	getMatchingChords,
 	getNoteByValue
 } from 'helperFunctions'
-import Instructions from '../instructions/Instructions'
 import ChordFilters from './ChordFilters'
 import './ChordListing.css'
 
@@ -56,6 +55,10 @@ class ChordListing extends Component {
 		}, [])
 
 		this.setState({ hoverName: name, hoverDetailArr: chordNotes })
+	}
+
+	handleUnhover = () => {
+		this.setState(hoverInit)
 	}
 
 	playChord = () => {
@@ -116,7 +119,6 @@ class ChordListing extends Component {
 
 		return (
 			<div className="chordListingBox">
-				<Instructions />
 				<div className="chordListingTop">
 					<h4>{totalChords} possible chords</h4>
 					<ChordFilters />
@@ -159,7 +161,10 @@ class ChordListing extends Component {
 															{chordName}
 														</span>
 														{hoverName === chordName && (
-															<div className="hoverInfo">
+															<div
+																className="hoverInfo"
+																onMouseEnter={this.handleUnhover}
+															>
 																<p className="hoverInfoName">
 																	{chordPrefix} {chord.label}
 																</p>

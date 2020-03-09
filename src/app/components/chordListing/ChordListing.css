@@ -49,6 +49,7 @@
 	top: -100px;
 	left: -200px;
 	width: 160px;
+	animation: fade-in 0.5s;
 }
 
 .hoverInfoName {
@@ -99,5 +100,14 @@
 
 	.listingInputs {
 		font-size: 14px;
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
 	}
 }

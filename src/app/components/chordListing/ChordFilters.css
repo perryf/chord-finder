@@ -13,7 +13,7 @@
 	z-index: 12px;
 	visibility: hidden;
 	opacity: 0;
-	transition: opacity 0.5s;
+	transition: opacity 0.5s, visibility 0.5s;
 	font-size: 14px;
 	min-width: 200px;
 }
@@ -29,7 +29,7 @@
 .filterVisible {
 	visibility: visible;
 	opacity: 1;
-	transition: opacity 1s 0.5s;
+	transition: opacity 0.5s 1s;
 }
 
 .checkBoxes {

@@ -1,5 +1,5 @@
 .uiButton {
-	padding: 4px 8px;
+	padding: 8px 8px;
 	border: 1px solid #888;
 	border-radius: 4px;
 	font-weight: bold;
@@ -23,21 +23,21 @@
 	background: linear-gradient(#dddddd, #7799bb);
 }
 
-.instructionsButtonBox {
-	display: flex;
-	justify-content: flex-end;
-}
-
 .instructionsButton {
 	background: linear-gradient(#fff, #bbb);
+	float: right;
+	padding: 4px 8px;
 }
 
 @media (max-width: 900px) {
-	.uiButton {
-		padding: 0 4px;
-	}
-
 	.instructionsButton {
 		padding: 4px 8px;
+	}
+}
+
+@media (max-width: 547px) {
+	.clearStaffButton,
+	.arpButton {
+		padding: 2px 8px;
 	}
 }
