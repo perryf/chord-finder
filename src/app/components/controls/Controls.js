@@ -221,7 +221,7 @@ class Controls extends Component {
 							className="uiButton clearStaffButton pointer"
 							onClick={handleClearNotes}
 						>
-							Clear Staff
+							Clear
 						</button>
 					</div>
 					<div

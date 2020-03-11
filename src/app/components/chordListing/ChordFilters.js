@@ -44,9 +44,9 @@ class ChordFilters extends Component {
 		} = this.state
 
 		return (
-			<div className="listingInputs">
+			<div className="listingInputs pointer">
 				<div
-					className="onlyRoots"
+					className="onlyRoots pointer"
 					onMouseEnter={() => this.handleHover('root')}
 					onMouseLeave={this.handleUnhover}
 				>
@@ -54,6 +54,7 @@ class ChordFilters extends Component {
 						className={`filterHover hoverLow ${
 							rootHover ? 'filterVisible' : ''
 						}`}
+						onMouseEnter={this.handleUnhover}
 					>
 						Only show chord if the root of the chord is in the selected notes
 					</span>
@@ -80,6 +81,7 @@ class ChordFilters extends Component {
 							className={`filterHover hoverLow ${
 								basicHover ? 'filterVisible' : ''
 							}`}
+							onMouseEnter={this.handleUnhover}
 						>
 							Show basic chords
 							<br />
@@ -109,6 +111,7 @@ class ChordFilters extends Component {
 							className={`filterHover hoverLow ${
 								commonHover ? 'filterVisible' : ''
 							}`}
+							onMouseEnter={this.handleUnhover}
 						>
 							Show common chords
 							<br />
@@ -138,6 +141,7 @@ class ChordFilters extends Component {
 							className={`filterHover hoverLow ${
 								uncommonHover ? 'filterVisible' : ''
 							}`}
+							onMouseEnter={this.handleUnhover}
 						>
 							Show uncommon chords, mostly used in jazz and modern classical
 							<br />
