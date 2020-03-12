@@ -7,6 +7,7 @@ import {
 	handleClearNotes,
 	toggleInstructions
 } from 'app/redux/actions'
+import { partials } from 'data'
 import PlayButton from '../buttons/PlayButton'
 import MuteButton from '../buttons/MuteButton'
 import ArpButton from '../buttons/ArpButton'
@@ -73,6 +74,10 @@ class Controls extends Component {
 				>
 					Instructions
 				</button>
+
+				{
+					// ***** SHARPS VS FLATS *****
+				}
 				<div className="radioBox">
 					<div
 						className="radioInputBox relative"
@@ -127,6 +132,9 @@ class Controls extends Component {
 					</div>
 				</div>
 
+				{
+					// ***** PLAYBACK OPTIONS *****
+				}
 				<div className="instrumentControls">
 					<div
 						className="relative"
@@ -134,7 +142,7 @@ class Controls extends Component {
 						onMouseLeave={this.handleUnhover}
 					>
 						<span
-							className={`filterHover hoverLow ${
+							className={`filterHover defaultCurs hoverLow ${
 								instrumentHover ? 'filterVisible' : ''
 							}`}
 							onMouseEnter={this.handleUnhover}
@@ -156,7 +164,7 @@ class Controls extends Component {
 						onMouseLeave={this.handleUnhover}
 					>
 						<span
-							className={`filterHover hoverHigh ${
+							className={`filterHover defaultCurs hoverPartials ${
 								partialsHover ? 'filterVisible' : ''
 							}`}
 							onMouseEnter={this.handleUnhover}
@@ -172,23 +180,16 @@ class Controls extends Component {
 							value={partialCount}
 							onChange={changePartials}
 						>
-							<option value="0">0</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-							<option value="11">11</option>
-							<option value="12">12</option>
+							{partials.map(p => (
+								<option key={p}>{p}</option>
+							))}
 						</select>
 					</div>
 				</div>
 
+				{
+					// ***** BUTTONS *****
+				}
 				<div className="flexRow justifyAround">
 					<div
 						className="relative"
@@ -196,7 +197,7 @@ class Controls extends Component {
 						onMouseLeave={this.handleUnhover}
 					>
 						<span
-							className={`filterHover hoverHigh ${
+							className={`filterHover defaultCurs hoverHigh ${
 								muteHover ? 'filterVisible' : ''
 							}`}
 							onMouseEnter={this.handleUnhover}
@@ -211,7 +212,7 @@ class Controls extends Component {
 						onMouseLeave={this.handleUnhover}
 					>
 						<span
-							className={`filterHover hoverHigh ${
+							className={`filterHover defaultCurs hoverHigh ${
 								clearHover ? 'filterVisible' : ''
 							}`}
 						>
@@ -230,7 +231,7 @@ class Controls extends Component {
 						onMouseLeave={this.handleUnhover}
 					>
 						<span
-							className={`filterHover hoverHigh ${
+							className={`filterHover defaultCurs hoverHigh ${
 								arpHover ? 'filterVisible' : ''
 							}`}
 							onMouseEnter={this.handleUnhover}
@@ -245,7 +246,7 @@ class Controls extends Component {
 						onMouseLeave={this.handleUnhover}
 					>
 						<span
-							className={`filterHover hoverHigh ${
+							className={`filterHover defaultCurs hoverHigh ${
 								playHover ? 'filterVisible' : ''
 							}`}
 							onMouseEnter={this.handleUnhover}

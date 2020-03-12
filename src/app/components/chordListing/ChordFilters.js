@@ -56,7 +56,8 @@ class ChordFilters extends Component {
 						}`}
 						onMouseEnter={this.handleUnhover}
 					>
-						Only show chord if the root of the chord is in the selected notes
+						Only show chords where the root of the chord is in the selected
+						notes
 					</span>
 					<span className="pointer" onClick={toggleRootMatch}>
 						Root must be in chord

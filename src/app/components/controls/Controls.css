@@ -28,4 +28,5 @@
 
 .dropdownLabel {
 	margin-right: 4px;
+	cursor: default;
 }

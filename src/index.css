@@ -46,6 +46,10 @@ code {
 	cursor: pointer;
 }
 
+.defaultCurs {
+	cursor: default;
+}
+
 .textCenter {
 	text-align: center;
 }
@@ -65,4 +69,40 @@ code {
 .cancelLinkStyle {
 	text-decoration: none;
 	color: inherit;
+}
+
+/* Instruction Bubbles */
+.filterHover {
+	position: absolute;
+	background: #ddd;
+	padding: 8px;
+	border: 1px solid #222;
+	border-radius: 8px;
+	z-index: 12;
+	visibility: hidden;
+	opacity: 0;
+	font-size: 14px;
+	min-width: 200px;
+}
+
+.hoverLow {
+	bottom: 24px;
+	left: -60px;
+}
+
+.hoverHigh {
+	bottom: 36px;
+	left: -60px;
+}
+
+.hoverPartials {
+	top: -20px;
+	left: 100px;
+}
+
+/* TODO -> Instead of overriding visibility, replace */
+.filterVisible {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.5s 1s;
 }
