@@ -5,7 +5,8 @@ import {
 	favorSharps,
 	favorFlats,
 	handleClearNotes,
-	toggleInstructions
+	toggleInstructions,
+	changeDirection
 } from 'app/redux/actions'
 import { partials } from 'data'
 import PlayButton from '../buttons/PlayButton'
@@ -21,6 +22,7 @@ const initState = {
 	muteHover: false,
 	clearHover: false,
 	arpHover: false,
+	arpDirectionHover: false,
 	playHover: false
 }
 
@@ -43,20 +45,23 @@ class Controls extends Component {
 	render() {
 		const {
 			favorSharps,
+			direction,
+			synth,
+			partialCount,
+			type,
 			handleFavorSharps,
 			handleFavorFlats,
 			handleClearNotes,
 			toggleInstructions,
 			changePartials,
-			changeOscillator,
-			synth,
-			partialCount,
-			type
+			changeDirection,
+			changeOscillator
 		} = this.props
 		const {
 			sharpsHover,
 			flatsHover,
 			instrumentHover,
+			arpDirectionHover,
 			partialsHover,
 			muteHover,
 			clearHover,
@@ -79,23 +84,26 @@ class Controls extends Component {
 					// ***** SHARPS VS FLATS *****
 				}
 				<div className="radioBox">
-					<div
-						className="radioInputBox relative"
-						onMouseEnter={() => this.handleHover('sharps')}
-						onMouseLeave={this.handleUnhover}
-					>
+					<div className="radioInputBox relative">
 						<span
 							className={`filterHover hoverLow ${
-								sharpsHover ? 'filterVisible' : ''
+								sharpsHover ? 'filterVisible' : 'filterInvisible'
 							}`}
 							onMouseEnter={this.handleUnhover}
 						>
 							Favor sharps when selecting notes
 						</span>
-						<span className="pointer" onClick={handleFavorSharps}>
+						<span
+							className="pointer"
+							onClick={handleFavorSharps}
+							onMouseEnter={() => this.handleHover('sharps')}
+							onMouseLeave={this.handleUnhover}
+						>
 							Sharps
 						</span>
 						<input
+							onMouseEnter={() => this.handleHover('sharps')}
+							onMouseLeave={this.handleUnhover}
 							type="radio"
 							name="sharpsFlat"
 							value="sharps"
@@ -105,20 +113,21 @@ class Controls extends Component {
 						/>
 					</div>
 
-					<div
-						className="radioInputBox relative"
-						onMouseEnter={() => this.handleHover('flats')}
-						onMouseLeave={this.handleUnhover}
-					>
+					<div className="radioInputBox relative">
 						<span
 							className={`filterHover hoverLow ${
-								flatsHover ? 'filterVisible' : ''
+								flatsHover ? 'filterVisible' : 'filterInvisible'
 							}`}
 							onMouseEnter={this.handleUnhover}
 						>
 							Favor flats when selecting notes
 						</span>
-						<span className="pointer" onClick={handleFavorFlats}>
+						<span
+							className="pointer"
+							onClick={handleFavorFlats}
+							onMouseEnter={() => this.handleHover('flats')}
+							onMouseLeave={this.handleUnhover}
+						>
 							Flats
 						</span>
 						<input
@@ -128,6 +137,8 @@ class Controls extends Component {
 							className="pointer"
 							checked={!favorSharps}
 							onChange={handleFavorFlats}
+							onMouseEnter={() => this.handleHover('flats')}
+							onMouseLeave={this.handleUnhover}
 						/>
 					</div>
 				</div>
@@ -136,36 +147,79 @@ class Controls extends Component {
 					// ***** PLAYBACK OPTIONS *****
 				}
 				<div className="instrumentControls">
-					<div
-						className="relative"
-						onMouseEnter={() => this.handleHover('instrument')}
-						onMouseLeave={this.handleUnhover}
-					>
+					<div className="relative">
 						<span
 							className={`filterHover defaultCurs hoverLow ${
-								instrumentHover ? 'filterVisible' : ''
+								instrumentHover ? 'filterVisible' : 'filterInvisible'
 							}`}
 							onMouseEnter={this.handleUnhover}
 						>
 							Select wave type (tone) when playing notes and chords
 						</span>
-						<span className="dropdownLabel">Wave</span>
-						<select name="type" value={type} onChange={changeOscillator}>
-							<option value="sine">Sine</option>
-							<option value="square">Square</option>
-							<option value="triangle">Triangle</option>
-							<option value="sawtooth">SawTooth</option>
-						</select>
+						<div className="flexColumn">
+							<span
+								className="dropdownLabel"
+								onMouseEnter={() => this.handleHover('instrument')}
+								onMouseLeave={this.handleUnhover}
+							>
+								Wave
+							</span>
+							<select
+								name="type"
+								value={type}
+								onChange={changeOscillator}
+								onMouseEnter={() => this.handleHover('instrument')}
+								onMouseLeave={this.handleUnhover}
+							>
+								<option value="sine">Sine</option>
+								<option value="square">Square</option>
+								<option value="triangle">Triangle</option>
+								<option value="sawtooth">SawTooth</option>
+							</select>
+						</div>
 					</div>
 
-					<div
-						className="relative"
-						onMouseEnter={() => this.handleHover('partials')}
-						onMouseLeave={this.handleUnhover}
-					>
+					<div className="relative">
+						<span
+							className={`filterHover defaultCurs hoverLow ${
+								arpDirectionHover ? 'filterVisible' : 'filterInvisible'
+							}`}
+							onMouseEnter={this.handleUnhover}
+						>
+							Change style arpeggio plays in
+						</span>
+						<div className="flexColumn">
+							<span
+								className="dropdownLabel"
+								onMouseEnter={() => this.handleHover('arpDirection')}
+								onMouseLeave={this.handleUnhover}
+							>
+								Arpeggio style
+							</span>
+							<select
+								name="type"
+								onMouseEnter={() => this.handleHover('arpDirection')}
+								onMouseLeave={this.handleUnhover}
+								value={direction}
+								onChange={e => changeDirection(e.target.value)}
+							>
+								<option value="up">Up</option>
+								<option value="down">Down</option>
+								<option value="alternateUp">Alternate Up</option>
+								<option value="alternateDown">Alternate Down</option>
+								<option value="randomOnce">Random</option>
+								{false && <option value="upDown">Up Down</option> // ? Not working?
+								}
+								{false && <option value="downUp">Down Up</option> // ? Not working?
+								}
+							</select>
+						</div>
+					</div>
+
+					<div className="relative">
 						<span
 							className={`filterHover defaultCurs hoverPartials ${
-								partialsHover ? 'filterVisible' : ''
+								partialsHover ? 'filterVisible' : 'filterInvisible'
 							}`}
 							onMouseEnter={this.handleUnhover}
 						>
@@ -174,16 +228,26 @@ class Controls extends Component {
 							Smaller numbers give a purer more hallow sound. Larger numbers
 							give a richer more nasally sound
 						</span>
-						<span className="dropdownLabel">Partials</span>
-						<select
-							name="partialCount"
-							value={partialCount}
-							onChange={changePartials}
-						>
-							{partials.map(p => (
-								<option key={p}>{p}</option>
-							))}
-						</select>
+						<div className="flexColumn">
+							<span
+								className="dropdownLabel"
+								onMouseEnter={() => this.handleHover('partials')}
+								onMouseLeave={this.handleUnhover}
+							>
+								Partials
+							</span>
+							<select
+								name="partialCount"
+								value={partialCount}
+								onChange={changePartials}
+								onMouseEnter={() => this.handleHover('partials')}
+								onMouseLeave={this.handleUnhover}
+							>
+								{partials.map(p => (
+									<option key={p}>{p}</option>
+								))}
+							</select>
+						</div>
 					</div>
 				</div>
 
@@ -198,7 +262,7 @@ class Controls extends Component {
 					>
 						<span
 							className={`filterHover defaultCurs hoverHigh ${
-								muteHover ? 'filterVisible' : ''
+								muteHover ? 'filterVisible' : 'filterInvisible'
 							}`}
 							onMouseEnter={this.handleUnhover}
 						>
@@ -213,7 +277,7 @@ class Controls extends Component {
 					>
 						<span
 							className={`filterHover defaultCurs hoverHigh ${
-								clearHover ? 'filterVisible' : ''
+								clearHover ? 'filterVisible' : 'filterInvisible'
 							}`}
 						>
 							Clear all notes on staff and keyboard
@@ -232,7 +296,7 @@ class Controls extends Component {
 					>
 						<span
 							className={`filterHover defaultCurs hoverHigh ${
-								arpHover ? 'filterVisible' : ''
+								arpHover ? 'filterVisible' : 'filterInvisible'
 							}`}
 							onMouseEnter={this.handleUnhover}
 						>
@@ -247,7 +311,7 @@ class Controls extends Component {
 					>
 						<span
 							className={`filterHover defaultCurs hoverHigh ${
-								playHover ? 'filterVisible' : ''
+								playHover ? 'filterVisible' : 'filterInvisible'
 							}`}
 							onMouseEnter={this.handleUnhover}
 						>
@@ -264,23 +328,29 @@ class Controls extends Component {
 Controls.propTypes = {
 	synth: PropTypes.object.isRequired,
 	favorSharps: PropTypes.bool.isRequired,
+	direction: PropTypes.string.isRequired,
 	handleFavorSharps: PropTypes.func.isRequired,
 	handleFavorFlats: PropTypes.func.isRequired,
 	handleClearNotes: PropTypes.func.isRequired,
 	toggleInstructions: PropTypes.func.isRequired,
 	changeOscillator: PropTypes.func.isRequired,
 	changePartials: PropTypes.func.isRequired,
+	changeDirection: PropTypes.func.isRequired,
 	partialCount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	type: PropTypes.string.isRequired
 }
 
-const mapStateToProps = state => ({ favorSharps: state.ui.favorSharps })
+const mapStateToProps = state => ({
+	favorSharps: state.ui.favorSharps,
+	direction: state.ui.direction
+})
 
 const mapDispatchToProps = dispatch => ({
 	handleFavorSharps: () => dispatch(favorSharps()),
 	handleFavorFlats: () => dispatch(favorFlats()),
 	handleClearNotes: () => dispatch(handleClearNotes()),
-	toggleInstructions: () => dispatch(toggleInstructions())
+	toggleInstructions: () => dispatch(toggleInstructions()),
+	changeDirection: value => dispatch(changeDirection(value))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Controls)

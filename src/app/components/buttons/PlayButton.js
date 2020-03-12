@@ -14,7 +14,7 @@ class PlayButton extends Component {
 	}
 
 	playChord = () => {
-		const { noteIds = [], mute, arpeggiate, synth } = this.props
+		const { noteIds = [], mute, arpeggiate, synth, direction } = this.props
 
 		if (!mute && noteIds.length > 0 && !this.state.playing) {
 			this.setState({ playing: true })
@@ -33,8 +33,8 @@ class PlayButton extends Component {
 							this.setState({ playing: false })
 						}
 					},
-					noteIds,
-					'down'
+					noteIds.slice().reverse(),
+					direction
 				)
 
 				pattern.iterations = noteIds.length
@@ -68,6 +68,7 @@ class PlayButton extends Component {
 PlayButton.propTypes = {
 	noteIds: PropTypes.array.isRequired,
 	arpeggiate: PropTypes.string.isRequired,
+	direction: PropTypes.string.isRequired,
 	mute: PropTypes.bool.isRequired
 }
 
@@ -91,7 +92,8 @@ const mapStateToProps = state => {
 	return {
 		noteIds: selectedNotes,
 		mute: state.ui.mute,
-		arpeggiate: state.ui.arpeggiate
+		arpeggiate: state.ui.arpeggiate,
+		direction: state.ui.direction
 	}
 }
 

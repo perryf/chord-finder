@@ -6,7 +6,8 @@ import {
 	TOGGLE_MUTE,
 	TOGGLE_ARP,
 	HOVER_NOTE,
-	TOGGLE_INSTRUCTIONS
+	TOGGLE_INSTRUCTIONS,
+	CHANGE_DIRECTION
 } from 'app/redux/types'
 
 const initialState = {
@@ -21,7 +22,8 @@ const initialState = {
 	mute: false,
 	arpeggiate: 'fast',
 	hoverNote: null,
-	showInstructions: false
+	showInstructions: false,
+	direction: 'up'
 }
 
 export const ui = (state = initialState, action) => {
@@ -71,6 +73,11 @@ export const ui = (state = initialState, action) => {
 			return {
 				...state,
 				showInstructions: !state.showInstructions
+			}
+		case CHANGE_DIRECTION:
+			return {
+				...state,
+				direction: payload
 			}
 		default:
 			return state

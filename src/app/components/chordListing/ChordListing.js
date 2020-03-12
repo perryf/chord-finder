@@ -62,7 +62,7 @@ class ChordListing extends Component {
 	}
 
 	playChord = () => {
-		const { synth, mute, arpeggiate } = this.props
+		const { synth, mute, arpeggiate, direction } = this.props
 		if (!mute) {
 			const noteIds = this.state.hoverDetailArr.map(n => n.noteId)
 
@@ -73,6 +73,7 @@ class ChordListing extends Component {
 				if (arpeggiate === 'fast' || arpeggiate === 'slow') {
 					const speed = arpeggiate === 'fast' ? '16n' : '8n'
 
+					console.log(noteIds.slice().reverse())
 					let i = 0
 					const pattern = new Tone.Pattern(
 						(_, note) => {
@@ -84,8 +85,8 @@ class ChordListing extends Component {
 								this.setState({ playing: false })
 							}
 						},
-						noteIds,
-						'down'
+						noteIds.slice().reverse(),
+						direction
 					)
 
 					pattern.iterations = noteIds.length
@@ -204,6 +205,7 @@ ChordListing.propTypes = {
 	synth: PropTypes.object.isRequired,
 	checkBoxes: PropTypes.object.isRequired,
 	arpeggiate: PropTypes.string.isRequired,
+	direction: PropTypes.string.isRequired,
 	rootMatch: PropTypes.bool.isRequired,
 	favorSharps: PropTypes.bool.isRequired,
 	mute: PropTypes.bool.isRequired
@@ -220,7 +222,8 @@ const mapStateToProps = ({ notesMaster = {}, ui }) => {
 		favorSharps: ui.favorSharps,
 		rootMatch: ui.rootMatch,
 		mute: ui.mute,
-		arpeggiate: ui.arpeggiate
+		arpeggiate: ui.arpeggiate,
+		direction: ui.direction
 	}
 }
 

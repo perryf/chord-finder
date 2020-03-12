@@ -52,7 +52,7 @@ class ChordFilters extends Component {
 				>
 					<span
 						className={`filterHover hoverLow ${
-							rootHover ? 'filterVisible' : ''
+							rootHover ? 'filterVisible' : 'filterInvisible'
 						}`}
 						onMouseEnter={this.handleUnhover}
 					>
@@ -80,7 +80,7 @@ class ChordFilters extends Component {
 					>
 						<span
 							className={`filterHover hoverLow ${
-								basicHover ? 'filterVisible' : ''
+								basicHover ? 'filterVisible' : 'filterInvisible'
 							}`}
 							onMouseEnter={this.handleUnhover}
 						>
@@ -110,7 +110,7 @@ class ChordFilters extends Component {
 					>
 						<span
 							className={`filterHover hoverLow ${
-								commonHover ? 'filterVisible' : ''
+								commonHover ? 'filterVisible' : 'filterInvisible'
 							}`}
 							onMouseEnter={this.handleUnhover}
 						>
@@ -140,7 +140,7 @@ class ChordFilters extends Component {
 					>
 						<span
 							className={`filterHover hoverLow ${
-								uncommonHover ? 'filterVisible' : ''
+								uncommonHover ? 'filterVisible' : 'filterInvisible'
 							}`}
 							onMouseEnter={this.handleUnhover}
 						>
@@ -170,7 +170,7 @@ class ChordFilters extends Component {
 					>
 						<span
 							className={`filterHover hoverLow ${
-								rareHover ? 'filterVisible' : ''
+								rareHover ? 'filterVisible' : 'filterInvisible'
 							}`}
 						>
 							Show chords not typically used

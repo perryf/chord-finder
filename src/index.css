@@ -79,8 +79,6 @@ code {
 	border: 1px solid #222;
 	border-radius: 8px;
 	z-index: 12;
-	visibility: hidden;
-	opacity: 0;
 	font-size: 14px;
 	min-width: 200px;
 }
@@ -97,7 +95,7 @@ code {
 
 .hoverPartials {
 	top: -20px;
-	left: 100px;
+	left: 60px;
 }
 
 /* TODO -> Instead of overriding visibility, replace */
@@ -105,4 +103,9 @@ code {
 	visibility: visible;
 	opacity: 1;
 	transition: opacity 0.5s 1s;
+}
+
+.filterInvisible {
+	visibility: hidden;
+	opacity: 0;
 }

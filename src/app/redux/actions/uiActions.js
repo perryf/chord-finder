@@ -6,7 +6,8 @@ import {
 	TOGGLE_MUTE,
 	TOGGLE_ARP,
 	HOVER_NOTE,
-	TOGGLE_INSTRUCTIONS
+	TOGGLE_INSTRUCTIONS,
+	CHANGE_DIRECTION
 } from 'app/redux/types'
 
 export const favorSharps = () => ({ type: FAVOR_SHARPS })
@@ -31,4 +32,9 @@ export const handleHoverNote = noteId => ({
 
 export const toggleInstructions = () => ({
 	type: TOGGLE_INSTRUCTIONS
+})
+
+export const changeDirection = direction => ({
+	type: CHANGE_DIRECTION,
+	payload: direction
 })
