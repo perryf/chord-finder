@@ -1,7 +1,6 @@
 body {
 	min-height: 100vh;
 	margin: 0;
-	/* font-family: 'Comic Sans ms', sans-serif; */
 	font-family: 'Nunito', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -46,7 +45,7 @@ code {
 	cursor: pointer;
 }
 
-.defaultCurs {
+.defaultCursor {
 	cursor: default;
 }
 
@@ -80,7 +79,7 @@ code {
 	border-radius: 8px;
 	z-index: 12;
 	font-size: 14px;
-	min-width: 200px;
+	min-width: 160px;
 }
 
 .hoverLow {
@@ -98,7 +97,6 @@ code {
 	left: 60px;
 }
 
-/* TODO -> Instead of overriding visibility, replace */
 .filterVisible {
 	visibility: visible;
 	opacity: 1;

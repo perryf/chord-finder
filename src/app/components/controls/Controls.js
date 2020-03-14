@@ -69,6 +69,8 @@ class Controls extends Component {
 			playHover
 		} = this.state
 
+		// TODO -> Clean up class styling
+
 		return (
 			<div className="controlsBox">
 				<button
@@ -149,7 +151,7 @@ class Controls extends Component {
 				<div className="instrumentControls">
 					<div className="relative">
 						<span
-							className={`filterHover defaultCurs hoverLow ${
+							className={`filterHover defaultCursor hoverLow ${
 								instrumentHover ? 'filterVisible' : 'filterInvisible'
 							}`}
 							onMouseEnter={this.handleUnhover}
@@ -181,7 +183,7 @@ class Controls extends Component {
 
 					<div className="relative">
 						<span
-							className={`filterHover defaultCurs hoverLow ${
+							className={`filterHover defaultCursor hoverLow ${
 								arpDirectionHover ? 'filterVisible' : 'filterInvisible'
 							}`}
 							onMouseEnter={this.handleUnhover}
@@ -218,7 +220,7 @@ class Controls extends Component {
 
 					<div className="relative">
 						<span
-							className={`filterHover defaultCurs hoverPartials ${
+							className={`filterHover defaultCursor hoverPartials ${
 								partialsHover ? 'filterVisible' : 'filterInvisible'
 							}`}
 							onMouseEnter={this.handleUnhover}
@@ -261,7 +263,7 @@ class Controls extends Component {
 						onMouseLeave={this.handleUnhover}
 					>
 						<span
-							className={`filterHover defaultCurs hoverHigh ${
+							className={`filterHover defaultCursor hoverHigh ${
 								muteHover ? 'filterVisible' : 'filterInvisible'
 							}`}
 							onMouseEnter={this.handleUnhover}
@@ -276,7 +278,7 @@ class Controls extends Component {
 						onMouseLeave={this.handleUnhover}
 					>
 						<span
-							className={`filterHover defaultCurs hoverHigh ${
+							className={`filterHover defaultCursor hoverHigh ${
 								clearHover ? 'filterVisible' : 'filterInvisible'
 							}`}
 						>
@@ -295,7 +297,7 @@ class Controls extends Component {
 						onMouseLeave={this.handleUnhover}
 					>
 						<span
-							className={`filterHover defaultCurs hoverHigh ${
+							className={`filterHover defaultCursor hoverHigh ${
 								arpHover ? 'filterVisible' : 'filterInvisible'
 							}`}
 							onMouseEnter={this.handleUnhover}
@@ -310,7 +312,7 @@ class Controls extends Component {
 						onMouseLeave={this.handleUnhover}
 					>
 						<span
-							className={`filterHover defaultCurs hoverHigh ${
+							className={`filterHover defaultCursor hoverHigh ${
 								playHover ? 'filterVisible' : 'filterInvisible'
 							}`}
 							onMouseEnter={this.handleUnhover}

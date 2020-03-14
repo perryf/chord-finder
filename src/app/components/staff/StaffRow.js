@@ -16,6 +16,7 @@ const StaffRow = props => {
 	const isNatural = note.notes.natural.selected
 	const isSharp = note.notes.sharp.selected
 
+	// * Used for shifting notes over on staff when displaying multiple notes on a row (i.e. Gb, G, G#)
 	let selectedCount = 0
 	if (isFlat) selectedCount = selectedCount + 1
 	if (isNatural) selectedCount = selectedCount + 1
@@ -48,6 +49,9 @@ const StaffRow = props => {
 			onMouseEnter={() => handleHover(note)}
 			onMouseLeave={() => handleHover(null)}
 		>
+			{
+				// ***** LINE NOTES *****
+			}
 			{type === 'line' ? (
 				<div
 					className={`flexRowCenter ${isMiddleC ? 'staffLineC' : 'staffLine'}`}
@@ -81,6 +85,7 @@ const StaffRow = props => {
 					<div className="noteListName">{noteList.join(', ')}</div>
 				</div>
 			) : (
+				// ***** SPACE NOTES *****
 				<div
 					className={`staffRow flexRowCenter ${
 						hoverNote === note.id ? 'hovered' : ''

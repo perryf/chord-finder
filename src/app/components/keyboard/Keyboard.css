@@ -1,6 +1,6 @@
 :root {
 	--bg-height: 180px;
-	--bg-width: 300px; /* Increase back to 400px when done with octave visual perfection */
+	--bg-width: 300px;
 	--low-high-ratio: calc(5 / 7);
 }
 
@@ -20,7 +20,7 @@
 	border-left: 1px solid black;
 	border-radius: 2px;
 	position: relative;
-	background: #d0b0a0; /*  Woodish color */
+	background: #d0b0a0; /* Woodish color */
 }
 
 .keyboardBoxHigh {
@@ -32,7 +32,7 @@
 	border-right: 1px solid black;
 	width: calc(var(--bg-width, 300px) * var(--low-high-ratio));
 	position: relative;
-	background: #d0b0a0; /*  Woodish color */
+	background: #d0b0a0; /* Woodish color */
 }
 
 .blackKeyBox {
@@ -90,10 +90,14 @@
 	background: lightblue;
 }
 
+.selectedHovered {
+	background: deepskyblue;
+}
+
 @media (max-width: 900px) {
 	:root {
 		--bg-height: 144px;
-		--bg-width: 240px; /* Increase back to 400px when done with octave visual perfection */
+		--bg-width: 240px;
 		--low-high-ratio: calc(5 / 7);
 	}
 
@@ -105,7 +109,7 @@
 @media (max-width: 450px) {
 	:root {
 		--bg-height: 86px;
-		--bg-width: 160px; /* Increase back to 400px when done with octave visual perfection */
+		--bg-width: 160px;
 		--low-high-ratio: calc(5 / 7);
 	}
 

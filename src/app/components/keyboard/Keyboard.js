@@ -5,6 +5,19 @@ import { selectNote, deselectNote, handleHoverNote } from 'app/redux/actions'
 import { shapeToKeys, formatNoteId } from 'helperFunctions'
 import './Keyboard.css'
 
+const getKeyStyling = (selected, hovered) => {
+	if (selected && hovered) {
+		return 'selectedHovered'
+	}
+	if (selected) {
+		return 'keySelected'
+	}
+	if (hovered) {
+		return 'hovered'
+	}
+	return ''
+}
+
 const Keyboard = props => {
 	const {
 		notesMaster,
@@ -62,6 +75,7 @@ const Keyboard = props => {
 			<div className="keyboardBox">
 				{notesMaster.map(noteObj => {
 					const selected = noteObj.notes.find(note => note.selected)
+					const hovered = hoverNote === noteObj.id
 
 					return noteObj.blackKey ? (
 						<div
@@ -72,17 +86,13 @@ const Keyboard = props => {
 							onMouseLeave={() => hoverIntercept(null)}
 						>
 							<div
-								className={`key blackKey ${selected ? 'keySelected' : ''} ${
-									hoverNote === noteObj.id ? 'hovered' : ''
-								}`}
+								className={`key blackKey ${getKeyStyling(selected, hovered)}`}
 							/>
 						</div>
 					) : (
 						<div
 							key={noteObj.id}
-							className={`key whiteKey ${selected ? 'keySelected' : ''} ${
-								hoverNote === noteObj.id ? 'hovered' : ''
-							}`}
+							className={`key whiteKey ${getKeyStyling(selected, hovered)}`}
 							onClick={() => selectNoteIntercept(noteObj)}
 							onMouseEnter={() => hoverIntercept(noteObj)}
 							onMouseLeave={() => hoverIntercept(null)}
