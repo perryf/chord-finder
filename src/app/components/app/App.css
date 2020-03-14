@@ -22,5 +22,11 @@
 @media (max-width: 900px) {
 	.appBody {
 		flex-direction: column;
+		/* overflow-x: hidden; */
+	}
+
+	.inputs {
+		justify-content: flex-start;
+		height: auto;
 	}
 }

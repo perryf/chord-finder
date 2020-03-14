@@ -14,6 +14,8 @@ class App extends Component {
 	constructor(props) {
 		super(props)
 
+		this.state = initSynth
+
 		// TODO -> Move to separate component, and rely on tone getter/setter methods instead of state
 		// * Defines tone objs and connects to master
 		this.compressor = new Tone.Compressor()
@@ -22,8 +24,6 @@ class App extends Component {
 			oscillator: initSynth
 		})
 		this.synth.chain(this.compressor, Tone.Master)
-
-		this.state = initSynth
 	}
 
 	startTone = () => {

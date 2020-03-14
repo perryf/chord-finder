@@ -125,7 +125,7 @@
 }
 
 @media (max-width: 450px) {
-	staff {
+	.staff {
 		width: 300px;
 		margin-top: 10px;
 	}

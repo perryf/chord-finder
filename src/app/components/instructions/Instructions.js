@@ -14,6 +14,7 @@ const Instructions = props => {
 			}`}
 		>
 			<div className="flexRow justifyBetween">
+				{/* Here to center help title */}
 				<button className="uiButton invisible">X</button>
 				<h4 className="instructionsWelcome">Welcome to chord finder!</h4>
 				<button
