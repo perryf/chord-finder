@@ -69,8 +69,6 @@ class Controls extends Component {
 			playHover
 		} = this.state
 
-		// TODO -> Clean up class styling
-
 		return (
 			<div className="controlsBox">
 				<button
@@ -210,7 +208,9 @@ class Controls extends Component {
 								<option value="alternateUp">Alternate Up</option>
 								<option value="alternateDown">Alternate Down</option>
 								<option value="randomOnce">Random</option>
-								{false && <option value="upDown">Up Down</option> // ? Not working?
+								<option value="up-down">Up Down</option>
+								{
+									// ? Not working?
 								}
 								{false && <option value="downUp">Down Up</option> // ? Not working?
 								}
