@@ -205,15 +205,11 @@ class Controls extends Component {
 							>
 								<option value="up">Up</option>
 								<option value="down">Down</option>
+								<option value="upDown">Up Down</option>
+								<option value="downUp">Down Up</option>
 								<option value="alternateUp">Alternate Up</option>
 								<option value="alternateDown">Alternate Down</option>
 								<option value="randomOnce">Random</option>
-								<option value="up-down">Up Down</option>
-								{
-									// ? Not working?
-								}
-								{false && <option value="downUp">Down Up</option> // ? Not working?
-								}
 							</select>
 						</div>
 					</div>

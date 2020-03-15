@@ -73,23 +73,31 @@ class ChordListing extends Component {
 				if (arpeggiate === 'fast' || arpeggiate === 'slow') {
 					const speed = arpeggiate === 'fast' ? '16n' : '8n'
 
-					console.log(noteIds.slice().reverse())
+					let arpNotes = noteIds.slice().reverse()
+					if (direction === 'upDown') {
+						arpNotes = arpNotes.concat(noteIds.slice(1))
+					} else if (direction === 'downUp') {
+						arpNotes = noteIds.concat(arpNotes.slice(1))
+					}
+
+					const arpLength = arpNotes.length
+
 					let i = 0
 					const pattern = new Tone.Pattern(
 						(_, note) => {
 							i++
 							synth.triggerAttackRelease(note, speed)
-							if (i === noteIds.length) {
+							if (i === arpLength) {
 								pattern.stop()
 								Tone.Transport.stop()
 								this.setState({ playing: false })
 							}
 						},
-						noteIds.slice().reverse(),
+						arpNotes,
 						direction
 					)
 
-					pattern.iterations = noteIds.length
+					pattern.iterations = arpLength
 					pattern.interval = speed
 
 					pattern.start(0)
