@@ -1,21 +1,22 @@
 {
   "files": {
-    "main.css": "//perryf.github.io/chord-finder/static/css/main.75acbbbe.chunk.css",
-    "main.js": "//perryf.github.io/chord-finder/static/js/main.d38fd93e.chunk.js",
-    "main.js.map": "//perryf.github.io/chord-finder/static/js/main.d38fd93e.chunk.js.map",
-    "runtime-main.js": "//perryf.github.io/chord-finder/static/js/runtime-main.b4d83681.js",
-    "runtime-main.js.map": "//perryf.github.io/chord-finder/static/js/runtime-main.b4d83681.js.map",
-    "static/js/2.94d84ec9.chunk.js": "//perryf.github.io/chord-finder/static/js/2.94d84ec9.chunk.js",
-    "static/js/2.94d84ec9.chunk.js.map": "//perryf.github.io/chord-finder/static/js/2.94d84ec9.chunk.js.map",
-    "index.html": "//perryf.github.io/chord-finder/index.html",
-    "precache-manifest.2ef5514b2ffa683a6e800911377cd4c8.js": "//perryf.github.io/chord-finder/precache-manifest.2ef5514b2ffa683a6e800911377cd4c8.js",
-    "service-worker.js": "//perryf.github.io/chord-finder/service-worker.js",
-    "static/css/main.75acbbbe.chunk.css.map": "//perryf.github.io/chord-finder/static/css/main.75acbbbe.chunk.css.map"
+    "main.css": "/chord-finder/static/css/main.2b99e239.chunk.css",
+    "main.js": "/chord-finder/static/js/main.7d73cb31.chunk.js",
+    "main.js.map": "/chord-finder/static/js/main.7d73cb31.chunk.js.map",
+    "runtime-main.js": "/chord-finder/static/js/runtime-main.166738e8.js",
+    "runtime-main.js.map": "/chord-finder/static/js/runtime-main.166738e8.js.map",
+    "static/js/2.8ba821e3.chunk.js": "/chord-finder/static/js/2.8ba821e3.chunk.js",
+    "static/js/2.8ba821e3.chunk.js.map": "/chord-finder/static/js/2.8ba821e3.chunk.js.map",
+    "index.html": "/chord-finder/index.html",
+    "precache-manifest.0e53c49f47d20813d8621125b2b84360.js": "/chord-finder/precache-manifest.0e53c49f47d20813d8621125b2b84360.js",
+    "service-worker.js": "/chord-finder/service-worker.js",
+    "static/css/main.2b99e239.chunk.css.map": "/chord-finder/static/css/main.2b99e239.chunk.css.map",
+    "static/js/2.8ba821e3.chunk.js.LICENSE.txt": "/chord-finder/static/js/2.8ba821e3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.b4d83681.js",
-    "static/js/2.94d84ec9.chunk.js",
-    "static/css/main.75acbbbe.chunk.css",
-    "static/js/main.d38fd93e.chunk.js"
+    "static/js/runtime-main.166738e8.js",
+    "static/js/2.8ba821e3.chunk.js",
+    "static/css/main.2b99e239.chunk.css",
+    "static/js/main.7d73cb31.chunk.js"
   ]
 }
