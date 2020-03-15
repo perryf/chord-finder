@@ -71,35 +71,33 @@ const Keyboard = props => {
 	}
 
 	return (
-		<div className="keyboardWhole">
-			<div className="keyboardBox">
-				{notesMaster.map(noteObj => {
-					const selected = noteObj.notes.find(note => note.selected)
-					const hovered = hoverNote === noteObj.id
+		<div className="keyboardBox">
+			{notesMaster.map(noteObj => {
+				const selected = noteObj.notes.find(note => note.selected)
+				const hovered = hoverNote === noteObj.id
 
-					return noteObj.blackKey ? (
+				return noteObj.blackKey ? (
+					<div
+						key={noteObj.id}
+						className="blackKeyBox"
+						onClick={() => selectNoteIntercept(noteObj)}
+						onMouseEnter={() => hoverIntercept(noteObj)}
+						onMouseLeave={() => hoverIntercept(null)}
+					>
 						<div
-							key={noteObj.id}
-							className="blackKeyBox"
-							onClick={() => selectNoteIntercept(noteObj)}
-							onMouseEnter={() => hoverIntercept(noteObj)}
-							onMouseLeave={() => hoverIntercept(null)}
-						>
-							<div
-								className={`key blackKey ${getKeyStyling(selected, hovered)}`}
-							/>
-						</div>
-					) : (
-						<div
-							key={noteObj.id}
-							className={`key whiteKey ${getKeyStyling(selected, hovered)}`}
-							onClick={() => selectNoteIntercept(noteObj)}
-							onMouseEnter={() => hoverIntercept(noteObj)}
-							onMouseLeave={() => hoverIntercept(null)}
+							className={`key blackKey ${getKeyStyling(selected, hovered)}`}
 						/>
-					)
-				})}
-			</div>
+					</div>
+				) : (
+					<div
+						key={noteObj.id}
+						className={`key whiteKey ${getKeyStyling(selected, hovered)}`}
+						onClick={() => selectNoteIntercept(noteObj)}
+						onMouseEnter={() => hoverIntercept(noteObj)}
+						onMouseLeave={() => hoverIntercept(null)}
+					/>
+				)
+			})}
 		</div>
 	)
 }

@@ -28,16 +28,3 @@
 	float: right;
 	padding: 4px 8px;
 }
-
-@media (max-width: 900px) {
-	.instructionsButton {
-		padding: 4px 8px;
-	}
-}
-
-@media (max-width: 547px) {
-	.clearStaffButton,
-	.arpButton {
-		padding: 2px 8px;
-	}
-}

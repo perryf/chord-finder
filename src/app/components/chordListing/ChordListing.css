@@ -17,7 +17,7 @@
 }
 
 .chordListingTop h4 {
-	margin: 8px 0;
+	margin: 8px 2px;
 }
 
 .chordRow {
@@ -110,4 +110,13 @@
 	to {
 		opacity: 1;
 	}
+}
+
+@media (max-width: 900px) {
+	.chordListingBox {
+		margin: 0;
+	}
+}
+
+@media (max-width: 450px) {
 }

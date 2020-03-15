@@ -10,3 +10,12 @@
 	margin-top: 6px;
 	width: 300px;
 }
+
+@media (max-width: 900px) {
+}
+
+@media (max-width: 450px) {
+	.checkBoxes {
+		width: auto;
+	}
+}

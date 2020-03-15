@@ -31,3 +31,12 @@
 	margin-right: 4px;
 	cursor: default;
 }
+
+@media (max-width: 900px) {
+}
+
+@media (max-width: 450px) {
+	.controlsBox {
+		width: 80%;
+	}
+}

@@ -124,10 +124,35 @@
 	flex-wrap: nowrap;
 }
 
+@media (max-width: 900px) {
+	.chordListingBox {
+		margin: 0;
+	}
+}
+
 @media (max-width: 450px) {
 	.staff {
 		width: 300px;
 		margin-top: 10px;
+	}
+
+	.staffRow {
+		height: 12px;
+	}
+
+	.noteHead {
+		width: 20px;
+		height: 18px;
+	}
+
+	.noteListName {
+		display: none;
+	}
+}
+
+@media (max-width: 350px) {
+	.staff {
+		width: 250px;
 	}
 
 	.noteListName {

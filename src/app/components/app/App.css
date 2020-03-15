@@ -4,6 +4,7 @@
 	height: 100%;
 	margin: 0 auto;
 	max-width: 1300px;
+	width: 100vw;
 }
 
 .appBody {
@@ -22,11 +23,23 @@
 @media (max-width: 900px) {
 	.appBody {
 		flex-direction: column;
-		/* overflow-x: hidden; */
+		overflow-x: hidden;
 	}
 
 	.inputs {
 		justify-content: flex-start;
 		height: auto;
+	}
+}
+
+@media (max-width: 450px) {
+	.appBox {
+		width: 100vw;
+	}
+}
+
+@media (max-width: 350px) {
+	.appBox {
+		width: 100vw;
 	}
 }

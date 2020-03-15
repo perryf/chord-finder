@@ -34,8 +34,17 @@
 
 @media (max-width: 450px) {
 	.instructionsBox {
-		right: 0px;
 		transition: top 0s;
+		width: 250px;
+		min-height: 200px;
+	}
+
+	.instructionsBox li {
+		font-size: 12px;
+	}
+
+	.instructionsBox h4 {
+		margin: 6px 0 0;
 	}
 
 	.instructionsHide {
