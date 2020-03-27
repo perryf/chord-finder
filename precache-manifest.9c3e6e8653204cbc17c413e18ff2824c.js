@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "80798e3f3460680a1f78683bdc88738e",
+    "revision": "b908c26993019615541713a5bf5e5b30",
     "url": "/chord-finder/index.html"
   },
   {
-    "revision": "b5db8d870b24de713edb",
-    "url": "/chord-finder/static/css/main.e3b0df0e.chunk.css"
+    "revision": "18c72cc1eae21b1e857f",
+    "url": "/chord-finder/static/css/main.3c21c933.chunk.css"
   },
   {
     "revision": "d296e97515af2f193e97",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/chord-finder/static/js/2.8ba821e3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b5db8d870b24de713edb",
+    "revision": "18c72cc1eae21b1e857f",
     "url": "/chord-finder/static/js/main.3d2066da.chunk.js"
   },
   {
