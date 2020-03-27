@@ -2,7 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Tone from 'tone'
-import { getSelectedNotes, formatNoteId } from 'helperFunctions'
+import {
+	formatNoteId,
+	shapeToPlay,
+	getSelectedNotesFromArr
+} from 'helperFunctions'
 import './Buttons.css'
 
 class PlayButton extends Component {
@@ -83,8 +87,11 @@ PlayButton.propTypes = {
 }
 
 const mapStateToProps = state => {
-	const notes = getSelectedNotes(state.notesMaster)
+	const noteMasterArr = shapeToPlay(state)
+	const notes = getSelectedNotesFromArr(noteMasterArr)
 
+	// TODO -> notesMaster is an object and cannot be relied on to keep the order of the notes (On deployed on Safari, notes are listed here in order of how they are selected, not in order of pitch)
+	// TODO -> Possible solution - Create an array with all keys for notesMaster listed in order and use that instead of Object.keys in getSelectedNotes
 	// * Filters out dups
 	const noteVals = []
 	const selectedNotes = notes

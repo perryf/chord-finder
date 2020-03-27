@@ -41,6 +41,7 @@
 	height: 100%;
 }
 
+/* Will not change aspect radio in Safari so does not look correct, may need to change as jpeg and re-upload */
 .clef {
 	height: 105%;
 	width: 80px;

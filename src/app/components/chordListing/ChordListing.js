@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Tone from 'tone'
 import {
-	getSelectedNotes,
+	getSelectedNotesFromArr,
+	shapeToPlay,
 	getMatchingChords,
 	getNoteByValue
 } from 'helperFunctions'
@@ -219,19 +220,20 @@ ChordListing.propTypes = {
 	mute: PropTypes.bool.isRequired
 }
 
-const mapStateToProps = ({ notesMaster = {}, ui }) => {
-	const selectedNotes = getSelectedNotes(notesMaster)
+const mapStateToProps = state => {
+	const noteMasterArr = shapeToPlay(state)
+	const selectedNotes = getSelectedNotesFromArr(noteMasterArr)
 	const matchingChords = getMatchingChords(selectedNotes)
 
 	return {
 		selectedNotes,
 		matchingChords,
-		checkBoxes: ui.checkBoxes,
-		favorSharps: ui.favorSharps,
-		rootMatch: ui.rootMatch,
-		mute: ui.mute,
-		arpeggiate: ui.arpeggiate,
-		direction: ui.direction
+		checkBoxes: state.ui.checkBoxes,
+		favorSharps: state.ui.favorSharps,
+		rootMatch: state.ui.rootMatch,
+		mute: state.ui.mute,
+		arpeggiate: state.ui.arpeggiate,
+		direction: state.ui.direction
 	}
 }
 

@@ -1,5 +1,6 @@
 import { staffInfo, allChords, notesData as notesMaster } from 'data'
 
+// * Filters out enharmonics for filtering
 const badIds = ['eS4', 'fB4', 'bS5', 'cB5', 'eS5', 'fB5']
 const notesData = notesMaster.filter(n => {
 	return !badIds.includes(n.id)
@@ -55,7 +56,15 @@ export const shapeToKeys = state => {
 	]
 }
 
+// * Creates Notes for Playback in correct order
+export const shapeToPlay = state => {
+	// prettier-ignore
+	const { c4, d4, e4, f4, g4, a4, b4, c5, d5, e5, f5, g5 } = state.notesMaster
+	return [c4, d4, e4, f4, g4, a4, b4, c5, d5, e5, f5, g5]
+}
+
 // TODO -> combine with filter
+// * Called by getMatchingChords()
 // * Matches input with all chords in a key
 // * noteArr (array of objects) - Input of notes
 // * chord (object, chord.note is array of note values ) - individual chord
@@ -83,6 +92,8 @@ const chordMatcher = (noteArr, chord) => {
 	return isMatch ? { ...chord, perfectMatch, rootMatch } : null
 }
 
+// * Used in ChordListing
+// * noteArr (array of selected notes)
 export const getMatchingChords = noteArr => {
 	// * Eliminates duplicates
 	const shapedArr = noteArr.reduce((acc, note, i, self) => {
