@@ -107,3 +107,9 @@ code {
 	visibility: hidden;
 	opacity: 0;
 }
+
+@media (max-width: 450px) {
+	.filterHover {
+		display: none;
+	}
+}

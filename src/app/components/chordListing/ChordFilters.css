@@ -12,6 +12,9 @@
 }
 
 @media (max-width: 900px) {
+	.listingInputs {
+		font-size: 14px;
+	}
 }
 
 @media (max-width: 450px) {
